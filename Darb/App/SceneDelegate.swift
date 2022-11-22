@@ -24,22 +24,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func checkUserLoggedIn() {
-//        if Util.isLoggedIn() {
-//            let vc = TabbarVC()
-//            self.window?.rootViewController = vc
-//        } else {
-//            if Util.shared.isTerm {
-//                let vc = UIStoryboard.storyBoard(withName: .auth).loadViewController(withIdentifier: .welcomeVC) as! WelcomeVC
-//                let nav = UINavigationController(rootViewController: vc)
-//                self.window?.rootViewController = nav
-//            } else {
-//                let vc = UIStoryboard.storyBoard(withName: .auth).loadViewController(withIdentifier: .termsAcceptVC) as! TermsAcceptVC
-//                let nav = UINavigationController(rootViewController: vc)
-//                self.window?.rootViewController = nav
-//            }
-//        }
-//        self.window?.makeKeyAndVisible()
-//        self.window?.isUserInteractionEnabled = true
+        if Util.isLoggedIn() {
+            let vc = TabbarVC()
+            self.window?.rootViewController = vc
+        } else {
+           
+            let vc = UIStoryboard.storyBoard(withName: .auth).loadViewController(withIdentifier: .welcomeVC) as! WelcomeVC
+            let nav = UINavigationController(rootViewController: vc)
+            self.window?.rootViewController = nav
+            
+        }
+        self.window?.makeKeyAndVisible()
+        self.window?.isUserInteractionEnabled = true
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

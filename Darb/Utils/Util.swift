@@ -13,7 +13,7 @@ class Util: NSObject
     var loadingView: UIView = UIView()
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     var isGuest = false
-    var isTerm = false
+    var isWelcome = false
    
     class func isLoggedIn() -> Bool {
         if self.getUser() != nil {
@@ -155,7 +155,7 @@ class Util: NSObject
                 layer.removeFromSuperlayer()
             }
         }
-        gradientLayer.colors = [UIColor(hexString: "#28769A").cgColor, UIColor(hexString: "#28769A").cgColor]
+        gradientLayer.colors = [UIColor(hexString: "#386AFF").cgColor, UIColor(hexString: "#386AFF").cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
         gradientLayer.locations = [0, 1]

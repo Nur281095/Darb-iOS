@@ -20,7 +20,7 @@ class ALF: NSObject {
 
     private func urlString(subUrl: String) -> String {
     
-        return "https://project.cyphersol.com/emj/emjApi/\(subUrl)"
+        return "https://darb.nicelylogic.com/api/\(subUrl)"
         
     }
     
@@ -37,7 +37,7 @@ class ALF: NSObject {
         
         var headers: HTTPHeaders?
         if Util.isLoggedIn() {
-            headers = ["Authorization": Util.getUser()!.accessToken]
+            headers = ["Authorization": "Bearer \(Util.getUser()!.apiToken!)"]
         } else {
             headers = [:]
         }
@@ -90,7 +90,7 @@ class ALF: NSObject {
 //
 //        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 ////        if Util.isLoggedIn() {
-////            request.addValue(Util.getUser()!.token, forHTTPHeaderField: "Authorization")
+////            request.addValue(Util.getUser()!.apiToken, forHTTPHeaderField: "Authorization")
 ////        }
 //        //create dataTask using the session object to send data to the server
 //        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
@@ -131,7 +131,7 @@ class ALF: NSObject {
         var headers: HTTPHeaders?
         let manager = Alamofire.Session.default
         if Util.isLoggedIn() {
-            headers = ["Authorization": Util.getUser()!.accessToken]
+            headers = ["Authorization": "Bearer \(Util.getUser()!.apiToken!)"]
         } else {
             headers = [:]
         }
@@ -171,7 +171,7 @@ class ALF: NSObject {
         let headers: HTTPHeaders?
         
         if Util.isLoggedIn() {
-            headers = ["Authorization": Util.getUser()!.accessToken]
+            headers = ["Authorization": "Bearer \(Util.getUser()!.apiToken!)"]
         } else {
             headers = [:]
         }
@@ -236,7 +236,7 @@ class ALF: NSObject {
         let headers: HTTPHeaders?
         
         if Util.isLoggedIn() {
-            headers = ["Authorization": Util.getUser()!.accessToken]
+            headers = ["Authorization": "Bearer \(Util.getUser()!.apiToken!)"]
         } else {
             headers = [:]
         }

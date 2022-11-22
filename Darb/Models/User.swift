@@ -9,26 +9,32 @@ import UIKit
 
 class User: NSObject, NSCoding{
     
-    var accessToken : String!
+    var apiToken : String!
+    var createdAt : String!
     var email : String!
-    var mobile : String!
-    var name : String!
-    var profilePic : String!
-    var referalCode : String!
-    var userId : String!
+    var emailVerifiedAt : AnyObject!
+    var firstName : String!
+    var id : Int!
+    var lastName : AnyObject!
+    var phoneNo : AnyObject!
+    var roleId : String!
+    var updatedAt : String!
 
 
     /**
      * Instantiate the instance using the passed dictionary values to set the properties values
      */
     init(fromDictionary dictionary: [String:Any]){
-        accessToken = dictionary["access_token"] as? String
+        apiToken = dictionary["api_token"] as? String
+        createdAt = dictionary["created_at"] as? String
         email = dictionary["email"] as? String
-        mobile = dictionary["mobile"] as? String
-        name = dictionary["name"] as? String
-        profilePic = dictionary["profilePic"] as? String
-        referalCode = dictionary["referal_code"] as? String
-        userId = dictionary["user_id"] as? String
+        emailVerifiedAt = dictionary["email_verified_at"] as? AnyObject
+        firstName = dictionary["first_name"] as? String
+        id = dictionary["id"] as? Int
+        lastName = dictionary["last_name"] as? AnyObject
+        phoneNo = dictionary["phone_no"] as? AnyObject
+        roleId = dictionary["role_id"] as? String
+        updatedAt = dictionary["updated_at"] as? String
     }
 
     /**
@@ -37,26 +43,35 @@ class User: NSObject, NSCoding{
     func toDictionary() -> [String:Any]
     {
         var dictionary = [String:Any]()
-        if accessToken != nil{
-            dictionary["access_token"] = accessToken
+        if apiToken != nil{
+            dictionary["api_token"] = apiToken
+        }
+        if createdAt != nil{
+            dictionary["created_at"] = createdAt
         }
         if email != nil{
             dictionary["email"] = email
         }
-        if mobile != nil{
-            dictionary["mobile"] = mobile
+        if emailVerifiedAt != nil{
+            dictionary["email_verified_at"] = emailVerifiedAt
         }
-        if name != nil{
-            dictionary["name"] = name
+        if firstName != nil{
+            dictionary["first_name"] = firstName
         }
-        if profilePic != nil{
-            dictionary["profilePic"] = profilePic
+        if id != nil{
+            dictionary["id"] = id
         }
-        if referalCode != nil{
-            dictionary["referal_code"] = referalCode
+        if lastName != nil{
+            dictionary["last_name"] = lastName
         }
-        if userId != nil{
-            dictionary["user_id"] = userId
+        if phoneNo != nil{
+            dictionary["phone_no"] = phoneNo
+        }
+        if roleId != nil{
+            dictionary["role_id"] = roleId
+        }
+        if updatedAt != nil{
+            dictionary["updated_at"] = updatedAt
         }
         return dictionary
     }
@@ -67,13 +82,16 @@ class User: NSObject, NSCoding{
     */
     @objc required init(coder aDecoder: NSCoder)
     {
-         accessToken = aDecoder.decodeObject(forKey: "access_token") as? String
+         apiToken = aDecoder.decodeObject(forKey: "api_token") as? String
+         createdAt = aDecoder.decodeObject(forKey: "created_at") as? String
          email = aDecoder.decodeObject(forKey: "email") as? String
-         mobile = aDecoder.decodeObject(forKey: "mobile") as? String
-         name = aDecoder.decodeObject(forKey: "name") as? String
-         profilePic = aDecoder.decodeObject(forKey: "profilePic") as? String
-         referalCode = aDecoder.decodeObject(forKey: "referal_code") as? String
-         userId = aDecoder.decodeObject(forKey: "user_id") as? String
+         emailVerifiedAt = aDecoder.decodeObject(forKey: "email_verified_at") as? AnyObject
+         firstName = aDecoder.decodeObject(forKey: "first_name") as? String
+         id = aDecoder.decodeObject(forKey: "id") as? Int
+         lastName = aDecoder.decodeObject(forKey: "last_name") as? AnyObject
+         phoneNo = aDecoder.decodeObject(forKey: "phone_no") as? AnyObject
+         roleId = aDecoder.decodeObject(forKey: "role_id") as? String
+         updatedAt = aDecoder.decodeObject(forKey: "updated_at") as? String
 
     }
 
@@ -83,26 +101,35 @@ class User: NSObject, NSCoding{
     */
     @objc func encode(with aCoder: NSCoder)
     {
-        if accessToken != nil{
-            aCoder.encode(accessToken, forKey: "access_token")
+        if apiToken != nil{
+            aCoder.encode(apiToken, forKey: "api_token")
+        }
+        if createdAt != nil{
+            aCoder.encode(createdAt, forKey: "created_at")
         }
         if email != nil{
             aCoder.encode(email, forKey: "email")
         }
-        if mobile != nil{
-            aCoder.encode(mobile, forKey: "mobile")
+        if emailVerifiedAt != nil{
+            aCoder.encode(emailVerifiedAt, forKey: "email_verified_at")
         }
-        if name != nil{
-            aCoder.encode(name, forKey: "name")
+        if firstName != nil{
+            aCoder.encode(firstName, forKey: "first_name")
         }
-        if profilePic != nil{
-            aCoder.encode(profilePic, forKey: "profilePic")
+        if id != nil{
+            aCoder.encode(id, forKey: "id")
         }
-        if referalCode != nil{
-            aCoder.encode(referalCode, forKey: "referal_code")
+        if lastName != nil{
+            aCoder.encode(lastName, forKey: "last_name")
         }
-        if userId != nil{
-            aCoder.encode(userId, forKey: "user_id")
+        if phoneNo != nil{
+            aCoder.encode(phoneNo, forKey: "phone_no")
+        }
+        if roleId != nil{
+            aCoder.encode(roleId, forKey: "role_id")
+        }
+        if updatedAt != nil{
+            aCoder.encode(updatedAt, forKey: "updated_at")
         }
 
     }

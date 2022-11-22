@@ -29,9 +29,10 @@ extension UIStoryboard {
 enum storyboards : String {
     case auth = "Auth",
          home = "Home",
-         book = "Book",
-         ship = "Ship",
-         invoice = "Invoice"
+         chat = "Chat",
+         explore = "Explore",
+         more = "More",
+         child = "Child"
 }
 
 enum viewControllers: String {
@@ -39,13 +40,18 @@ enum viewControllers: String {
     //Main Storyboard
     case loginVC = "LoginVC",
          signupVC = "SignupVC",
-         signupIDVC = "SignupIDVC",
-         termsAcceptVC = "TermsAcceptVC",
          welcomeVC = "WelcomeVC",
          homeVC = "HomeVC",
-         bookVC = "BookVC",
-         shipVC = "ShipVC",
-         invoiceVC = "InvoiceVC",
-         changePasswordVC = "ChangePasswordVC",
-         searchDropDownVC = "SearchDropDownVC"
+         moreVC = "MoreVC",
+         conversationsVC = "ConversationsVC",
+         exploreVC = "ExploreVC",
+         resetPassVC = "ResetPassVC",
+         otpVC = "OtpVC",
+         forgotPassVC = "ForgotPassVC",
+         annoucementDetailVC = "AnnoucementDetailVC",
+         notificationVC = "NotificationVC",
+         childernListVC = "ChildernListVC",
+         childProfileVC = "ChildProfileVC",
+         schoolSubjectsVC = "SchoolSubjectsVC",
+         addChildVC = "AddChildVC"
 }

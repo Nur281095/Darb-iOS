@@ -14,19 +14,19 @@ import ImageIO
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
 }
 
 private var GLOWVIEW_KEY = "GLOWVIEW"
 extension DispatchQueue {
-
+    
     static func background(delay: Double = 0.0, background: (()->Void)? = nil, completion: (() -> Void)? = nil) {
         DispatchQueue.global(qos: .background).async {
             background?()
@@ -37,22 +37,22 @@ extension DispatchQueue {
             }
         }
     }
-
+    
 }
 
 public extension UIDevice {
     class var isPhone: Bool {
         return UIDevice.current.userInterfaceIdiom == .phone
     }
-
+    
     class var isPad: Bool {
         return UIDevice.current.userInterfaceIdiom == .pad
     }
-
+    
     class var isTV: Bool {
         return UIDevice.current.userInterfaceIdiom == .tv
     }
-
+    
     class var isCarPlay: Bool {
         return UIDevice.current.userInterfaceIdiom == .carPlay
     }
@@ -64,9 +64,9 @@ public extension UIDevice {
             guard let value = element.value as? Int8, value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
-
+        
         func mapToDevice(identifier: String) -> String { // swiftlint:disable:this cyclomatic_complexity
-            #if os(iOS)
+#if os(iOS)
             switch identifier {
             case "iPod5,1":                                 return "iPod touch (5th generation)"
             case "iPod7,1":                                 return "iPod touch (6th generation)"
@@ -121,19 +121,19 @@ public extension UIDevice {
             case "i386", "x86_64":                          return "Simulator \(mapToDevice(identifier: ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "iOS"))"
             default:                                        return identifier
             }
-            #elseif os(tvOS)
+#elseif os(tvOS)
             switch identifier {
             case "AppleTV5,3": return "Apple TV 4"
             case "AppleTV6,2": return "Apple TV 4K"
             case "i386", "x86_64": return "Simulator \(mapToDevice(identifier: ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "tvOS"))"
             default: return identifier
             }
-            #endif
+#endif
         }
-
+        
         return mapToDevice(identifier: identifier)
     }()
-
+    
 }
 extension UIView {
     var glowView: UIView? {
@@ -245,19 +245,19 @@ extension UIImage {
     func imageWithColor(color: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
         color.setFill()
-
+        
         let context = UIGraphicsGetCurrentContext()
         context?.translateBy(x: 0, y: self.size.height)
         context?.scaleBy(x: 1.0, y: -1.0)
         context?.setBlendMode(CGBlendMode.normal)
-
+        
         let rect = CGRect(origin: .zero, size: CGSize(width: self.size.width, height: self.size.height))
         context?.clip(to: rect, mask: self.cgImage!)
         context?.fill(rect)
-
+        
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-
+        
         return newImage!
     }
     enum JPEGQuality: CGFloat {
@@ -267,9 +267,9 @@ extension UIImage {
         case high    = 0.75
         case highest = 1
     }
-
+    
     var png: Data? { return self.pngData() }
-
+    
     func jpeg(_ quality: JPEGQuality) -> Data {
         return self.jpegData(compressionQuality: quality.rawValue)!
     }
@@ -280,16 +280,16 @@ extension UIImage {
         let cfProperties = CGImageSourceCopyPropertiesAtIndex(source, index, nil)
         let gifProperties: CFDictionary = unsafeBitCast(
             CFDictionaryGetValue(cfProperties,
-                Unmanaged.passUnretained(kCGImagePropertyGIFDictionary).toOpaque()),
+                                 Unmanaged.passUnretained(kCGImagePropertyGIFDictionary).toOpaque()),
             to: CFDictionary.self)
         
         var delayObject: AnyObject = unsafeBitCast(
             CFDictionaryGetValue(gifProperties,
-                Unmanaged.passUnretained(kCGImagePropertyGIFUnclampedDelayTime).toOpaque()),
+                                 Unmanaged.passUnretained(kCGImagePropertyGIFUnclampedDelayTime).toOpaque()),
             to: AnyObject.self)
         if delayObject.doubleValue == 0 {
             delayObject = unsafeBitCast(CFDictionaryGetValue(gifProperties,
-                Unmanaged.passUnretained(kCGImagePropertyGIFDelayTime).toOpaque()), to: AnyObject.self)
+                                                             Unmanaged.passUnretained(kCGImagePropertyGIFDelayTime).toOpaque()), to: AnyObject.self)
         }
         
         delay = delayObject as! Double
@@ -358,7 +358,7 @@ extension UIImage {
             }
             
             let delaySeconds = UIImage.delayForImageAtIndex(Int(i),
-                source: source)
+                                                            source: source)
             delays.append(Int(delaySeconds * 1000.0)) // Seconds to ms
         }
         
@@ -387,11 +387,11 @@ extension UIImage {
         }
         
         let animation = UIImage.animatedImage(with: frames,
-            duration: Double(duration) / 1000.0)
+                                              duration: Double(duration) / 1000.0)
         
         return animation
     }
-
+    
 }
 extension UINavigationBar {
     func installBlurEffect() {
@@ -410,23 +410,23 @@ extension UINavigationBar {
     }
 }
 extension UIImageView {
-  func setImageColor(color: UIColor) {
-    let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
-    self.image = templateImage
-    self.tintColor = color
-  }
+    func setImageColor(color: UIColor) {
+        let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
+        self.image = templateImage
+        self.tintColor = color
+    }
 }
 extension UIButton {
     
 }
 class VerticalButton: UIButton {
-
+    
     override func titleRect(forContentRect bounds: CGRect) -> CGRect {
         var frame: CGRect = super.titleRect(forContentRect: bounds)
-
+        
         frame.origin.y = 0
         frame.size.height = bounds.size.height
-
+        
         return frame
     }
 }
@@ -450,7 +450,7 @@ extension UILabel {
 //    }
 //}
 extension UITextField{
-   @IBInspectable var placeHolderColor: UIColor? {
+    @IBInspectable var placeHolderColor: UIColor? {
         get {
             return self.placeHolderColor
         }
@@ -470,7 +470,7 @@ extension UIView {
                 layer.removeFromSuperlayer()
             }
         }
-//        gradientLayer.colors = [AppColors.seaGreen.cgColor, AppColors.darkGray.cgColor]
+        //        gradientLayer.colors = [AppColors.seaGreen.cgColor, AppColors.darkGray.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
         gradientLayer.endPoint = CGPoint(x: 0.8, y: 0.0)
         gradientLayer.locations = [0, 1]
@@ -494,7 +494,7 @@ extension UIView {
 struct Name {
     let first: String
     let last: String
-
+    
     init(first: String, last: String) {
         self.first = first
         self.last = last
@@ -515,11 +515,11 @@ extension NSLayoutConstraint {
     }
 }
 extension NSLayoutConstraint {
-
+    
     func setMultiplier(multiplier:CGFloat) -> NSLayoutConstraint {
-
+        
         NSLayoutConstraint.deactivate([self])
-
+        
         let newConstraint = NSLayoutConstraint(
             item: self.firstItem!,
             attribute: firstAttribute,
@@ -528,17 +528,17 @@ extension NSLayoutConstraint {
             attribute: secondAttribute,
             multiplier: multiplier,
             constant: constant)
-
+        
         newConstraint.priority = priority
         newConstraint.shouldBeArchived = shouldBeArchived
         newConstraint.identifier = identifier
-
+        
         NSLayoutConstraint.activate([newConstraint])
         return newConstraint
     }
-//    func setMultiplier(multiplier: CGFloat) -> NSLayoutConstraint {
-//        return NSLayoutConstraint(item: self.firstItem!, attribute: self.firstAttribute, relatedBy: self.relation, toItem: self.secondItem, attribute: self.secondAttribute, multiplier: multiplier, constant: self.constant)
-//    }
+    //    func setMultiplier(multiplier: CGFloat) -> NSLayoutConstraint {
+    //        return NSLayoutConstraint(item: self.firstItem!, attribute: self.firstAttribute, relatedBy: self.relation, toItem: self.secondItem, attribute: self.secondAttribute, multiplier: multiplier, constant: self.constant)
+    //    }
 }
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
@@ -578,7 +578,7 @@ extension String {
         paragraphStyle.alignment = .center
         return toAttributed(attributes: [.paragraphStyle: paragraphStyle])
     }
-
+    
     func toAttributed(attributes: [NSAttributedString.Key : Any]? = nil) -> NSAttributedString {
         return NSAttributedString(string: self, attributes: attributes)
     }
@@ -615,70 +615,70 @@ extension UINavigationController {
     }
 }
 extension UITextField{
-
-       @IBInspectable var doneAccessory: Bool{
-           get{
-               return self.doneAccessory
-           }
-           set (hasDone) {
-               if hasDone{
-                   addDoneButtonOnKeyboard()
-               }
-           }
-       }
-
-       func addDoneButtonOnKeyboard()
-       {
-           let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-           doneToolbar.barStyle = .default
-
-           let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-           let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
-
-           let items = [flexSpace, done]
-           doneToolbar.items = items
-           doneToolbar.sizeToFit()
-
-           self.inputAccessoryView = doneToolbar
-       }
-
-       @objc func doneButtonAction() {
-           self.resignFirstResponder()
-       }
-
+    
+    @IBInspectable var doneAccessory: Bool{
+        get{
+            return self.doneAccessory
+        }
+        set (hasDone) {
+            if hasDone{
+                addDoneButtonOnKeyboard()
+            }
+        }
+    }
+    
+    func addDoneButtonOnKeyboard()
+    {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+        
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        self.inputAccessoryView = doneToolbar
+    }
+    
+    @objc func doneButtonAction() {
+        self.resignFirstResponder()
+    }
+    
 }
 extension UITextView{
-
-       @IBInspectable var doneAccessory: Bool{
-           get{
-               return self.doneAccessory
-           }
-           set (hasDone) {
-               if hasDone{
-                   addDoneButtonOnKeyboard()
-               }
-           }
-       }
-
-       func addDoneButtonOnKeyboard()
-       {
-           let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
-           doneToolbar.barStyle = .default
-
-           let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-           let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
-
-           let items = [flexSpace, done]
-           doneToolbar.items = items
-           doneToolbar.sizeToFit()
-
-           self.inputAccessoryView = doneToolbar
-       }
-
-       @objc func doneButtonAction() {
-           self.resignFirstResponder()
-       }
-
+    
+    @IBInspectable var doneAccessory: Bool{
+        get{
+            return self.doneAccessory
+        }
+        set (hasDone) {
+            if hasDone{
+                addDoneButtonOnKeyboard()
+            }
+        }
+    }
+    
+    func addDoneButtonOnKeyboard()
+    {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+        
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        self.inputAccessoryView = doneToolbar
+    }
+    
+    @objc func doneButtonAction() {
+        self.resignFirstResponder()
+    }
+    
 }
 
 //extension UserDefaults {
@@ -711,7 +711,7 @@ extension UIViewController {
     }
     func setNavTitleWithImage(image: UIImage){
         let logoContainer = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-
+        
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         imageView.contentMode = .scaleAspectFit
         imageView.image = image
@@ -727,12 +727,12 @@ extension UIViewController {
     }
     func addBackbutton(title: String) {
         if let nav = self.navigationController,
-            let item = nav.navigationBar.topItem {
+           let item = nav.navigationBar.topItem {
             item.backBarButtonItem  = UIBarButtonItem(title: title, style: UIBarButtonItem.Style.plain, target: self, action:
-                #selector(self.backButtonAction))
+                                                        #selector(self.backButtonAction))
         } else {
             if let nav = self.navigationController,
-                let _ = nav.navigationBar.backItem {
+               let _ = nav.navigationBar.backItem {
                 self.navigationController!.navigationBar.backItem!.title = title
             }
         }
@@ -751,7 +751,7 @@ extension String {
         do {
             if let jsonObj = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Dictionary<String,AnyObject>
             {
-               obj = jsonObj
+                obj = jsonObj
                 return obj
             } else {
                 print("bad json")
@@ -782,13 +782,13 @@ extension UIStackView {
 
 extension UIView {
     func addShadow(_ cornerRadius: CGFloat? = nil) {
-      self.layer.shadowColor = UIColor.gray.cgColor
-      self.layer.shadowOffset = CGSize(width: 1, height: 1)
-      self.layer.shadowOpacity = 1
-      backgroundColor = .white
-        self.layer.cornerRadius = cornerRadius != nil ? self.frame.height/2 : cornerRadius!
-      self.layer.masksToBounds = false
-  }
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowOffset = CGSize(width: 1, height: 1)
+        self.layer.shadowOpacity = 0.5
+        //        backgroundColor = .white
+        self.layer.cornerRadius = cornerRadius == nil ? self.frame.height/2 : cornerRadius!
+        self.layer.masksToBounds = false
+    }
 }
 
 extension UILabel {
@@ -803,12 +803,34 @@ extension UILabel {
             self.textAlignment = textAlignment
         }
     }
+    
+    func set(image: UIImage, with text: String) {
+        let attachment = NSTextAttachment()
+        attachment.image = image
+        attachment.bounds = CGRect(x: 0, y: -2, width: 16, height: 16)
+        let attachmentStr = NSAttributedString(attachment: attachment)
+        
+        let mutableAttributedString = NSMutableAttributedString()
+        mutableAttributedString.append(attachmentStr)
+        
+        let textString = NSAttributedString(string: text, attributes: [.font: self.font as Any])
+        mutableAttributedString.append(textString)
+        
+        self.attributedText = mutableAttributedString
+    }
 }
 
 extension UINavigationController {
-  func popToViewController(ofClass: AnyClass, animated: Bool = true) {
-    if let vc = viewControllers.last(where: { $0.isKind(of: ofClass) }) {
-      popToViewController(vc, animated: animated)
+    func popToViewController(ofClass: AnyClass, animated: Bool = true) {
+        if let vc = viewControllers.last(where: { $0.isKind(of: ofClass) }) {
+            popToViewController(vc, animated: animated)
+        }
     }
-  }
+}
+
+extension String {
+    public func getAcronyms() -> String {
+        let acronyms = self.components(separatedBy: " ").map({ String($0.first!) }).joined(separator: "")
+        return acronyms;
+    }
 }
