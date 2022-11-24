@@ -53,7 +53,7 @@ class ResetPassVC: BaseVC {
             DispatchQueue.main.async {
                 let json = JSON(response)
                 if let status = json["status_code"].int {
-                    if status == 200 {
+                    if statusRange.contains(status) {
                         self.showTool(msg: json["message"].string ?? "Password Reset Successfully", state: .success)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             self.goBackToRoot()

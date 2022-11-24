@@ -56,7 +56,7 @@ class OtpVC: BaseVC, SwiftyCodeViewDelegate {
             DispatchQueue.main.async {
                 let json = JSON(response)
                 if let status = json["status_code"].int {
-                    if status == 200 {
+                    if statusRange.contains(status) {
                         self.showTool(msg: json["message"].string ?? "Verification Code sent to email", state: .success)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             let token = json["reset_password_token"].stringValue

@@ -704,6 +704,13 @@ extension UIView {
     }
     
 }
+extension UINavigationController {
+  func popToViewController(ofClass: AnyClass, animated: Bool = true) {
+    if let vc = viewControllers.last(where: { $0.isKind(of: ofClass) }) {
+      popToViewController(vc, animated: animated)
+    }
+  }
+}
 extension UIViewController {
     func resignAll(){
         self.view.endEditing(true)
@@ -817,14 +824,6 @@ extension UILabel {
         mutableAttributedString.append(textString)
         
         self.attributedText = mutableAttributedString
-    }
-}
-
-extension UINavigationController {
-    func popToViewController(ofClass: AnyClass, animated: Bool = true) {
-        if let vc = viewControllers.last(where: { $0.isKind(of: ofClass) }) {
-            popToViewController(vc, animated: animated)
-        }
     }
 }
 

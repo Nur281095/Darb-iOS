@@ -36,6 +36,8 @@ class HomeVC: BaseVC {
     }
     
     @IBAction func enrollTap(_ sender: Any) {
+        let vc = UIStoryboard.storyBoard(withName: .enrollment).loadViewController(withIdentifier: .enrollmentListVC) as! EnrollmentListVC
+        self.show(vc, sender: self)
     }
     
     @IBAction func transportTap(_ sender: Any) {

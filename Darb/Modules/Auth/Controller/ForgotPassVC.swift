@@ -12,11 +12,12 @@ class ForgotPassVC: BaseVC {
     
 
     @IBOutlet weak var emailTxt: UITextField!
+    @IBOutlet weak var backBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        backBtn.setTitle("", for: .normal)
     }
     
     @IBAction func backTap(_ sender: Any) {
@@ -43,7 +44,7 @@ class ForgotPassVC: BaseVC {
             DispatchQueue.main.async {
                 let json = JSON(response)
                 if let status = json["status_code"].int {
-                    if status == 200 {
+                    if statusRange.contains(status) {
                         self.showTool(msg: json["message"].string ?? "Verification Code sent to email", state: .success)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                             let vc = UIStoryboard.storyBoard(withName: .auth).loadViewController(withIdentifier: .otpVC) as! OtpVC

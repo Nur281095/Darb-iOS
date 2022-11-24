@@ -19,5 +19,7 @@ target 'Darb' do
   pod 'TagListView', '~> 1.0'
   pod 'StyledString'
   pod 'SwiftyCodeView'
+  pod 'Cosmos'
+  pod 'MultiSlider'
 
 end

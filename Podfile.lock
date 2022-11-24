@@ -17,6 +17,8 @@ PODS:
     - AFNetworking/NSURLSession
   - Alamofire (5.6.2)
   - Atributika (4.10.1)
+  - AvailableHapticFeedback (1.0.2)
+  - Cosmos (23.0.0)
   - DropDown (2.3.13)
   - KafkaRefresh (1.5.0):
     - KafkaRefresh/Category (= 1.5.0)
@@ -54,10 +56,14 @@ PODS:
     - KafkaRefresh/Category
     - KafkaRefresh/Default
   - Loaf (0.7.0)
+  - MultiSlider (1.13.2):
+    - AvailableHapticFeedback
+    - SweeterSwift
   - SDWebImage (5.13.4):
     - SDWebImage/Core (= 5.13.4)
   - SDWebImage/Core (5.13.4)
   - StyledString (0.8.0)
+  - SweeterSwift (1.2.1)
   - SwiftyCodeView (0.3.6):
     - SwiftyCodeView/Core (= 0.3.6)
   - SwiftyCodeView/Core (0.3.6)
@@ -71,9 +77,11 @@ DEPENDENCIES:
   - AFNetworking
   - Alamofire
   - Atributika
+  - Cosmos
   - DropDown
   - KafkaRefresh
   - Loaf
+  - MultiSlider
   - SDWebImage
   - StyledString
   - SwiftyCodeView
@@ -88,11 +96,15 @@ SPEC REPOS:
     - AFNetworking
     - Alamofire
     - Atributika
+    - AvailableHapticFeedback
+    - Cosmos
     - DropDown
     - KafkaRefresh
     - Loaf
+    - MultiSlider
     - SDWebImage
     - StyledString
+    - SweeterSwift
     - SwiftyCodeView
     - SwiftyJSON
     - TagListView
@@ -104,17 +116,21 @@ SPEC CHECKSUMS:
   AFNetworking: 7864c38297c79aaca1500c33288e429c3451fdce
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   Atributika: 47e778507cfb3cd2c996278b0285221a62e97d71
+  AvailableHapticFeedback: 9b21b9f6d3e4566015988b5de35b40abefe6c09a
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   KafkaRefresh: 01645b1509b8647809f6bb666629c80855bd3fdd
   Loaf: d69937cd00649f3fa260beb8b7aef0a1feb861ef
+  MultiSlider: 66271d410330e63ded9e468d4ef420d5dbe31d2e
   SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
   StyledString: a9edeea62128321bbdfd51cc7470ea61374ce73f
+  SweeterSwift: 61baeda1c0c27d1dc57c8112c3d6a82e5aff3139
   SwiftyCodeView: 0252e3520749a3fda1a9b141873401f8e6c570ad
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
   TagListView: a1c236d17960a0cf64156725a76ce6d73ebce2be
   TPKeyboardAvoiding: d55b3ea7b362540af8fcf36aa3ed2e87bf210cc6
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 2d9c18cd95ddb7b252e5214bf7fe4af9ab7e66f0
+PODFILE CHECKSUM: 088d614c00720135c3ca9abee21c49cc19cd0046
 
 COCOAPODS: 1.11.3

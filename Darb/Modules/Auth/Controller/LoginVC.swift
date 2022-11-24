@@ -15,13 +15,14 @@ class LoginVC: BaseVC {
     @IBOutlet weak var passTxt: UITextField!
     @IBOutlet weak var remebrBtn: UIButton!
     @IBOutlet weak var chkImg: UIImageView!
+    @IBOutlet weak var backBtn: UIButton!
     
     var isRemeber = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        backBtn.setTitle("", for: .normal)
     }
     
     @IBAction func backTap(_ sender: Any) {
@@ -72,7 +73,7 @@ class LoginVC: BaseVC {
             DispatchQueue.main.async {
                 let json = JSON(response)
                 if let status = json["status_code"].int {
-                    if status == 200 {
+                    if statusRange.contains(status) {
                         
                         if let user = json["data"].dictionaryObject {
                             if let usrStr = user.aa_json {

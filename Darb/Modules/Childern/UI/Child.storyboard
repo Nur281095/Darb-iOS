@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -43,13 +44,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0jG-uR-1bf">
-                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="15"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="14"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                     <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sarah" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e37-Ru-haL">
-                                                    <rect key="frame" x="0.0" y="20" width="150" height="17.666666666666671"/>
+                                                    <rect key="frame" x="0.0" y="19" width="150" height="17.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -726,6 +727,9 @@
                         <outlet property="lNameTxt" destination="Tmf-wM-nA5" id="TZu-xa-YAC"/>
                         <outlet property="portPhotoTxt" destination="aSk-8O-g3c" id="YCO-mj-D1O"/>
                         <outlet property="updateBtn" destination="fu9-ST-K10" id="BHk-Xu-QTT"/>
+                        <outletCollection property="browseBtns" destination="7Ht-Uc-geW" collectionClass="NSMutableArray" id="PL5-A6-Cy9"/>
+                        <outletCollection property="browseBtns" destination="ywf-I0-6gr" collectionClass="NSMutableArray" id="ZxB-8o-QwE"/>
+                        <outletCollection property="browseBtns" destination="RGC-tn-1rU" collectionClass="NSMutableArray" id="Vv3-gu-r2y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53j-jX-ogk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

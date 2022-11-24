@@ -54,17 +54,17 @@ class ChildProfileVC: BaseVC {
             arrayOfDic.append(dic)
         }
         if child.birthCertificate != nil {
-            dic["name"] = child.birthCertificate
+            dic["name"] = child.birthCertificate.name
             dic["title"] = "Birth Certificate"
             arrayOfDic.append(dic)
         }
         if child.portraitPhoto != nil {
-            dic["name"] = child.portraitPhoto
+            dic["name"] = child.portraitPhoto.name
             dic["title"] = "Portrait Photo"
             arrayOfDic.append(dic)
         }
         if child.healthReport != nil {
-            dic["name"] = child.healthReport
+            dic["name"] = child.healthReport.name
             dic["title"] = "Health Report"
             arrayOfDic.append(dic)
         }

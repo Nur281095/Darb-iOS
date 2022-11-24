@@ -27,13 +27,17 @@ class ChildernListVC: BaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        addBtn.setTitle("", for: .normal)
         self.navigationItem.leftBarButtonItem = btnBack(isOrignal: false)
         self.navigationItem.title = "My children"
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getChilds()
     }
     
     func getChilds() {
+        self.childs.removeAll()
         Util.shared.showSpinner()
         ALF.shared.doGetData(parameters: [:], method: "childs") { response in
             Util.shared.hideSpinner()
@@ -41,7 +45,7 @@ class ChildernListVC: BaseVC {
             DispatchQueue.main.async {
                 let json = JSON(response)
                 if let status = json["status_code"].int {
-                    if status == 200 {
+                    if statusRange.contains(status) {
                         if let data = response["data"] as? [[String: Any]] {
                             for d in data {
                                 self.childs.append(Child(fromDictionary: d))
@@ -71,7 +75,7 @@ class ChildernListVC: BaseVC {
             DispatchQueue.main.async {
                 let json = JSON(response)
                 if let status = json["status_code"].int {
-                    if status == 200 {
+                    if statusRange.contains(status) {
                         if let data = response["data"] as? [[String: Any]] {
                             for d in data {
                                 self.childs.append(Child(fromDictionary: d))

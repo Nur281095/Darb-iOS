@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -240,7 +241,9 @@
                                                             <constraint firstAttribute="height" constant="25" id="i8d-uX-e7k"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Button">
+                                                            <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </buttonConfiguration>
                                                         <connections>
                                                             <action selector="termChkTap:" destination="7YJ-Te-LuE" eventType="touchUpInside" id="hRb-rj-qTZ"/>
                                                         </connections>
@@ -350,6 +353,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtn" destination="1Ni-Tc-nZI" id="JH2-zM-Xrb"/>
                         <outlet property="chkImg" destination="bQg-GW-ihM" id="FmZ-3m-mhs"/>
                         <outlet property="emailTxt" destination="BRI-hV-LIg" id="tG1-OW-cne"/>
                         <outlet property="fNameTxt" destination="BmW-cd-xyw" id="cVK-gn-rFa"/>
@@ -449,7 +453,9 @@
                                                             <constraint firstAttribute="height" constant="25" id="vEf-HS-vy2"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Button">
+                                                            <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </buttonConfiguration>
                                                         <connections>
                                                             <action selector="remeberChkTap:" destination="Xga-Xw-EuB" eventType="touchUpInside" id="TeB-Sk-8rk"/>
                                                         </connections>
@@ -461,10 +467,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rrw-Ax-79v">
-                                                        <rect key="frame" x="230.66666666666663" y="291" width="139.33333333333337" height="27"/>
+                                                        <rect key="frame" x="231.66666666666663" y="291" width="138.33333333333337" height="27"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Forgot your password? ">
-                                                            <fontDescription key="titleFontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
+                                                            <fontDescription key="titleFontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
                                                             <color key="baseForegroundColor" red="0.21960784310000001" green="0.41568627450000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </buttonConfiguration>
                                                         <connections>
@@ -555,6 +561,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtn" destination="TW1-oJ-uCX" id="x0L-J7-0qs"/>
                         <outlet property="chkImg" destination="pUo-tl-9ad" id="CPD-bH-Fjo"/>
                         <outlet property="emailTxt" destination="erc-gt-n4X" id="jkU-zu-Uhk"/>
                         <outlet property="passTxt" destination="h7a-ga-QzT" id="ddI-hK-zON"/>
@@ -674,6 +681,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtn" destination="fUH-82-8TL" id="jAz-L7-PDg"/>
                         <outlet property="emailTxt" destination="8HA-1y-hrr" id="pdb-h5-PyA"/>
                     </connections>
                 </viewController>

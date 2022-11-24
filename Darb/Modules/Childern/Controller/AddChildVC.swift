@@ -19,6 +19,7 @@ class AddChildVC: BaseVC {
     @IBOutlet weak var portPhotoTxt: UITextField!
     @IBOutlet weak var heathRepTxt: UITextField!
     @IBOutlet weak var updateBtn: UIButton!
+    @IBOutlet var browseBtns: [UIButton]!
     
     var child: Child!
     var isAdd = false
@@ -30,6 +31,9 @@ class AddChildVC: BaseVC {
         case health
     }
     var docTyp = DocType.birh
+    var bCertID = -1
+    var healthDocID = -1
+    var portPhotoID = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +45,9 @@ class AddChildVC: BaseVC {
         if child != nil {
             setData()
         }
+        for btn in browseBtns {
+            btn.setTitle("", for: .normal)
+        }
     }
     
     func setData() {
@@ -48,9 +55,9 @@ class AddChildVC: BaseVC {
         lNameTxt.text = child.lastName
         dobTxt.text = child.dob
         idTxt.text = child.nationalId ?? ""
-        bCertTxt.text = child.birthCertificate ?? ""
-        portPhotoTxt.text = child.portraitPhoto ?? ""
-        heathRepTxt.text = child.healthReport ?? ""
+        bCertTxt.text = child.birthCertificate.name ?? ""
+        portPhotoTxt.text = child.portraitPhoto.name ?? ""
+        heathRepTxt.text = child.healthReport.name ?? ""
     }
     
     
@@ -133,6 +140,93 @@ class AddChildVC: BaseVC {
     
     @IBAction func updateTap(_ sender: Any) {
         self.resignAll()
+        let fNameValid = Validator.validateString(text: fNameTxt.text, type: "First name")
+        if !fNameValid.0 {
+            print(fNameValid.1)
+            self.showTool(msg: fNameValid.1, state: .error)
+            return
+        }
+        
+        let lNameValid = Validator.validateString(text: fNameTxt.text, type: "Last name")
+        if !lNameValid.0 {
+            print(lNameValid.1)
+            self.showTool(msg: lNameValid.1, state: .error)
+            return
+        }
+        
+        let dobValid = Validator.validateString(text: dobTxt.text, type: "Birthday")
+        if !dobValid.0 {
+            print(dobValid.1)
+            self.showTool(msg: dobValid.1, state: .error)
+            return
+        }
+        
+        let idValid = Validator.validateString(text: idTxt.text, type: "National ID")
+        if !idValid.0 {
+            print(idValid.1)
+            self.showTool(msg: idValid.1, state: .error)
+            return
+        }
+        
+        
+        if bCertID == -1 {
+            self.showTool(msg: "Birth Certificate", state: .error)
+            return
+        }
+        
+        if healthDocID == -1 {
+            self.showTool(msg: "Health Report", state: .error)
+            return
+        }
+        if portPhotoID == -1 {
+            self.showTool(msg: "Portrait Photo", state: .error)
+            return
+        }
+        
+        var dic = Dictionary<String, AnyObject>()
+        dic["first_name"] = fNameTxt.text as AnyObject
+        dic["last_name"] = lNameTxt.text as AnyObject
+        dic["dob"] = dobTxt.text as AnyObject
+        dic["national_id"] = idTxt.text as AnyObject
+        dic["birth_certificate"] = bCertID as AnyObject
+        dic["portrait_photo"] = portPhotoID as AnyObject
+        dic["health_report"] = healthDocID as AnyObject
+        
+        var method = ""
+        if child != nil {
+            method = "childs/\(String(describing: child.id!))"
+        } else {
+            method = "childs"
+        }
+        print(dic)
+        Util.shared.showSpinner()
+        ALF.shared.doPostData(parameters: dic, method: method) { response in
+            Util.shared.hideSpinner()
+            print(response)
+            DispatchQueue.main.async {
+                let json = JSON(response)
+                if let status = json["status_code"].int {
+                    if statusRange.contains(status) {
+                        
+                        self.showTool(msg: !self.isAdd ? "Child updated successfully" : "Child added successfully", state: .success)
+                        if self.isAdd {
+                            self.goBackWithDelay()
+                        } else {
+                            self.navigationController?.popToViewController(ofClass: ChildernListVC.self)
+                        }
+                        
+                    } else {
+                        self.showTool(msg: json["message"].string ?? "", state: .error)
+                    }
+                }
+            }
+            
+        } fail: { response in
+            Util.shared.hideSpinner()
+            DispatchQueue.main.async {
+                self.showTool(msg: response as? String ?? "Error", state: .error)
+            }
+        }
     }
 }
 
@@ -145,33 +239,59 @@ extension AddChildVC: ImagePickerDelegate {
     func imagePickerDelegate(canUseGallery accessIsAllowed: Bool, delegatedForm: ImagePicker) {
         
     }
-    
-    func imagePickerDelegate(didSelect image: UIImage, delegatedForm: ImagePicker) {
-        self.imagePicker.dismiss()
-//        self.img.image = image
-//        self.showSpin()
-//        if let data = image.jpeg(.medium) { // convert your UIImage into Data object using png representation
-//            FirebaseStorageManager().uploadImageData(data: data, serverFileName: generateCurrentTimeStamp()) { (isSuccess, url) in
-//                print("uploadImageData: \(isSuccess), \(url)")
-//                var data = [String: Any]()
-//
-//                data["image"] = url as Any
-//                self.homeVM.updateUser(data, "device_uid", self.device_uid) { success, message in
-//                    self.hideSpin()
-//
-//                }
-//            }
-//        }
+    func imagePickerDelegate(didSelect image: UIImage, url: URL?, delegatedForm: ImagePicker) {
         
+        self.imagePicker.dismiss()
+        if docTyp == .birh {
+            bCertTxt.text = "birthcertificate"
+        } else if docTyp == .health {
+            heathRepTxt.text = "healthcertificate"
+        } else {
+            portPhotoTxt.text = "photo"
+        }
+        
+        self.uploadFile(file: image, name: generateCurrentTimeStamp())
     }
     
     func imagePickerDelegate(didCancel delegatedForm: ImagePicker) {
-        
+        self.imagePicker.dismiss()
     }
     
     func generateCurrentTimeStamp() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy_MM_dd_hh_mm_ss"
         return (formatter.string(from: Date()) as NSString) as String
+    }
+    
+    func uploadFile(file: UIImage, name: String) {
+        Util.shared.showSpinner()
+        ALF.shared.doPostDataWithImage(parameters: [:], method: "upload_file", image: file, fileName: "name") { response in
+            Util.shared.hideSpinner()
+            print(response)
+            DispatchQueue.main.async {
+                let json = JSON(response)
+                if let status = json["status_code"].int {
+                    if statusRange.contains(status) {
+                        if self.docTyp == .birh {
+                            self.bCertID = json["data"]["id"].intValue
+                        } else if self.docTyp == .health {
+                            self.healthDocID = json["data"]["id"].intValue
+                        } else {
+                            self.portPhotoID = json["data"]["id"].intValue
+                        }
+                        self.showTool(msg: json["message"].string ?? "file added successfully", state: .success)
+                    } else {
+                        self.showTool(msg: json["message"].string ?? "", state: .error)
+                    }
+                }
+            }
+            
+        } fail: { response in
+            Util.shared.hideSpinner()
+            DispatchQueue.main.async {
+                self.showTool(msg: response as? String ?? "Error", state: .error)
+            }
+        }
+
     }
 }

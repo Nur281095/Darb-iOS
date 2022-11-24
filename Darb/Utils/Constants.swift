@@ -7,7 +7,9 @@
 
 import UIKit
 
-var Appname = "EyecareBrand"
+var Appname = "Darb"
+
+let statusRange = 200...299
 
 struct AppColors {
     static var concrete_solid : UIColor {

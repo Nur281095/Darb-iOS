@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		013F45A9292DFE1700B8AF12 /* Enrollment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 013F45A8292DFE1700B8AF12 /* Enrollment.storyboard */; };
+		013F45AE292DFE4E00B8AF12 /* EnrollmentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F45AD292DFE4E00B8AF12 /* EnrollmentListVC.swift */; };
+		013F45B0292DFE6700B8AF12 /* EnrollmentListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F45AF292DFE6700B8AF12 /* EnrollmentListModel.swift */; };
+		013F45B2292DFE8C00B8AF12 /* EnrollListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013F45B1292DFE8C00B8AF12 /* EnrollListCell.swift */; };
 		013FCCBC292CA78600455BC4 /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013FCCBB292CA78600455BC4 /* Child.swift */; };
 		01487A7429235372007E8910 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01487A7329235372007E8910 /* AppDelegate.swift */; };
 		01487A7629235372007E8910 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01487A7529235372007E8910 /* SceneDelegate.swift */; };
@@ -25,6 +29,8 @@
 		01487AE329235466007E8910 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01487A9C29235466007E8910 /* User.swift */; };
 		01487AFD29235466007E8910 /* ALF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01487AD629235466007E8910 /* ALF.swift */; };
 		01487AFE29235466007E8910 /* AFN.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01487AD729235466007E8910 /* AFN.swift */; };
+		0162C7D4292E093600946459 /* SchoolListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0162C7D3292E093600946459 /* SchoolListCell.swift */; };
+		0162C7D6292E10D400946459 /* ExploreMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0162C7D5292E10D400946459 /* ExploreMapVC.swift */; };
 		016748922926212F00FAE87E /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016748912926212F00FAE87E /* Home.storyboard */; };
 		016748942926214000FAE87E /* Explore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016748932926214000FAE87E /* Explore.storyboard */; };
 		016748962926214B00FAE87E /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 016748952926214B00FAE87E /* Chat.storyboard */; };
@@ -62,11 +68,16 @@
 		0195AC492926017D00766171 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0195AC412926017D00766171 /* Roboto-Thin.ttf */; };
 		0195AC4A2926017D00766171 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0195AC422926017D00766171 /* Roboto-Black.ttf */; };
 		0195AC4D2926039400766171 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0195AC4C2926039400766171 /* BaseVC.swift */; };
+		01A18100292E193D006D75A8 /* SchoolFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A180FF292E193D006D75A8 /* SchoolFilterVC.swift */; };
 		01C35841292B3B3F00EA9D11 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C35840292B3B3F00EA9D11 /* TabbarVC.swift */; };
 		200954ACD5A755A7BE4FC6FC /* Pods_Darb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199195D9F8F9E8E7D6548D84 /* Pods_Darb.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		013F45A8292DFE1700B8AF12 /* Enrollment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Enrollment.storyboard; sourceTree = "<group>"; };
+		013F45AD292DFE4E00B8AF12 /* EnrollmentListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentListVC.swift; sourceTree = "<group>"; };
+		013F45AF292DFE6700B8AF12 /* EnrollmentListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentListModel.swift; sourceTree = "<group>"; };
+		013F45B1292DFE8C00B8AF12 /* EnrollListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollListCell.swift; sourceTree = "<group>"; };
 		013FCCBB292CA78600455BC4 /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
 		01487A7029235372007E8910 /* Darb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Darb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01487A7329235372007E8910 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +98,8 @@
 		01487A9C29235466007E8910 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		01487AD629235466007E8910 /* ALF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ALF.swift; sourceTree = "<group>"; };
 		01487AD729235466007E8910 /* AFN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFN.swift; sourceTree = "<group>"; };
+		0162C7D3292E093600946459 /* SchoolListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolListCell.swift; sourceTree = "<group>"; };
+		0162C7D5292E10D400946459 /* ExploreMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreMapVC.swift; sourceTree = "<group>"; };
 		016748912926212F00FAE87E /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		016748932926214000FAE87E /* Explore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Explore.storyboard; sourceTree = "<group>"; };
 		016748952926214B00FAE87E /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
@@ -124,6 +137,7 @@
 		0195AC412926017D00766171 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		0195AC422926017D00766171 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		0195AC4C2926039400766171 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		01A180FF292E193D006D75A8 /* SchoolFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolFilterVC.swift; sourceTree = "<group>"; };
 		01C35840292B3B3F00EA9D11 /* TabbarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
 		199195D9F8F9E8E7D6548D84 /* Pods_Darb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Darb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5732DC3EDE5ABC42FF3A718D /* Pods-Darb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Darb.debug.xcconfig"; path = "Target Support Files/Pods-Darb/Pods-Darb.debug.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +156,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		013F45A6292DFE0300B8AF12 /* Enrollment */ = {
+			isa = PBXGroup;
+			children = (
+				013F45AC292DFE3700B8AF12 /* Controller */,
+				013F45AB292DFE3300B8AF12 /* Views */,
+				013F45AA292DFE2B00B8AF12 /* Model */,
+				013F45A7292DFE0F00B8AF12 /* UI */,
+			);
+			path = Enrollment;
+			sourceTree = "<group>";
+		};
+		013F45A7292DFE0F00B8AF12 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				013F45A8292DFE1700B8AF12 /* Enrollment.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		013F45AA292DFE2B00B8AF12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				013F45AF292DFE6700B8AF12 /* EnrollmentListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		013F45AB292DFE3300B8AF12 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				013F45B1292DFE8C00B8AF12 /* EnrollListCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		013F45AC292DFE3700B8AF12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				013F45AD292DFE4E00B8AF12 /* EnrollmentListVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		013FCCBA292CA77800455BC4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +343,7 @@
 		01487A9D29235466007E8910 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				013F45A6292DFE0300B8AF12 /* Enrollment */,
 				018F7C3C292C82DD005B02DC /* Childern */,
 				017DF80C292B66EA0085649B /* Notification */,
 				01C3583F292B3B3F00EA9D11 /* Tabbar */,
@@ -425,6 +483,8 @@
 			isa = PBXGroup;
 			children = (
 				0167489F2926225600FAE87E /* ExploreVC.swift */,
+				0162C7D5292E10D400946459 /* ExploreMapVC.swift */,
+				01A180FF292E193D006D75A8 /* SchoolFilterVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -440,6 +500,7 @@
 		0167488B2926211800FAE87E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0162C7D3292E093600946459 /* SchoolListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -709,6 +770,7 @@
 				016748942926214000FAE87E /* Explore.storyboard in Resources */,
 				016748922926212F00FAE87E /* Home.storyboard in Resources */,
 				0195AC312926001400766171 /* Auth.storyboard in Resources */,
+				013F45A9292DFE1700B8AF12 /* Enrollment.storyboard in Resources */,
 				01487A8029235374007E8910 /* LaunchScreen.storyboard in Resources */,
 				0195AC4A2926017D00766171 /* Roboto-Black.ttf in Resources */,
 				0195AC482926017D00766171 /* Roboto-Bold.ttf in Resources */,
@@ -771,7 +833,9 @@
 			files = (
 				018F7C52292C9141005B02DC /* SubjectCell.swift in Sources */,
 				01487AE329235466007E8910 /* User.swift in Sources */,
+				0162C7D6292E10D400946459 /* ExploreMapVC.swift in Sources */,
 				01487AFD29235466007E8910 /* ALF.swift in Sources */,
+				0162C7D4292E093600946459 /* SchoolListCell.swift in Sources */,
 				01487AE129235466007E8910 /* Util.swift in Sources */,
 				01487ADB29235466007E8910 /* AppStoryboards.swift in Sources */,
 				0177B9F62928B513005747AF /* OtpVC.swift in Sources */,
@@ -790,15 +854,19 @@
 				013FCCBC292CA78600455BC4 /* Child.swift in Sources */,
 				01487ADC29235466007E8910 /* SKToast.swift in Sources */,
 				0177B9F42928B4FA005747AF /* ForgotPassVC.swift in Sources */,
+				013F45B0292DFE6700B8AF12 /* EnrollmentListModel.swift in Sources */,
 				01487AE229235466007E8910 /* Extensions.swift in Sources */,
 				0195AC332926004600766171 /* LoginVC.swift in Sources */,
 				01487AFE29235466007E8910 /* AFN.swift in Sources */,
 				017DF812292B69490085649B /* NotificationVC.swift in Sources */,
+				013F45B2292DFE8C00B8AF12 /* EnrollListCell.swift in Sources */,
 				01487ADD29235466007E8910 /* RPicker.swift in Sources */,
+				01A18100292E193D006D75A8 /* SchoolFilterVC.swift in Sources */,
 				016748A02926225600FAE87E /* ExploreVC.swift in Sources */,
 				018F7C4B292C8AFB005B02DC /* AddChildVC.swift in Sources */,
 				017DF80B292B62D90085649B /* AnnoucementDetailVC.swift in Sources */,
 				01487A7629235372007E8910 /* SceneDelegate.swift in Sources */,
+				013F45AE292DFE4E00B8AF12 /* EnrollmentListVC.swift in Sources */,
 				0195AC372926006800766171 /* WelcomeVC.swift in Sources */,
 				018F7C40292C830B005B02DC /* ChildCell.swift in Sources */,
 				01487AD929235466007E8910 /* PopupViewController.swift in Sources */,

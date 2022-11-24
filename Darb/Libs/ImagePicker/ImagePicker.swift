@@ -9,10 +9,10 @@ import AVFoundation
 import Photos
 import UIKit
 
-protocol ImagePickerDelegate: class {
+protocol ImagePickerDelegate: AnyObject {
     func imagePickerDelegate(canUseCamera accessIsAllowed: Bool, delegatedForm: ImagePicker)
     func imagePickerDelegate(canUseGallery accessIsAllowed: Bool, delegatedForm: ImagePicker)
-    func imagePickerDelegate(didSelect image: UIImage, delegatedForm: ImagePicker)
+    func imagePickerDelegate(didSelect image: UIImage, url: URL?, delegatedForm: ImagePicker)
     func imagePickerDelegate(didCancel delegatedForm: ImagePicker)
 }
 
@@ -94,13 +94,15 @@ extension ImagePicker {
 extension ImagePicker: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        let url = info[.imageURL] as? URL
         if let image = info[.editedImage] as? UIImage {
-            delegate?.imagePickerDelegate(didSelect: image, delegatedForm: self)
+            delegate?.imagePickerDelegate(didSelect: image, url: url, delegatedForm: self)
             return
         }
 
         if let image = info[.originalImage] as? UIImage {
-            delegate?.imagePickerDelegate(didSelect: image, delegatedForm: self)
+            delegate?.imagePickerDelegate(didSelect: image, url: url, delegatedForm: self)
         } else {
             print("Other source")
         }
