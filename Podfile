@@ -21,5 +21,6 @@ target 'Darb' do
   pod 'SwiftyCodeView'
   pod 'Cosmos'
   pod 'MultiSlider'
+  pod 'LocationPicker'
 
 end

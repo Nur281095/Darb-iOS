@@ -7,12 +7,15 @@
 
 import UIKit
 
-class ConversationsVC: UIViewController {
-
+class ConversationsVC: BaseVC {
+    
+    @IBOutlet weak var tblV: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.navigationItem.leftBarButtonItem = btnLogo(image: UIImage(named: "homeNavLogo")!)
+        self.navigationItem.rightBarButtonItem = btnRight(image: "ic_noti", isOrignal: true)
     }
     
 
@@ -26,4 +29,15 @@ class ConversationsVC: UIViewController {
     }
     */
 
+}
+
+extension ConversationsVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 8
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ConversationCell
+        
+        return cell
+    }
 }

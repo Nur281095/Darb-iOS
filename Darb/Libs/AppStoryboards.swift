@@ -33,7 +33,8 @@ enum storyboards : String {
          explore = "Explore",
          more = "More",
          child = "Child",
-         enrollment = "Enrollment"
+         enrollment = "Enrollment",
+         transport = "Transport"
 }
 
 enum viewControllers: String {
@@ -57,5 +58,8 @@ enum viewControllers: String {
          addChildVC = "AddChildVC",
          enrollmentListVC = "EnrollmentListVC",
          exploreMapVC = "ExploreMapVC",
-         schoolFilterVC = "SchoolFilterVC"
+         schoolFilterVC = "SchoolFilterVC",
+         transportVC = "TransportVC",
+         transportListVC = "TransportListVC",
+         profileVC = "ProfileVC"
 }

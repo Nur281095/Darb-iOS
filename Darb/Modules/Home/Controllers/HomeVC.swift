@@ -41,6 +41,8 @@ class HomeVC: BaseVC {
     }
     
     @IBAction func transportTap(_ sender: Any) {
+        let vc = UIStoryboard.storyBoard(withName: .transport).loadViewController(withIdentifier: .transportVC) as! TransportVC
+        self.show(vc, sender: self)
     }
 
 }
