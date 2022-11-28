@@ -61,5 +61,10 @@ enum viewControllers: String {
          schoolFilterVC = "SchoolFilterVC",
          transportVC = "TransportVC",
          transportListVC = "TransportListVC",
-         profileVC = "ProfileVC"
+         profileVC = "ProfileVC",
+         settingsVC = "SettingsVC",
+         changePassVC = "ChangePassVC",
+         supoortVC = "SupoortVC",
+         schoolDetailVC = "SchoolDetailVC",
+         schoolEnrollVC = "SchoolEnrollVC"
 }

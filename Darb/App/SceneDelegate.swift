@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import CoreLocation
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, LocationDelegate {
 
     var window: UIWindow?
     private(set) static var shared: SceneDelegate?
+    private var locationManager: LocationManager!
+    var location: CLLocation?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -19,7 +22,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let winScene = (scene as? UIWindowScene) else { return }
         Self.shared = self
         window = UIWindow(windowScene: winScene)
-        
+        locationManager = LocationManager()
+        locationManager.stopUpdatingLocations()
+        locationManager.delegate = self
         checkUserLoggedIn()
     }
     
@@ -36,6 +41,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         self.window?.makeKeyAndVisible()
         self.window?.isUserInteractionEnabled = true
+    }
+    func didChangeAuthorization(status: CLAuthorizationStatus) {
+        
+    }
+    
+    func didUpdateHeading(heading: CLHeading) {
+        
+    }
+    func didUpdateLocation(location: CLLocation) {
+        self.location = location
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

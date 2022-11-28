@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class HomeVC: BaseVC {
 
@@ -23,11 +24,42 @@ class HomeVC: BaseVC {
         shadV3.addShadow(10)
         self.navigationItem.leftBarButtonItem = btnLogo(image: UIImage(named: "homeNavLogo")!)
         self.navigationItem.rightBarButtonItem = btnRight(image: "ic_noti", isOrignal: true)
+        if Util.getUser() != nil {
+            getProfile()
+        }
     }
     
     override func btnRightAction(_ sender: Any) {
         let vc = UIStoryboard.storyBoard(withName: .home).loadViewController(withIdentifier: .notificationVC) as! NotificationVC
         self.show(vc, sender: self)
+    }
+    
+    func getProfile() {
+        DispatchQueue.background {
+            ALF.shared.doGetData(parameters: [:], method: "auth/update_profile") { response in
+                print(response)
+                DispatchQueue.main.async {
+                    let json = JSON(response)
+                    if let status = json["status_code"].int {
+                        if statusRange.contains(status) {
+                            if var user = json["data"].dictionaryObject {
+                                let token = Util.getUser()!.apiToken
+                                user["api_token"] = token
+                                if let usrStr = user.aa_json {
+                                    UserDefaults.standard.set(usrStr, forKey: "user")
+                                }
+                            }
+                        }
+                    }
+                }
+            } fail: { response in
+                
+            }
+
+        } completion: {
+            
+        }
+
     }
     
     @IBAction func childrnTap(_ sender: Any) {

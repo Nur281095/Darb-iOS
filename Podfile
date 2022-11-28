@@ -10,7 +10,7 @@ target 'Darb' do
   pod 'AFNetworking'
   pod 'TPKeyboardAvoiding'
   pod 'UITextView+Placeholder'
-  pod 'SDWebImage'
+  pod 'ImageSlideshow/SDWebImage'
   pod 'KafkaRefresh'
   pod 'DropDown'
   pod 'SwiftyJSON'

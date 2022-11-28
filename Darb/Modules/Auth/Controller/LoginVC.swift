@@ -8,6 +8,7 @@
 import UIKit
 import SwiftyJSON
 import AAExtensions
+import StyledString
 
 class LoginVC: BaseVC {
 
@@ -17,12 +18,16 @@ class LoginVC: BaseVC {
     @IBOutlet weak var chkImg: UIImageView!
     @IBOutlet weak var backBtn: UIButton!
     
+    @IBOutlet weak var forgotPassBtn: UIButton!
+    
     var isRemeber = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         backBtn.setTitle("", for: .normal)
+        let forgotPassTitle = StyledString("Forgot your password?").with(foregroundColor: UIColor(hexString: "#386AFF")).with(font: UIFont(name: AppFonts.roboto, size: 12)).with(underlineStyle: .single, color: UIColor(hexString: "#386AFF"))
+        forgotPassBtn.setAttributedTitle(forgotPassTitle.nsAttributedString, for: .normal)
     }
     
     @IBAction func backTap(_ sender: Any) {
@@ -77,10 +82,8 @@ class LoginVC: BaseVC {
                         
                         if let user = json["data"].dictionaryObject {
                             if let usrStr = user.aa_json {
-                                DispatchQueue.main.async {
-                                    UserDefaults.standard.set(usrStr, forKey: "user")
-                                    SceneDelegate.shared?.checkUserLoggedIn()
-                                }
+                                UserDefaults.standard.set(usrStr, forKey: "user")
+                                SceneDelegate.shared?.checkUserLoggedIn()
                             }
                         }
 

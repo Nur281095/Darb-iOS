@@ -12,11 +12,11 @@ class User: NSObject, NSCoding{
     var apiToken : String!
     var createdAt : String!
     var email : String!
-    var emailVerifiedAt : AnyObject!
+    var emailVerifiedAt : String!
     var firstName : String!
     var id : Int!
-    var lastName : AnyObject!
-    var phoneNo : AnyObject!
+    var lastName : String!
+    var phoneNo : String!
     var roleId : String!
     var updatedAt : String!
 
@@ -28,11 +28,11 @@ class User: NSObject, NSCoding{
         apiToken = dictionary["api_token"] as? String
         createdAt = dictionary["created_at"] as? String
         email = dictionary["email"] as? String
-        emailVerifiedAt = dictionary["email_verified_at"] as? AnyObject
+        emailVerifiedAt = dictionary["email_verified_at"] as? String
         firstName = dictionary["first_name"] as? String
         id = dictionary["id"] as? Int
-        lastName = dictionary["last_name"] as? AnyObject
-        phoneNo = dictionary["phone_no"] as? AnyObject
+        lastName = dictionary["last_name"] as? String
+        phoneNo = dictionary["phone_no"] as? String
         roleId = dictionary["role_id"] as? String
         updatedAt = dictionary["updated_at"] as? String
     }
@@ -85,11 +85,11 @@ class User: NSObject, NSCoding{
          apiToken = aDecoder.decodeObject(forKey: "api_token") as? String
          createdAt = aDecoder.decodeObject(forKey: "created_at") as? String
          email = aDecoder.decodeObject(forKey: "email") as? String
-         emailVerifiedAt = aDecoder.decodeObject(forKey: "email_verified_at") as? AnyObject
+         emailVerifiedAt = aDecoder.decodeObject(forKey: "email_verified_at") as? String
          firstName = aDecoder.decodeObject(forKey: "first_name") as? String
          id = aDecoder.decodeObject(forKey: "id") as? Int
-         lastName = aDecoder.decodeObject(forKey: "last_name") as? AnyObject
-         phoneNo = aDecoder.decodeObject(forKey: "phone_no") as? AnyObject
+         lastName = aDecoder.decodeObject(forKey: "last_name") as? String
+         phoneNo = aDecoder.decodeObject(forKey: "phone_no") as? String
          roleId = aDecoder.decodeObject(forKey: "role_id") as? String
          updatedAt = aDecoder.decodeObject(forKey: "updated_at") as? String
 

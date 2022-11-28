@@ -221,7 +221,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyV-lH-s5b">
-                                                        <rect key="frame" x="101.33333333333331" y="547" width="123" height="27"/>
+                                                        <rect key="frame" x="105" y="547" width="123" height="27"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="terms &amp; conditions. ">
                                                             <fontDescription key="titleFontDescription" name="Roboto-Medium" family="Roboto" pointSize="11"/>
@@ -249,8 +249,8 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i0B-5Y-4vN">
-                                                        <rect key="frame" x="66" y="554" width="41.333333333333343" height="13"/>
-                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
+                                                        <rect key="frame" x="66" y="553.33333333333337" width="45" height="14.333333333333371"/>
+                                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -360,6 +360,7 @@
                         <outlet property="lNameTxt" destination="1EF-Hn-PS2" id="lQb-7X-5MM"/>
                         <outlet property="passTxt" destination="gbc-pr-GcK" id="G89-mI-FEC"/>
                         <outlet property="phoneTxt" destination="zhF-Wu-hz9" id="H67-JX-dHm"/>
+                        <outlet property="termsBtn" destination="tyV-lH-s5b" id="TZi-Le-dx9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wnQ-OO-5ul" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -564,6 +565,7 @@
                         <outlet property="backBtn" destination="TW1-oJ-uCX" id="x0L-J7-0qs"/>
                         <outlet property="chkImg" destination="pUo-tl-9ad" id="CPD-bH-Fjo"/>
                         <outlet property="emailTxt" destination="erc-gt-n4X" id="jkU-zu-Uhk"/>
+                        <outlet property="forgotPassBtn" destination="Rrw-Ax-79v" id="8vr-4M-jyC"/>
                         <outlet property="passTxt" destination="h7a-ga-QzT" id="ddI-hK-zON"/>
                         <outlet property="remebrBtn" destination="HyV-oq-oz2" id="b7H-fg-lbK"/>
                     </connections>
@@ -723,7 +725,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="418.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTz-lF-Yar">
-                                                <rect key="frame" x="41.999999999999993" y="100" width="92.333333333333314" height="16.666666666666671"/>
+                                                <rect key="frame" x="41.999999999999993" y="100" width="93.333333333333314" height="16.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -751,7 +753,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YV-9E-sUe">
-                                                <rect key="frame" x="42.000000000000007" y="191.66666666666669" width="114.66666666666669" height="17"/>
+                                                <rect key="frame" x="42" y="191.66666666666669" width="115" height="17"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -882,13 +884,13 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check Email your received" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GpW-MI-NJ3">
-                                                <rect key="frame" x="77" y="100" width="236" height="24"/>
+                                                <rect key="frame" x="77.333333333333329" y="100" width="235.33333333333337" height="24"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter 6-digit Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xi-n4-yeF">
-                                                <rect key="frame" x="138.66666666666666" y="134" width="113" height="17"/>
+                                                <rect key="frame" x="138.66666666666666" y="134" width="112.66666666666666" height="17"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

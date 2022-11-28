@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyJSON
+import StyledString
 
 class SignupVC: BaseVC {
 
@@ -17,6 +18,7 @@ class SignupVC: BaseVC {
     @IBOutlet weak var passTxt: UITextField!
     @IBOutlet weak var chkImg: UIImageView!
     @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var termsBtn: UIButton!
     
     var isTemchk = false
     
@@ -24,6 +26,8 @@ class SignupVC: BaseVC {
         super.viewDidLoad()
 
         backBtn.setTitle("", for: .normal)
+        let forgotPassTitle = StyledString("terms & conditions.").with(foregroundColor: UIColor(hexString: "#386AFF")).with(font: UIFont(name: AppFonts.roboto, size: 12)).with(underlineStyle: .single, color: UIColor(hexString: "#386AFF"))
+        termsBtn.setAttributedTitle(forgotPassTitle.nsAttributedString, for: .normal)
     }
     
     @IBAction func backTap(_ sender: Any) {
@@ -101,11 +105,8 @@ class SignupVC: BaseVC {
                         
                         if let user = json["data"].dictionaryObject {
                             if let usrStr = user.aa_json {
-                                DispatchQueue.main.async {
-                                    UserDefaults.standard.set(usrStr, forKey: "user")
-                                    
-                                    SceneDelegate.shared?.checkUserLoggedIn()
-                                }
+                                UserDefaults.standard.set(usrStr, forKey: "user")    
+                                SceneDelegate.shared?.checkUserLoggedIn()
                             }
                         }
                         

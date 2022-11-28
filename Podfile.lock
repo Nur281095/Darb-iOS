@@ -20,6 +20,10 @@ PODS:
   - AvailableHapticFeedback (1.0.2)
   - Cosmos (23.0.0)
   - DropDown (2.3.13)
+  - ImageSlideshow/Core (1.9.2)
+  - ImageSlideshow/SDWebImage (1.9.2):
+    - ImageSlideshow/Core
+    - SDWebImage (>= 3.7)
   - KafkaRefresh (1.5.0):
     - KafkaRefresh/Category (= 1.5.0)
     - KafkaRefresh/Configuration (= 1.5.0)
@@ -60,9 +64,9 @@ PODS:
   - MultiSlider (1.13.2):
     - AvailableHapticFeedback
     - SweeterSwift
-  - SDWebImage (5.13.4):
-    - SDWebImage/Core (= 5.13.4)
-  - SDWebImage/Core (5.13.4)
+  - SDWebImage (5.14.2):
+    - SDWebImage/Core (= 5.14.2)
+  - SDWebImage/Core (5.14.2)
   - StyledString (0.8.0)
   - SweeterSwift (1.2.1)
   - SwiftyCodeView (0.3.6):
@@ -80,11 +84,11 @@ DEPENDENCIES:
   - Atributika
   - Cosmos
   - DropDown
+  - ImageSlideshow/SDWebImage
   - KafkaRefresh
   - Loaf
   - LocationPicker
   - MultiSlider
-  - SDWebImage
   - StyledString
   - SwiftyCodeView
   - SwiftyJSON
@@ -101,6 +105,7 @@ SPEC REPOS:
     - AvailableHapticFeedback
     - Cosmos
     - DropDown
+    - ImageSlideshow
     - KafkaRefresh
     - Loaf
     - LocationPicker
@@ -122,11 +127,12 @@ SPEC CHECKSUMS:
   AvailableHapticFeedback: 9b21b9f6d3e4566015988b5de35b40abefe6c09a
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   KafkaRefresh: 01645b1509b8647809f6bb666629c80855bd3fdd
   Loaf: d69937cd00649f3fa260beb8b7aef0a1feb861ef
   LocationPicker: 9af49409ec3ca13fdf4bf6b39e1a3c7dec029f4a
   MultiSlider: 66271d410330e63ded9e468d4ef420d5dbe31d2e
-  SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
+  SDWebImage: b9a731e1d6307f44ca703b3976d18c24ca561e84
   StyledString: a9edeea62128321bbdfd51cc7470ea61374ce73f
   SweeterSwift: 61baeda1c0c27d1dc57c8112c3d6a82e5aff3139
   SwiftyCodeView: 0252e3520749a3fda1a9b141873401f8e6c570ad
@@ -135,6 +141,6 @@ SPEC CHECKSUMS:
   TPKeyboardAvoiding: d55b3ea7b362540af8fcf36aa3ed2e87bf210cc6
   "UITextView+Placeholder": d7b0c400921f66523f3a85d74f774512e14f6502
 
-PODFILE CHECKSUM: 3440bdb44f735bf273478250e1a6610137d45fe0
+PODFILE CHECKSUM: 3658060e4cd031a6e7f68ac91f206f92e3079fac
 
 COCOAPODS: 1.11.3

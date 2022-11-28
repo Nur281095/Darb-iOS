@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AAExtensions
 
 class MoreVC: BaseVC {
 
@@ -15,7 +16,6 @@ class MoreVC: BaseVC {
         self.navigationItem.leftBarButtonItem = btnLogo(image: UIImage(named: "homeNavLogo")!)
         self.navigationItem.rightBarButtonItem = btnRight(image: "ic_noti", isOrignal: true)
     }
-    
 
     @IBAction func menuBtnTap(_ sender: UIButton) {
         switch sender.tag {
@@ -25,13 +25,15 @@ class MoreVC: BaseVC {
             self.show(vc, sender: self)
         case 1:
             //setting
+            let vc = UIStoryboard.storyBoard(withName: .more).loadViewController(withIdentifier: .settingsVC) as! SettingsVC
+            self.show(vc, sender: self)
             break
         case 2:
             //About App
             break
         case 3:
-            //Support
-            break
+            let vc = UIStoryboard.storyBoard(withName: .more).loadViewController(withIdentifier: .supoortVC) as! SupoortVC
+            self.show(vc, sender: self)
         case 4:
             //Privacy Policy
             break
@@ -40,7 +42,11 @@ class MoreVC: BaseVC {
             break
         case 6:
             //Logout
-            break
+            self.aa_showAlertCustom(Appname, text: "Are you sure to logout from the application?", onDismiss: {
+                Util.logout()
+            }, onCancel:  {
+                
+            })
         default:
             break
         }
