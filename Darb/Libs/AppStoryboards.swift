@@ -66,5 +66,7 @@ enum viewControllers: String {
          changePassVC = "ChangePassVC",
          supoortVC = "SupoortVC",
          schoolDetailVC = "SchoolDetailVC",
-         schoolEnrollVC = "SchoolEnrollVC"
+         schoolEnrollVC = "SchoolEnrollVC",
+         chatVC = "ChatVC",
+         enrollDetailVC = "EnrollDetailVC"
 }

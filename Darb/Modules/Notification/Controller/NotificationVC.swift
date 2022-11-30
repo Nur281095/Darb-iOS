@@ -6,23 +6,57 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class NotificationVC: BaseVC {
 
     @IBOutlet weak var tblV: UITableView!
+    
+    var notis = [NotificationModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.leftBarButtonItem = btnBack(isOrignal: false)
         self.navigationItem.title = "Notifications"
+        getNotis()
     }
     
+    func getNotis() {
+        self.notis.removeAll()
+        Util.shared.showSpinner()
+        ALF.shared.doGetData(parameters: [:], method: "notifications") { response in
+            Util.shared.hideSpinner()
+            print(response)
+            DispatchQueue.main.async {
+                let json = JSON(response)
+                if let status = json["status_code"].int {
+                    if statusRange.contains(status) {
+                        if let data = response["data"] as? [[String: Any]] {
+                            for d in data {
+                                self.notis.append(NotificationModel(fromDictionary: d))
+                            }
+                        }
+                        self.tblV.reloadData()
+
+                    } else {
+                        self.showTool(msg: json["message"].string ?? "", state: .error)
+                    }
+                }
+            }
+            
+        } fail: { response in
+            Util.shared.hideSpinner()
+            DispatchQueue.main.async {
+                self.showTool(msg: response as? String ?? "Error", state: .error)
+            }
+        }
+    }
 }
 
 extension NotificationVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return notis.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -35,6 +69,9 @@ extension NotificationVC: UITableViewDelegate, UITableViewDataSource {
         DispatchQueue.main.async {
             cell.shadV.addShadow(5)
         }
+        cell.notTitle.text = notis[indexPath.row].title
+        cell.descripLbl.text = notis[indexPath.row].descriptionField
+        
         return cell
     }
 }

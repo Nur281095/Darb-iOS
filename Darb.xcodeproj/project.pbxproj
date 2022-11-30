@@ -54,6 +54,9 @@
 		017DF812292B69490085649B /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017DF811292B69490085649B /* NotificationVC.swift */; };
 		0180652C29308958000112AD /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180652B29308958000112AD /* ConversationCell.swift */; };
 		0180652E29308C44000112AD /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0180652D29308C44000112AD /* ProfileVC.swift */; };
+		0187009B2935C94700BDCF52 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0187009A2935C94700BDCF52 /* NotificationModel.swift */; };
+		0187009D2935CBB900BDCF52 /* TransportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0187009C2935CBB900BDCF52 /* TransportModel.swift */; };
+		0187009F2935D07600BDCF52 /* SchoolListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0187009E2935D07600BDCF52 /* SchoolListModel.swift */; };
 		018F7C3E292C82EE005B02DC /* ChildernListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018F7C3D292C82EE005B02DC /* ChildernListVC.swift */; };
 		018F7C40292C830B005B02DC /* ChildCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018F7C3F292C830B005B02DC /* ChildCell.swift */; };
 		018F7C42292C8315005B02DC /* SchoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018F7C41292C8315005B02DC /* SchoolCell.swift */; };
@@ -77,12 +80,20 @@
 		0195AC4A2926017D00766171 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0195AC422926017D00766171 /* Roboto-Black.ttf */; };
 		0195AC4D2926039400766171 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0195AC4C2926039400766171 /* BaseVC.swift */; };
 		01A18100292E193D006D75A8 /* SchoolFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A180FF292E193D006D75A8 /* SchoolFilterVC.swift */; };
+		01A76E2E293614E400298778 /* ConversationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A76E2D293614E400298778 /* ConversationsModel.swift */; };
+		01A76E3029361A2000298778 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A76E2F29361A2000298778 /* ChatVC.swift */; };
+		01A76E3229361AFC00298778 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A76E3129361AFC00298778 /* ChatModel.swift */; };
+		01A76E3429361C1500298778 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A76E3329361C1500298778 /* ChatCell.swift */; };
 		01B1B69429348C9F00874EDA /* SchoolDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B1B69329348C9F00874EDA /* SchoolDetailVC.swift */; };
 		01B1B696293491E500874EDA /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01B1B695293491E500874EDA /* Roboto-Light.ttf */; };
 		01C35841292B3B3F00EA9D11 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C35840292B3B3F00EA9D11 /* TabbarVC.swift */; };
 		01E437C72931D59B00E43B45 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E437C62931D59B00E43B45 /* SettingsVC.swift */; };
 		01E437C92931D8E400E43B45 /* ChangePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E437C82931D8E400E43B45 /* ChangePassVC.swift */; };
 		01E437CB2931DB3F00E43B45 /* SupoortVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E437CA2931DB3F00E43B45 /* SupoortVC.swift */; };
+		01EAC4A62937195600FB5384 /* SchoolGrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAC4A52937195600FB5384 /* SchoolGrade.swift */; };
+		01EAC4A829371B8700FB5384 /* AnnouncementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAC4A729371B8700FB5384 /* AnnouncementModel.swift */; };
+		01EAC4AA29371CAC00FB5384 /* EnrollDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAC4A929371CAC00FB5384 /* EnrollDetailVC.swift */; };
+		01EAC4AC2937214F00FB5384 /* SimpleHeaderV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAC4AB2937214F00FB5384 /* SimpleHeaderV.swift */; };
 		200954ACD5A755A7BE4FC6FC /* Pods_Darb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199195D9F8F9E8E7D6548D84 /* Pods_Darb.framework */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +147,9 @@
 		017DF811292B69490085649B /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 		0180652B29308958000112AD /* ConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
 		0180652D29308C44000112AD /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		0187009A2935C94700BDCF52 /* NotificationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		0187009C2935CBB900BDCF52 /* TransportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportModel.swift; sourceTree = "<group>"; };
+		0187009E2935D07600BDCF52 /* SchoolListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolListModel.swift; sourceTree = "<group>"; };
 		018F7C3D292C82EE005B02DC /* ChildernListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildernListVC.swift; sourceTree = "<group>"; };
 		018F7C3F292C830B005B02DC /* ChildCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCell.swift; sourceTree = "<group>"; };
 		018F7C41292C8315005B02DC /* SchoolCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolCell.swift; sourceTree = "<group>"; };
@@ -159,12 +173,20 @@
 		0195AC422926017D00766171 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		0195AC4C2926039400766171 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		01A180FF292E193D006D75A8 /* SchoolFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolFilterVC.swift; sourceTree = "<group>"; };
+		01A76E2D293614E400298778 /* ConversationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsModel.swift; sourceTree = "<group>"; };
+		01A76E2F29361A2000298778 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		01A76E3129361AFC00298778 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		01A76E3329361C1500298778 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		01B1B69329348C9F00874EDA /* SchoolDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailVC.swift; sourceTree = "<group>"; };
 		01B1B695293491E500874EDA /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		01C35840292B3B3F00EA9D11 /* TabbarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
 		01E437C62931D59B00E43B45 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		01E437C82931D8E400E43B45 /* ChangePassVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassVC.swift; sourceTree = "<group>"; };
 		01E437CA2931DB3F00E43B45 /* SupoortVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupoortVC.swift; sourceTree = "<group>"; };
+		01EAC4A52937195600FB5384 /* SchoolGrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolGrade.swift; sourceTree = "<group>"; };
+		01EAC4A729371B8700FB5384 /* AnnouncementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementModel.swift; sourceTree = "<group>"; };
+		01EAC4A929371CAC00FB5384 /* EnrollDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollDetailVC.swift; sourceTree = "<group>"; };
+		01EAC4AB2937214F00FB5384 /* SimpleHeaderV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleHeaderV.swift; sourceTree = "<group>"; };
 		199195D9F8F9E8E7D6548D84 /* Pods_Darb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Darb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5732DC3EDE5ABC42FF3A718D /* Pods-Darb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Darb.debug.xcconfig"; path = "Target Support Files/Pods-Darb/Pods-Darb.debug.xcconfig"; sourceTree = "<group>"; };
 		788A69AD5E8B2B3D629D4401 /* Pods-Darb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Darb.release.xcconfig"; path = "Target Support Files/Pods-Darb/Pods-Darb.release.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +235,7 @@
 		013F0D8529306C9E00B729C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0187009C2935CBB900BDCF52 /* TransportModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -256,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				013F45B1292DFE8C00B8AF12 /* EnrollListCell.swift */,
+				01EAC4AB2937214F00FB5384 /* SimpleHeaderV.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,6 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				013F45AD292DFE4E00B8AF12 /* EnrollmentListVC.swift */,
+				01EAC4A929371CAC00FB5384 /* EnrollDetailVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -516,6 +541,7 @@
 		01674884292620F600FAE87E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				01EAC4A729371B8700FB5384 /* AnnouncementModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -585,6 +611,8 @@
 		0167488C2926211800FAE87E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0187009E2935D07600BDCF52 /* SchoolListModel.swift */,
+				01EAC4A52937195600FB5384 /* SchoolGrade.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -593,6 +621,7 @@
 			isa = PBXGroup;
 			children = (
 				0167489D2926223800FAE87E /* ConversationsVC.swift */,
+				01A76E2F29361A2000298778 /* ChatVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -608,6 +637,8 @@
 		0167488F2926211F00FAE87E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				01A76E2D293614E400298778 /* ConversationsModel.swift */,
+				01A76E3129361AFC00298778 /* ChatModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -616,6 +647,7 @@
 			isa = PBXGroup;
 			children = (
 				0180652B29308958000112AD /* ConversationCell.swift */,
+				01A76E3329361C1500298778 /* ChatCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -623,6 +655,7 @@
 		017DF80C292B66EA0085649B /* Notification */ = {
 			isa = PBXGroup;
 			children = (
+				018700992935C93000BDCF52 /* Model */,
 				017DF80E292B68EE0085649B /* Views */,
 				017DF80D292B671B0085649B /* Controller */,
 			);
@@ -643,6 +676,14 @@
 				017DF80F292B69180085649B /* NotiCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		018700992935C93000BDCF52 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0187009A2935C94700BDCF52 /* NotificationModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		018F7C3C292C82DD005B02DC /* Childern */ = {
@@ -915,11 +956,13 @@
 				018F7C52292C9141005B02DC /* SubjectCell.swift in Sources */,
 				01E437CB2931DB3F00E43B45 /* SupoortVC.swift in Sources */,
 				01487AE329235466007E8910 /* User.swift in Sources */,
+				01EAC4AC2937214F00FB5384 /* SimpleHeaderV.swift in Sources */,
 				0162C7D6292E10D400946459 /* ExploreMapVC.swift in Sources */,
 				01487AFD29235466007E8910 /* ALF.swift in Sources */,
 				0162C7D4292E093600946459 /* SchoolListCell.swift in Sources */,
 				01487AE129235466007E8910 /* Util.swift in Sources */,
 				01487ADB29235466007E8910 /* AppStoryboards.swift in Sources */,
+				01EAC4A829371B8700FB5384 /* AnnouncementModel.swift in Sources */,
 				0177B9F62928B513005747AF /* OtpVC.swift in Sources */,
 				01487ADE29235466007E8910 /* Reach.swift in Sources */,
 				018F7C49292C8AB4005B02DC /* SchoolSubjectsVC.swift in Sources */,
@@ -929,6 +972,7 @@
 				01E437C72931D59B00E43B45 /* SettingsVC.swift in Sources */,
 				0172E93F292B46380085200C /* AnnouncementCell.swift in Sources */,
 				01487ADA29235466007E8910 /* ImagePicker.swift in Sources */,
+				01A76E3229361AFC00298778 /* ChatModel.swift in Sources */,
 				0167489E2926223800FAE87E /* ConversationsVC.swift in Sources */,
 				01491A0D2934A03F00944A23 /* SchoolEnrollVC.swift in Sources */,
 				0167489C2926220800FAE87E /* HomeVC.swift in Sources */,
@@ -937,27 +981,35 @@
 				0148999F293078C7003FBF1C /* TransportListVC.swift in Sources */,
 				0195AC352926005500766171 /* SignupVC.swift in Sources */,
 				0167489A292621F400FAE87E /* MoreVC.swift in Sources */,
+				0187009F2935D07600BDCF52 /* SchoolListModel.swift in Sources */,
 				013F0D8229306C7F00B729C3 /* TransportVC.swift in Sources */,
+				01EAC4AA29371CAC00FB5384 /* EnrollDetailVC.swift in Sources */,
 				013FCCBC292CA78600455BC4 /* Child.swift in Sources */,
 				01E437C92931D8E400E43B45 /* ChangePassVC.swift in Sources */,
 				0180652C29308958000112AD /* ConversationCell.swift in Sources */,
 				01487ADC29235466007E8910 /* SKToast.swift in Sources */,
+				01EAC4A62937195600FB5384 /* SchoolGrade.swift in Sources */,
 				0177B9F42928B4FA005747AF /* ForgotPassVC.swift in Sources */,
 				013F45B0292DFE6700B8AF12 /* EnrollmentListModel.swift in Sources */,
 				01487AE229235466007E8910 /* Extensions.swift in Sources */,
 				0195AC332926004600766171 /* LoginVC.swift in Sources */,
 				0180652E29308C44000112AD /* ProfileVC.swift in Sources */,
+				01A76E2E293614E400298778 /* ConversationsModel.swift in Sources */,
 				01487AFE29235466007E8910 /* AFN.swift in Sources */,
 				017DF812292B69490085649B /* NotificationVC.swift in Sources */,
 				013F45B2292DFE8C00B8AF12 /* EnrollListCell.swift in Sources */,
+				01A76E3429361C1500298778 /* ChatCell.swift in Sources */,
 				01487ADD29235466007E8910 /* RPicker.swift in Sources */,
 				01A18100292E193D006D75A8 /* SchoolFilterVC.swift in Sources */,
 				016748A02926225600FAE87E /* ExploreVC.swift in Sources */,
+				0187009D2935CBB900BDCF52 /* TransportModel.swift in Sources */,
 				018F7C4B292C8AFB005B02DC /* AddChildVC.swift in Sources */,
 				017DF80B292B62D90085649B /* AnnoucementDetailVC.swift in Sources */,
 				01487A7629235372007E8910 /* SceneDelegate.swift in Sources */,
+				0187009B2935C94700BDCF52 /* NotificationModel.swift in Sources */,
 				013F45AE292DFE4E00B8AF12 /* EnrollmentListVC.swift in Sources */,
 				0195AC372926006800766171 /* WelcomeVC.swift in Sources */,
+				01A76E3029361A2000298778 /* ChatVC.swift in Sources */,
 				018F7C40292C830B005B02DC /* ChildCell.swift in Sources */,
 				01487AD929235466007E8910 /* PopupViewController.swift in Sources */,
 				0111B72B2931EC3E0072ED5E /* LocationManager.swift in Sources */,

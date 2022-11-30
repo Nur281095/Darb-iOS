@@ -16,6 +16,9 @@
         <array key="Roboto-Medium.ttf">
             <string>Roboto-Medium</string>
         </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Enrollment ListVC-->
@@ -126,7 +129,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Al Khuzama, Riyadh" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qn-pY-mww">
-                                                            <rect key="frame" x="10" y="260.66666666666669" width="321" height="14.333333333333314"/>
+                                                            <rect key="frame" x="10" y="261" width="321" height="14"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
                                                             <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -207,6 +210,129 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="116.92307692307692" y="-2.1327014218009479"/>
+        </scene>
+        <!--Enroll DetailVC-->
+        <scene sceneID="Lw8-v0-dfw">
+            <objects>
+                <viewController storyboardIdentifier="EnrollDetailVC" id="UTj-Do-EDM" customClass="EnrollDetailVC" customModule="Darb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jiY-id-RJ7">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Qya-Ah-8ct">
+                                <rect key="frame" x="20" y="47" width="350" height="648"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6QV-ZP-XAC">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="50" height="60"/>
+                                    <size key="footerReferenceSize" width="50" height="10"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ChildDetailCell" id="uqf-kr-rDW" customClass="ChildDetailCell" customModule="Darb" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="150" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JyE-An-Nrw">
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIi-Y0-5Eo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="14"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="12"/>
+                                                    <color key="textColor" red="0.59215686270000001" green="0.59215686270000001" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sarah" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nlV-Ln-1Ro">
+                                                    <rect key="frame" x="0.0" y="19" width="150" height="17.666666666666671"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="nlV-Ln-1Ro" firstAttribute="leading" secondItem="JyE-An-Nrw" secondAttribute="leading" id="1Gc-Pw-U8z"/>
+                                                <constraint firstItem="WIi-Y0-5Eo" firstAttribute="top" secondItem="JyE-An-Nrw" secondAttribute="top" id="9BB-hU-5Hd"/>
+                                                <constraint firstAttribute="trailing" secondItem="WIi-Y0-5Eo" secondAttribute="trailing" id="KXJ-8r-9Sh"/>
+                                                <constraint firstItem="nlV-Ln-1Ro" firstAttribute="top" secondItem="WIi-Y0-5Eo" secondAttribute="bottom" constant="5" id="MDN-An-elJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="nlV-Ln-1Ro" secondAttribute="trailing" id="gdB-au-fvD"/>
+                                                <constraint firstItem="WIi-Y0-5Eo" firstAttribute="leading" secondItem="JyE-An-Nrw" secondAttribute="leading" id="nuc-NM-kbe"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="150" height="44"/>
+                                        <connections>
+                                            <outlet property="fName" destination="WIi-Y0-5Eo" id="3xV-5l-h81"/>
+                                            <outlet property="lName" destination="nlV-Ln-1Ro" id="cVU-ke-ozU"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SimpleHeaderV" id="8MK-bB-puM" customClass="SimpleHeaderV" customModule="Darb" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OdW-8e-Ror">
+                                            <rect key="frame" x="0.0" y="12" width="173" height="24"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="OdW-8e-Ror" firstAttribute="leading" secondItem="8MK-bB-puM" secondAttribute="leading" id="4QU-cf-hbM"/>
+                                        <constraint firstItem="OdW-8e-Ror" firstAttribute="top" secondItem="8MK-bB-puM" secondAttribute="top" constant="12" id="kzB-Yc-Qsn"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="headTitle" destination="OdW-8e-Ror" id="jCm-IT-oIv"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="footV" id="DZg-bC-IoC" customClass="SimpleHeaderV" customModule="Darb" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="104" width="350" height="10"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="UTj-Do-EDM" id="klK-Ze-lOt"/>
+                                    <outlet property="delegate" destination="UTj-Do-EDM" id="KP8-7i-2gG"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RzR-Xd-WzZ">
+                                <rect key="frame" x="30" y="725" width="330" height="45"/>
+                                <color key="backgroundColor" red="0.21960784310000001" green="0.41568627450000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="qvi-uF-zsb"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel">
+                                    <fontDescription key="titleFontDescription" name="Roboto-Regular" family="Roboto" pointSize="18"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="AACornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelEnrollTap:" destination="UTj-Do-EDM" eventType="touchUpInside" id="DCw-aI-pSQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="88S-G0-Iyk"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Qya-Ah-8ct" firstAttribute="top" secondItem="88S-G0-Iyk" secondAttribute="top" id="R40-8T-g8G"/>
+                            <constraint firstItem="88S-G0-Iyk" firstAttribute="trailing" secondItem="RzR-Xd-WzZ" secondAttribute="trailing" constant="30" id="V03-i8-bCE"/>
+                            <constraint firstItem="88S-G0-Iyk" firstAttribute="trailing" secondItem="Qya-Ah-8ct" secondAttribute="trailing" constant="20" id="Xhn-EP-zsz"/>
+                            <constraint firstItem="88S-G0-Iyk" firstAttribute="bottom" secondItem="RzR-Xd-WzZ" secondAttribute="bottom" constant="40" id="gmU-cY-6ul"/>
+                            <constraint firstItem="Qya-Ah-8ct" firstAttribute="leading" secondItem="88S-G0-Iyk" secondAttribute="leading" constant="20" id="i6P-dQ-ZEW"/>
+                            <constraint firstItem="RzR-Xd-WzZ" firstAttribute="leading" secondItem="88S-G0-Iyk" secondAttribute="leading" constant="30" id="ngY-XB-ePf"/>
+                            <constraint firstItem="RzR-Xd-WzZ" firstAttribute="top" secondItem="Qya-Ah-8ct" secondAttribute="bottom" constant="30" id="u7D-bL-s6X"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="colV" destination="Qya-Ah-8ct" id="wxE-gp-O87"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o9B-lK-kvO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="813.84615384615381" y="5.6872037914691944"/>
         </scene>
     </scenes>
     <resources>

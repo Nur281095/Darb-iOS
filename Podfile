@@ -22,5 +22,6 @@ target 'Darb' do
   pod 'Cosmos'
   pod 'MultiSlider'
   pod 'LocationPicker'
+  pod 'GrowingTextView'
 
 end

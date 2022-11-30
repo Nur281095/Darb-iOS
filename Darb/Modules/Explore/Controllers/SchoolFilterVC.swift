@@ -63,7 +63,7 @@ class SchoolFilterVC: BaseVC {
     
     func setupData() {
         if let type = params["student_type"] as? String {
-            if type == "female" {
+            if type == "girl" {
                 femaleChk.image = UIImage(named: "ic_checked_checkbox")
                 maleChk.image = UIImage(named: "ic_unchecked_checkbox")
                 isFemaleChk = true
@@ -127,7 +127,7 @@ class SchoolFilterVC: BaseVC {
         isFemaleChk = true
         isMaleChk = false
         
-        params["student_type"] = "female" as AnyObject
+        params["student_type"] = "girl" as AnyObject
     }
     @IBAction func maleTap(_ sender: Any) {
 
@@ -135,7 +135,7 @@ class SchoolFilterVC: BaseVC {
         femaleChk.image = UIImage(named: "ic_unchecked_checkbox")
         isFemaleChk = false
         isMaleChk = true
-        params["student_type"] = "male" as AnyObject
+        params["student_type"] = "boy" as AnyObject
     }
     @IBAction func acdemicGradeTap(_ sender: UIButton) {
         let levels = ["Kindergarten", "Primary", "Lower Secondary", "Upper Secondary"]
@@ -154,6 +154,7 @@ class SchoolFilterVC: BaseVC {
             print("Selected item: \(item) at index: \(index)")
             params["level_of_education"] = item.lowercased() as AnyObject
             self.academicGradeTxt.text = item
+            self.acadmicLevelIndex = index
         }
         if acadmicLevelIndex != -1 {
             dropDown.selectRow(acadmicLevelIndex, scrollPosition: .middle)
@@ -180,6 +181,7 @@ class SchoolFilterVC: BaseVC {
             print("Selected item: \(item) at index: \(index)")
             params["name"] = item.lowercased() as AnyObject
             self.curiculmTxt.text = item
+            self.curiculmIndex = index
         }
         if curiculmIndex != -1 {
             dropDown.selectRow(curiculmIndex, scrollPosition: .middle)
@@ -205,6 +207,7 @@ class SchoolFilterVC: BaseVC {
             print("Selected item: \(item) at index: \(index)")
             params["city"] = item.lowercased() as AnyObject
             self.locTxt.text = item
+            self.locIndex = index
         }
         if locIndex != -1 {
             dropDown.selectRow(locIndex, scrollPosition: .middle)
@@ -238,6 +241,7 @@ class SchoolFilterVC: BaseVC {
                 params["reviews"] = "4" as AnyObject
             }
             self.ratingTxt.text = item
+            self.ratingIndex = index
         }
         if ratingIndex != -1 {
             dropDown.selectRow(ratingIndex, scrollPosition: .middle)
@@ -249,6 +253,7 @@ class SchoolFilterVC: BaseVC {
    
     @IBAction func applyTap(_ sender: Any) {
         delegate?.didTapApply(params: params)
+        self.goBack()
     }
     
 

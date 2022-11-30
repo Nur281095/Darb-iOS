@@ -893,6 +893,7 @@
                     </view>
                     <connections>
                         <outlet property="grade" destination="I7f-1N-2Uq" id="FLo-7l-KjF"/>
+                        <outlet property="name" destination="PYn-Yw-bSa" id="xlO-oW-hLa"/>
                         <outlet property="nameLbls" destination="Y7y-7n-h6A" id="dUo-1B-7ur"/>
                         <outlet property="shadV" destination="F38-VL-gXz" id="8yZ-Cs-dbi"/>
                         <outlet property="tblV" destination="XwK-el-OuQ" id="vYR-ma-RHw"/>

@@ -23,7 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, LocationDelegate {
         Self.shared = self
         window = UIWindow(windowScene: winScene)
         locationManager = LocationManager()
-        locationManager.stopUpdatingLocations()
         locationManager.delegate = self
         checkUserLoggedIn()
     }
