@@ -154,6 +154,43 @@ class ALF: NSObject {
     }
     /******************* END OF POST Method with PARAMS **********************/
     
+    /****************************  ***********************************/
+    /******************* POST Method with PARAMS *********************/
+    /****************************  ***********************************/
+    
+    func doDeleteData(parameters: Dictionary<String, AnyObject>, method: String, success:@escaping SuccessBlock, fail: @escaping FailureBlock) {
+        print(parameters)
+        self.deleteMethodWithParams(parameters: parameters, forMethod: self.urlString(subUrl: method), success: success, fail: fail)
+    }
+    
+    private func deleteMethodWithParams(parameters: Dictionary<String, AnyObject>, forMethod: String, success:@escaping SuccessBlock, fail:@escaping FailureBlock){
+
+        var headers: HTTPHeaders?
+        let manager = Alamofire.Session.default
+        if Util.isLoggedIn() {
+            headers = ["Authorization": "Bearer \(Util.getUser()!.apiToken!)"]
+        } else {
+            headers = [:]
+        }
+        print(headers)
+        manager.session.configuration.timeoutIntervalForRequest = 30
+        print(parameters)
+        manager.request(forMethod, method: .delete, parameters: parameters, headers: headers).responseJSON { response in
+            print(parameters)
+            switch response.result {
+            case .success:
+                if response.value != nil{
+                    success(response.value as AnyObject)
+                }
+            case let .failure(error):
+                print(error)
+                fail(error as AnyObject)
+            }
+        }
+        
+    }
+    /******************* END OF POST Method with PARAMS **********************/
+    
     
     /****************************  ***********************************/
     /*************** POST Method with PARAMS and IMAGE *******************/

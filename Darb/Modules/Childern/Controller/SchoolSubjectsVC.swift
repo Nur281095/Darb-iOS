@@ -24,6 +24,7 @@ class SchoolSubjectsVC: BaseVC {
         self.navigationItem.title = "Subjects"
         
         shadV.addShadow(11)
+        setData()
     }
     func setData() {
         let names = "\(child.firstName ?? "") \(child.lastName ?? "")"
@@ -43,7 +44,7 @@ extension SchoolSubjectsVC: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! SubjectCell
-        
+        cell.sbujectName.text = child.subjects[indexPath.row].subjectName.capitalized
         return cell
     }
 }

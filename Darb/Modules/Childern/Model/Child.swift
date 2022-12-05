@@ -23,7 +23,7 @@ class Child: NSObject, NSCoding{
     var portraitPhoto : BirthCertificate!
     var school : SchoolListModel!
     var schoolId : String!
-    var subjects : [String]!
+    var subjects : [Subject]!
     var transportLocation : String!
     var updatedAt : String!
     var userId : String!
@@ -57,7 +57,15 @@ class Child: NSObject, NSCoding{
             school = SchoolListModel(fromDictionary: schoolData)
         }
         schoolId = dictionary["school_id"] as? String
-        subjects = dictionary["subjects"] as? [String]
+
+        subjects = [Subject]()
+        if let subjectsArray = dictionary["subjects"] as? [[String:Any]]{
+            for dic in subjectsArray{
+                let value = Subject(fromDictionary: dic)
+                subjects.append(value)
+            }
+        }
+
         transportLocation = dictionary["transport_location"] as? String
         updatedAt = dictionary["updated_at"] as? String
         userId = dictionary["user_id"] as? String
@@ -146,7 +154,7 @@ class Child: NSObject, NSCoding{
          portraitPhoto = aDecoder.decodeObject(forKey: "portrait_photo") as? BirthCertificate
          school = aDecoder.decodeObject(forKey: "school") as? SchoolListModel
          schoolId = aDecoder.decodeObject(forKey: "school_id") as? String
-         subjects = aDecoder.decodeObject(forKey: "subjects") as? [String]
+         subjects = aDecoder.decodeObject(forKey: "subjects") as? [Subject]
          transportLocation = aDecoder.decodeObject(forKey: "transport_location") as? String
          updatedAt = aDecoder.decodeObject(forKey: "updated_at") as? String
          userId = aDecoder.decodeObject(forKey: "user_id") as? String
@@ -386,6 +394,90 @@ class BirthCertificate : NSObject, NSCoding{
         }
         if name != nil{
             aCoder.encode(name, forKey: "name")
+        }
+        if updatedAt != nil{
+            aCoder.encode(updatedAt, forKey: "updated_at")
+        }
+
+    }
+
+}
+
+class Subject: NSObject, NSCoding{
+    
+    var childId : String!
+    var createdAt : String!
+    var id : Int!
+    var subjectName : String!
+    var updatedAt : String!
+
+
+    /**
+     * Instantiate the instance using the passed dictionary values to set the properties values
+     */
+    init(fromDictionary dictionary: [String:Any]){
+        childId = dictionary["child_id"] as? String
+        createdAt = dictionary["created_at"] as? String
+        id = dictionary["id"] as? Int
+        subjectName = dictionary["subject_name"] as? String
+        updatedAt = dictionary["updated_at"] as? String
+    }
+
+    /**
+     * Returns all the available property values in the form of [String:Any] object where the key is the approperiate json key and the value is the value of the corresponding property
+     */
+    func toDictionary() -> [String:Any]
+    {
+        var dictionary = [String:Any]()
+        if childId != nil{
+            dictionary["child_id"] = childId
+        }
+        if createdAt != nil{
+            dictionary["created_at"] = createdAt
+        }
+        if id != nil{
+            dictionary["id"] = id
+        }
+        if subjectName != nil{
+            dictionary["subject_name"] = subjectName
+        }
+        if updatedAt != nil{
+            dictionary["updated_at"] = updatedAt
+        }
+        return dictionary
+    }
+
+    /**
+    * NSCoding required initializer.
+    * Fills the data from the passed decoder
+    */
+    @objc required init(coder aDecoder: NSCoder)
+    {
+         childId = aDecoder.decodeObject(forKey: "child_id") as? String
+         createdAt = aDecoder.decodeObject(forKey: "created_at") as? String
+         id = aDecoder.decodeObject(forKey: "id") as? Int
+         subjectName = aDecoder.decodeObject(forKey: "subject_name") as? String
+         updatedAt = aDecoder.decodeObject(forKey: "updated_at") as? String
+
+    }
+
+    /**
+    * NSCoding required method.
+    * Encodes mode properties into the decoder
+    */
+    @objc func encode(with aCoder: NSCoder)
+    {
+        if childId != nil{
+            aCoder.encode(childId, forKey: "child_id")
+        }
+        if createdAt != nil{
+            aCoder.encode(createdAt, forKey: "created_at")
+        }
+        if id != nil{
+            aCoder.encode(id, forKey: "id")
+        }
+        if subjectName != nil{
+            aCoder.encode(subjectName, forKey: "subject_name")
         }
         if updatedAt != nil{
             aCoder.encode(updatedAt, forKey: "updated_at")

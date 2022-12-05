@@ -20,10 +20,17 @@ class ConversationsVC: BaseVC {
 
         self.navigationItem.leftBarButtonItem = btnLogo(image: UIImage(named: "homeNavLogo")!)
         self.navigationItem.rightBarButtonItem = btnRight(image: "ic_noti", isOrignal: true)
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getConversations()
     }
     
-
+    override func btnRightAction(_ sender: Any) {
+        let vc = UIStoryboard.storyBoard(withName: .home).loadViewController(withIdentifier: .notificationVC) as! NotificationVC
+        self.show(vc, sender: self)
+    }
     func getConversations() {
         self.conversations.removeAll()
         Util.shared.showSpinner()
@@ -71,7 +78,7 @@ extension ConversationsVC: UITableViewDelegate, UITableViewDataSource {
             cell.name.text = name
             cell.naameLbls.text = name.getAcronyms().uppercased()
         } else if model.receiver.id != usr.id {
-            let name = "\(model.sender.firstName ?? "") \(model.sender.lastName ?? "")"
+            let name = "\(model.receiver.firstName ?? "") \(model.receiver.lastName ?? "")"
             cell.name.text = name
             if name.count > 2 {
                 let newName = String(name.getAcronyms().prefix(2))
@@ -103,7 +110,7 @@ extension ConversationsVC: UITableViewDelegate, UITableViewDataSource {
             name = "\(model.sender.firstName ?? "") \(model.sender.lastName ?? "")"
         } else if usr.id != model.receiver.id {
             vc.schoolID = model.receiver.id
-            name = "\(model.sender.firstName ?? "") \(model.sender.lastName ?? "")"
+            name = "\(model.receiver.firstName ?? "") \(model.receiver.lastName ?? "")"
         }
         vc.otherName = name
         self.show(vc, sender: self)

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import CoreLocation
 var Appname = "Darb"
 
 let statusRange = 200...299
@@ -41,6 +41,7 @@ struct AppColors {
     }
     
 }
+
 struct AppUser {
 //    static var default_usr: String {
 //        return AppDelegate.shared().usrTyp == .client ? "client" : "tasker"
@@ -83,5 +84,10 @@ public struct KEYS {
     }
     static func getAddress() -> String {
         return UserDefaults.standard.object(forKey: KEYS.address) as? String ?? ""
+    }
+}
+public struct AppLocation {
+    static var loc: CLLocationCoordinate2D? {
+        return SceneDelegate.shared?.location?.coordinate
     }
 }

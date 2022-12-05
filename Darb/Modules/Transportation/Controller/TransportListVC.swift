@@ -30,7 +30,7 @@ class TransportListVC: BaseVC {
     func getTranportList() {
         self.transports.removeAll()
         Util.shared.showSpinner()
-        ALF.shared.doGetData(parameters: [:], method: "notifications") { response in
+        ALF.shared.doGetData(parameters: [:], method: "transportations") { response in
             Util.shared.hideSpinner()
             print(response)
             DispatchQueue.main.async {
@@ -81,7 +81,6 @@ extension TransportListVC: UICollectionViewDelegate, UICollectionViewDataSource,
         cell.fromToDescrip.attributedText = cell.setDescrip(model: model)
         cell.statusBtn.setTitle("", for: .normal)
         cell.schoolName.text = model.schoolName
-        cell.statusBtn.setTitle(model.status, for: .normal)
         return cell
     }
 }

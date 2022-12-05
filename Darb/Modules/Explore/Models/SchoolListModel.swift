@@ -9,6 +9,7 @@ import UIKit
 
 class SchoolListModel: NSObject, NSCoding{
     
+    var adminId : String!
     var buildings : String!
     var city : String!
     var classrooms : String!
@@ -36,11 +37,12 @@ class SchoolListModel: NSObject, NSCoding{
      * Instantiate the instance using the passed dictionary values to set the properties values
      */
     init(fromDictionary dictionary: [String:Any]){
+        adminId = dictionary["admin_id"] as? String
         buildings = dictionary["buildings"] as? String
         city = dictionary["city"] as? String
         classrooms = dictionary["classrooms"] as? String
         createdAt = dictionary["created_at"] as? String
-        descriptionField = dictionary["description"] as? String ?? ""
+        descriptionField = dictionary["description"] as? String
         gallery = [Gallery]()
         if let galleryArray = dictionary["gallery"] as? [[String:Any]]{
             for dic in galleryArray{
@@ -71,6 +73,9 @@ class SchoolListModel: NSObject, NSCoding{
     func toDictionary() -> [String:Any]
     {
         var dictionary = [String:Any]()
+        if adminId != nil{
+            dictionary["admin_id"] = adminId
+        }
         if buildings != nil{
             dictionary["buildings"] = buildings
         }
@@ -147,6 +152,7 @@ class SchoolListModel: NSObject, NSCoding{
     */
     @objc required init(coder aDecoder: NSCoder)
     {
+         adminId = aDecoder.decodeObject(forKey: "admin_id") as? String
          buildings = aDecoder.decodeObject(forKey: "buildings") as? String
          city = aDecoder.decodeObject(forKey: "city") as? String
          classrooms = aDecoder.decodeObject(forKey: "classrooms") as? String
@@ -177,6 +183,9 @@ class SchoolListModel: NSObject, NSCoding{
     */
     @objc func encode(with aCoder: NSCoder)
     {
+        if adminId != nil{
+            aCoder.encode(adminId, forKey: "admin_id")
+        }
         if buildings != nil{
             aCoder.encode(buildings, forKey: "buildings")
         }

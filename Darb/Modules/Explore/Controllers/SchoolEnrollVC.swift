@@ -42,6 +42,8 @@ class SchoolEnrollVC: BaseVC {
             progressImg.image = UIImage(named: "fullProgress")
             setData()
         }
+        self.navigationItem.leftBarButtonItem = btnBack(isOrignal: false)
+        self.navTitle(titel: "School Enrollment Application")
     }
     func setData() {
         if let school {
@@ -170,6 +172,14 @@ class SchoolEnrollVC: BaseVC {
     
     @IBAction func continueTap(_ sender: Any) {
         if progTyp == .half {
+            if eduLevelTxt.aa_isEmpty {
+                self.showTool(msg: "School Education Level is required", state: .warning)
+                return
+            }
+            if curriculum.aa_isEmpty {
+                self.showTool(msg: "School Curriculum is required", state: .warning)
+                return
+            }
             let vc = UIStoryboard.storyBoard(withName: .explore).loadViewController(withIdentifier: .schoolEnrollVC) as! SchoolEnrollVC
             params["school_id"] = school.id as AnyObject
             vc.params = params
@@ -182,7 +192,7 @@ class SchoolEnrollVC: BaseVC {
             self.show(vc, sender: self)
         } else {
             Util.shared.showSpinner()
-            ALF.shared.doGetData(parameters: params, method: "child_schools") { response in
+            ALF.shared.doPostData(parameters: params, method: "child_schools") { response in
                 Util.shared.hideSpinner()
                 print(response)
                 DispatchQueue.main.async {

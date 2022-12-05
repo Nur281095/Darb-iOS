@@ -40,6 +40,10 @@ class ChatVC: BaseVC {
         getChat()
         
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.invalidate()
+    }
     
     @objc func dismissKeyboard() {
         self.growingTextView.resignFirstResponder()
@@ -83,7 +87,7 @@ class ChatVC: BaseVC {
     func getChat() {
         
         Util.shared.showSpinner()
-        ALF.shared.doGetData(parameters: [:], method: "school_chats?school_id=\(schoolID)&page=1&limit=50") { response in
+        ALF.shared.doGetData(parameters: [:], method: "school_chats?admin_id=\(schoolID)&page=1&limit=50") { response in
             Util.shared.hideSpinner()
             print(response)
             DispatchQueue.main.async {
@@ -96,6 +100,7 @@ class ChatVC: BaseVC {
                             }
                         }
                         self.tblView.reloadData()
+                        self.scrollToBottom(height: 0)
 
                     } else {
                         self.showTool(msg: json["message"].string ?? "", state: .error)
@@ -154,7 +159,7 @@ class ChatVC: BaseVC {
         self.chats.append(ChatModel(fromDictionary: tempDic))
         self.tblView.reloadData()
         self.scrollToBottom(height: 0)
-        
+        growingTextView.text = ""
         DispatchQueue.background(background: {
             
             ALF.shared.doPostData(parameters: tempDic, method: "school_chats", success: { (response) in

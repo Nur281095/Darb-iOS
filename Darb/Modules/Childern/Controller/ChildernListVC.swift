@@ -137,6 +137,7 @@ extension ChildernListVC: UITableViewDelegate, UITableViewDataSource {
             self.show(vc, sender: self)
         } else {
             let vc = UIStoryboard.storyBoard(withName: .child).loadViewController(withIdentifier: .schoolSubjectsVC) as! SchoolSubjectsVC
+            vc.child = childs[indexPath.row]
             self.show(vc, sender: self)
         }
     }

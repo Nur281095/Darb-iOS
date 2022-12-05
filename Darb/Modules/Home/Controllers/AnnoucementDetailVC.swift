@@ -6,25 +6,39 @@
 //
 
 import UIKit
+import WebKit
 
 class AnnoucementDetailVC: BaseVC {
 
+    @IBOutlet weak var desrcip: UILabel!
+    @IBOutlet weak var web: WKWebView!
+    @IBOutlet weak var sampleImg: UIImageView!
+    
+    var announcement: AnnouncementModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.leftBarButtonItem = btnBack(isOrignal: false)
         self.navigationItem.title = "Announcement details"
+        
+        desrcip.attributedText = announcement.text.htmlAttributed(family: "Roboto-Regular")
+        sampleImg.isHidden = true
+        if announcement.file != nil {
+            if let url = URL(string: announcement.file.name) {
+                web.load(URLRequest(url: url))
+                web.isHidden = false
+            } else {
+                web.isHidden = false
+            }
+        } else {
+            web.isHidden = true
+        }
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func enrollTap(_ sender: Any) {
     }
-    */
-
+    
 }

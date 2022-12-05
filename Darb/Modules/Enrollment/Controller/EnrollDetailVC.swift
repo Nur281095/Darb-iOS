@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class EnrollDetailVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -177,6 +178,29 @@ class EnrollDetailVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     @IBAction func cancelEnrollTap(_ sender: Any) {
+        
+        Util.shared.showSpinner()
+        ALF.shared.doDeleteData(parameters: [:], method: "child_schools/\(enroll.id!)") { response in
+            Util.shared.hideSpinner()
+            print(response)
+            DispatchQueue.main.async {
+                let json = JSON(response)
+                if let status = json["status_code"].int {
+                    if statusRange.contains(status) {
+                        self.showTool(msg: json["message"].string ?? "", state: .success)
+                        self.goBackWithDelay()
+                    } else {
+                        self.showTool(msg: json["message"].string ?? "", state: .error)
+                    }
+                }
+            }
+            
+        } fail: { response in
+            Util.shared.hideSpinner()
+            DispatchQueue.main.async {
+                self.showTool(msg: response as? String ?? "Error", state: .error)
+            }
+        }
         
     }
 }

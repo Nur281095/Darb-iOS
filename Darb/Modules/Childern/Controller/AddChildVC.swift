@@ -168,33 +168,64 @@ class AddChildVC: BaseVC {
             return
         }
         
-        
-        if bCertID == -1 {
-            self.showTool(msg: "Birth Certificate", state: .error)
-            return
+        if isAdd {
+            if bCertID == -1 {
+                self.showTool(msg: "Birth Certificate", state: .error)
+                return
+            }
+            
+            if healthDocID == -1 {
+                self.showTool(msg: "Health Report", state: .error)
+                return
+            }
+            if portPhotoID == -1 {
+                self.showTool(msg: "Portrait Photo", state: .error)
+                return
+            }
+        } else {
+            if bCertTxt.aa_isEmpty {
+                self.showTool(msg: "Birth Certificate", state: .error)
+                return
+            }
+            
+            if heathRepTxt.aa_isEmpty {
+                self.showTool(msg: "Health Report", state: .error)
+                return
+            }
+            if portPhotoTxt.aa_isEmpty {
+                self.showTool(msg: "Portrait Photo", state: .error)
+                return
+            }
         }
         
-        if healthDocID == -1 {
-            self.showTool(msg: "Health Report", state: .error)
-            return
-        }
-        if portPhotoID == -1 {
-            self.showTool(msg: "Portrait Photo", state: .error)
-            return
-        }
+        
         
         var dic = Dictionary<String, AnyObject>()
         dic["first_name"] = fNameTxt.text as AnyObject
         dic["last_name"] = lNameTxt.text as AnyObject
         dic["dob"] = dobTxt.text as AnyObject
         dic["national_id"] = idTxt.text as AnyObject
-        dic["birth_certificate"] = bCertID as AnyObject
-        dic["portrait_photo"] = portPhotoID as AnyObject
-        dic["health_report"] = healthDocID as AnyObject
+        if bCertID != -1 {
+            dic["birth_certificate"] = bCertID as AnyObject
+        } else {
+            dic["birth_certificate"] = child.birthCertificate.id as AnyObject
+        }
+        
+        if healthDocID != -1 {
+            dic["health_report"] = healthDocID as AnyObject
+        } else {
+            dic["health_report"] = child.healthReport.id as AnyObject
+        }
+        if portPhotoID != -1 {
+            dic["portrait_photo"] = portPhotoID as AnyObject
+        } else {
+            dic["portrait_photo"] = child.birthCertificate.id as AnyObject
+        }
         
         var method = ""
         if child != nil {
             method = "childs/\(String(describing: child.id!))"
+            dic["_method"] = "PUT" as AnyObject
         } else {
             method = "childs"
         }
@@ -212,7 +243,7 @@ class AddChildVC: BaseVC {
                         if self.isAdd {
                             self.goBackWithDelay()
                         } else {
-                            self.navigationController?.popToViewController(ofClass: ChildernListVC.self)
+                            self.goRootWithDelay()
                         }
                         
                     } else {

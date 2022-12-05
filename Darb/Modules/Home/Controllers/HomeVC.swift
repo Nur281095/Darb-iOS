@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftyJSON
+import AAExtensions
 
 class HomeVC: BaseVC {
 
@@ -114,7 +115,7 @@ class HomeVC: BaseVC {
 
 }
 
-extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AnnouncementDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return announcements.count
     }
@@ -128,10 +129,26 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         }
         let model = announcements[indexPath.item]
         cell.setDescrip(model: model)
+        cell.delegate = self
+        cell.tag = indexPath.item
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = UIStoryboard.storyBoard(withName: .home).loadViewController(withIdentifier: .annoucementDetailVC) as! AnnoucementDetailVC
-        self.show(vc, sender: self)
+//        let vc = UIStoryboard.storyBoard(withName: .home).loadViewController(withIdentifier: .annoucementDetailVC) as! AnnoucementDetailVC
+//        vc.announcement = announcements[indexPath.item]
+//        self.show(vc, sender: self)
+        
+        if announcements[indexPath.item].file != nil {
+            announcements[indexPath.item].file.name.aa_openURL()
+        }
+    }
+    func didTapAnnouncemnt(index: Int) {
+//        let vc = UIStoryboard.storyBoard(withName: .home).loadViewController(withIdentifier: .annoucementDetailVC) as! AnnoucementDetailVC
+//        vc.announcement = announcements[index]
+//        self.show(vc, sender: self)
+        
+        if announcements[index].file != nil {
+            announcements[index].file.name.aa_openURL()
+        }
     }
 }

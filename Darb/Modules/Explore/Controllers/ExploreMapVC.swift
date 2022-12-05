@@ -7,9 +7,10 @@
 
 import UIKit
 import MapKit
+import AAExtensions
 import Cosmos
 
-class ExploreMapVC: BaseVC {
+class ExploreMapVC: BaseVC, MKMapViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var mapV: MKMapView!
     @IBOutlet weak var backBtn: UIButton!
@@ -25,7 +26,10 @@ class ExploreMapVC: BaseVC {
     @IBOutlet weak var rateV: CosmosView!
     @IBOutlet weak var ratingLbl: UILabel!
     
-    var school: SchoolListModel!
+    var schoolListModel = [SchoolListModel]()
+    var filterSchoolList = [SchoolListModel]()
+    var selectedIndex = -1
+    var isfilter = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +38,8 @@ class ExploreMapVC: BaseVC {
         filterBtn.setTitle("", for: .normal)
         self.navigationController?.isNavigationBarHidden = true
         shadV.addShadow(12)
-        
+        mapV.delegate = self
+        seacrh.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         setData()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -45,37 +50,96 @@ class ExploreMapVC: BaseVC {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-
-    func setData() {
-        if let school {
-            if !school.gallery.isEmpty {
-                img.sd_setImage(with: URL(string: school.gallery[0].name)!)
-            } else {
-                img.image = nil
-            }
-            name.text = school.name
-            address.text = school.location ?? ""
-            rateV.rating = Double(school.totalReviews ?? "0") ?? 0.0
-            ratingLbl.text = school.totalReviews ?? "0.0"
-            configureMap(school: school)
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if textField.aa_isEmpty {
+            isfilter = false
+            setData()
         }
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if !textField.aa_isEmpty {
+            isfilter = true
+            filterSchoolList = schoolListModel.filter({$0.name.contains(textField.text!)})
+        } else {
+            isfilter = false
+        }
+        setData()
+        textField.resignFirstResponder()
+        return true
+    }
+    func setData() {
+        mapV.removeAnnotations(mapV.annotations)
+        if isfilter {
+            if let schl = filterSchoolList.first {
+                selectedIndex = 0
+                setSchool(schl: schl)
+            }
+            for school in filterSchoolList {
+                configureMap(school: school)
+            }
+        } else {
+            if let schl = schoolListModel.first {
+                selectedIndex = 0
+                setSchool(schl: schl)
+            }
+            for school in schoolListModel {
+                configureMap(school: school)
+            }
+        }
+        
+    }
+    private func setSchool(schl: SchoolListModel) {
+        if !schl.gallery.isEmpty {
+            img.sd_setImage(with: URL(string: schl.gallery[0].name)!)
+        } else {
+            img.image = nil
+        }
+        name.text = schl.name
+        address.text = schl.location ?? ""
+        rateV.rating = Double(schl.totalReviews ?? "0") ?? 0.0
+        ratingLbl.text = schl.totalReviews ?? "0.0"
+    }
     private func configureMap(school: SchoolListModel) {
         mapV.showsUserLocation = true
         mapV.showsCompass = true
         mapV.isZoomEnabled = true
         mapV.showsBuildings = true
         mapV.showsTraffic = true
-        let coordinate = CLLocationCoordinate2D(latitude: Double(school.lat ?? "0") ?? 0.0, longitude: Double(school.lang ?? "0") ?? 0.0)
-        let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
+        var coordinate: CLLocationCoordinate2D!
+        if let loc = AppLocation.loc {
+            coordinate = loc
+        } else {
+            coordinate = CLLocationCoordinate2D(latitude: Double(school.lat ?? "0") ?? 0.0, longitude: Double(school.lang ?? "0") ?? 0.0)
+        }
+//        let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
+        let span = MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
         let region = MKCoordinateRegion(center: coordinate, span: span)
         mapV.setRegion(region, animated: true)
         
         let pin = MKPointAnnotation()
         pin.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        
+        pin.title = school.name
+        pin.subtitle = "\(school.id!)"
         mapV.addAnnotation(pin)
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("MKAnnotationView")
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect annotation: MKAnnotation) {
+        print("MKAnnotation")
+        if isfilter {
+            if let index = filterSchoolList.firstIndex(where: {$0.id == annotation.subtitle??.aa_toInt}) {
+                selectedIndex = index
+                self.setSchool(schl: filterSchoolList[index])
+            }
+        } else {
+            if let index = schoolListModel.firstIndex(where: {$0.id == annotation.subtitle??.aa_toInt}) {
+                selectedIndex = index
+                self.setSchool(schl: schoolListModel[index])
+            }
+        }
     }
     
     @IBAction func backtap(_ sender: Any) {
@@ -88,7 +152,11 @@ class ExploreMapVC: BaseVC {
     
     @IBAction func schoolTap(_ sender: Any) {
         let vc = UIStoryboard.storyBoard(withName: .explore).loadViewController(withIdentifier: .schoolDetailVC) as! SchoolDetailVC
-        vc.school = school
+        if isfilter {
+            vc.school = filterSchoolList[selectedIndex]
+        } else {
+            vc.school = schoolListModel[selectedIndex]
+        }
         self.show(vc, sender: self)
     }
     

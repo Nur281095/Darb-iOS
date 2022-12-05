@@ -16,6 +16,11 @@ class MoreVC: BaseVC {
         self.navigationItem.leftBarButtonItem = btnLogo(image: UIImage(named: "homeNavLogo")!)
         self.navigationItem.rightBarButtonItem = btnRight(image: "ic_noti", isOrignal: true)
     }
+    
+    override func btnRightAction(_ sender: Any) {
+        let vc = UIStoryboard.storyBoard(withName: .home).loadViewController(withIdentifier: .notificationVC) as! NotificationVC
+        self.show(vc, sender: self)
+    }
 
     @IBAction func menuBtnTap(_ sender: UIButton) {
         switch sender.tag {

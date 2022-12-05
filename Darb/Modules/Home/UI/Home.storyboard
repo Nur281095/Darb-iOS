@@ -65,34 +65,38 @@
                                                             <color key="textColor" red="1" green="0.51764705882352935" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kids Arts Workshop!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iaM-Zj-il1">
-                                                            <rect key="frame" x="15" y="75" width="309" height="17.666666666666671"/>
-                                                            <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjL-fE-g1h">
-                                                            <rect key="frame" x="15" y="112.66666666666667" width="309" height="56.333333333333329"/>
-                                                            <string key="text">The school is pleased to announce the opening of registration to “KIDS ART WORKSHOP”. 
-Time: 9 am - 2pm
-Place: The school’s art studio.</string>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZi-cU-Izw">
+                                                            <rect key="frame" x="35" y="65" width="269" height="121"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <color key="textColor" systemColor="labelColor"/>
                                                             <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="12"/>
-                                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLJ-Jt-992">
+                                                            <rect key="frame" x="0.0" y="0.0" width="339" height="206"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" title="Button">
+                                                                <color key="baseForegroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="announceTap:" destination="eUc-B6-LDR" eventType="touchUpInside" id="59i-S6-XHy"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstItem="iaM-Zj-il1" firstAttribute="top" secondItem="qwl-zJ-xEw" secondAttribute="bottom" constant="30" id="AuV-sJ-9UF"/>
+                                                        <constraint firstAttribute="trailing" secondItem="PLJ-Jt-992" secondAttribute="trailing" id="2jR-g6-gue"/>
                                                         <constraint firstItem="kzL-9h-vqn" firstAttribute="centerY" secondItem="qwl-zJ-xEw" secondAttribute="centerY" id="Dh0-jK-YmH"/>
-                                                        <constraint firstItem="iaM-Zj-il1" firstAttribute="leading" secondItem="Xhg-TW-QPr" secondAttribute="leading" constant="15" id="QLt-3O-0cY"/>
-                                                        <constraint firstItem="WjL-fE-g1h" firstAttribute="leading" secondItem="Xhg-TW-QPr" secondAttribute="leading" constant="15" id="VgR-mA-PhN"/>
+                                                        <constraint firstAttribute="bottom" secondItem="aZi-cU-Izw" secondAttribute="bottom" constant="20" id="Fhs-Vt-C7b"/>
+                                                        <constraint firstAttribute="trailing" secondItem="aZi-cU-Izw" secondAttribute="trailing" constant="35" id="THx-la-dyj"/>
+                                                        <constraint firstItem="PLJ-Jt-992" firstAttribute="top" secondItem="Xhg-TW-QPr" secondAttribute="top" id="W1b-3C-A6D"/>
                                                         <constraint firstItem="qwl-zJ-xEw" firstAttribute="leading" secondItem="Xhg-TW-QPr" secondAttribute="leading" constant="15" id="aSD-cP-Uos"/>
-                                                        <constraint firstAttribute="trailing" secondItem="iaM-Zj-il1" secondAttribute="trailing" constant="15" id="bHx-ZL-WPu"/>
                                                         <constraint firstItem="qwl-zJ-xEw" firstAttribute="top" secondItem="Xhg-TW-QPr" secondAttribute="top" constant="15" id="bqH-wv-Qlv"/>
-                                                        <constraint firstAttribute="trailing" secondItem="WjL-fE-g1h" secondAttribute="trailing" constant="15" id="c0w-47-2S2"/>
+                                                        <constraint firstItem="aZi-cU-Izw" firstAttribute="top" secondItem="qwl-zJ-xEw" secondAttribute="bottom" constant="20" id="nLw-Y4-5id"/>
+                                                        <constraint firstItem="PLJ-Jt-992" firstAttribute="leading" secondItem="Xhg-TW-QPr" secondAttribute="leading" id="oQa-lZ-Igh"/>
                                                         <constraint firstItem="kzL-9h-vqn" firstAttribute="leading" secondItem="qwl-zJ-xEw" secondAttribute="trailing" constant="12" id="tvZ-Wz-muE"/>
-                                                        <constraint firstItem="WjL-fE-g1h" firstAttribute="top" secondItem="iaM-Zj-il1" secondAttribute="bottom" constant="20" id="ugs-EV-AfR"/>
+                                                        <constraint firstItem="aZi-cU-Izw" firstAttribute="leading" secondItem="Xhg-TW-QPr" secondAttribute="leading" constant="35" id="wcN-3n-yYA"/>
+                                                        <constraint firstAttribute="bottom" secondItem="PLJ-Jt-992" secondAttribute="bottom" id="wqh-JS-9nA"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -105,7 +109,7 @@ Place: The school’s art studio.</string>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="347" height="214"/>
                                         <connections>
-                                            <outlet property="annDescrip" destination="WjL-fE-g1h" id="5uA-JS-Ue5"/>
+                                            <outlet property="annDescrip" destination="aZi-cU-Izw" id="7Zi-w2-jec"/>
                                             <outlet property="annTitle" destination="kzL-9h-vqn" id="AX3-eG-MNf"/>
                                             <outlet property="shadV" destination="Xhg-TW-QPr" id="2eO-kn-bha"/>
                                         </connections>
@@ -294,7 +298,7 @@ Place: The school’s art studio.</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ti2-9d-Mtu">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="664.33333333333337"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kids Arts Workshop!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdz-rs-eXM">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Announcement...!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdz-rs-eXM">
                                                 <rect key="frame" x="30" y="40" width="330" height="23.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="20"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -309,7 +313,15 @@ Place: The school’s art studio.</string>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="annoucementSampleImg" translatesAutoresizingMaskIntoConstraints="NO" id="Qvi-RO-JMh">
+                                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hU-B3-7xb">
+                                                <rect key="frame" x="30" y="202.33333333333337" width="330" height="367"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <wkWebViewConfiguration key="configuration">
+                                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                                    <wkPreferences key="preferences"/>
+                                                </wkWebViewConfiguration>
+                                            </wkWebView>
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="annoucementSampleImg" translatesAutoresizingMaskIntoConstraints="NO" id="Qvi-RO-JMh">
                                                 <rect key="frame" x="30" y="202.33333333333337" width="330" height="367"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="367" id="VdH-6e-t5s"/>
@@ -331,6 +343,9 @@ Place: The school’s art studio.</string>
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="enrollTap:" destination="88A-af-tFT" eventType="touchUpInside" id="Jrf-qI-kET"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -341,12 +356,16 @@ Place: The school’s art studio.</string>
                                             <constraint firstItem="Qvi-RO-JMh" firstAttribute="top" secondItem="pnm-rO-L0h" secondAttribute="bottom" constant="20" id="HYe-TJ-0Aa"/>
                                             <constraint firstItem="pdz-rs-eXM" firstAttribute="top" secondItem="Ti2-9d-Mtu" secondAttribute="top" constant="40" id="IwS-Fu-A54"/>
                                             <constraint firstAttribute="trailing" secondItem="Qvi-RO-JMh" secondAttribute="trailing" constant="30" id="S7M-cg-TXe"/>
+                                            <constraint firstItem="7hU-B3-7xb" firstAttribute="width" secondItem="Qvi-RO-JMh" secondAttribute="width" id="WEf-Un-Q0b"/>
                                             <constraint firstAttribute="trailing" secondItem="pnm-rO-L0h" secondAttribute="trailing" constant="30" id="dwz-C3-AQV"/>
+                                            <constraint firstItem="7hU-B3-7xb" firstAttribute="centerY" secondItem="Qvi-RO-JMh" secondAttribute="centerY" id="eXu-gX-S0j"/>
                                             <constraint firstItem="HdT-2D-BJW" firstAttribute="leading" secondItem="Ti2-9d-Mtu" secondAttribute="leading" constant="30" id="g7d-xE-7V4"/>
                                             <constraint firstItem="pnm-rO-L0h" firstAttribute="leading" secondItem="Ti2-9d-Mtu" secondAttribute="leading" constant="30" id="j0e-j3-nq8"/>
                                             <constraint firstItem="HdT-2D-BJW" firstAttribute="top" secondItem="Qvi-RO-JMh" secondAttribute="bottom" constant="30" id="oMi-Gf-ybK"/>
                                             <constraint firstItem="pnm-rO-L0h" firstAttribute="top" secondItem="pdz-rs-eXM" secondAttribute="bottom" constant="20" id="tP9-hZ-BPr"/>
                                             <constraint firstAttribute="bottom" secondItem="HdT-2D-BJW" secondAttribute="bottom" constant="20" id="v4G-wU-Ax4"/>
+                                            <constraint firstItem="7hU-B3-7xb" firstAttribute="centerX" secondItem="Qvi-RO-JMh" secondAttribute="centerX" id="xJO-CX-Ef3"/>
+                                            <constraint firstItem="7hU-B3-7xb" firstAttribute="height" secondItem="Qvi-RO-JMh" secondAttribute="height" id="xki-GV-DIC"/>
                                             <constraint firstAttribute="trailing" secondItem="HdT-2D-BJW" secondAttribute="trailing" constant="30" id="zmP-Al-52H"/>
                                         </constraints>
                                     </view>
@@ -369,6 +388,11 @@ Place: The school’s art studio.</string>
                             <constraint firstItem="Suw-FO-CWJ" firstAttribute="leading" secondItem="CrC-Rs-Y1A" secondAttribute="leading" id="qQb-s5-ktr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="desrcip" destination="pnm-rO-L0h" id="ovR-F5-5fa"/>
+                        <outlet property="sampleImg" destination="Qvi-RO-JMh" id="uEu-2T-tyh"/>
+                        <outlet property="web" destination="7hU-B3-7xb" id="sX5-9O-Hj6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yA6-zZ-Mal" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -475,6 +499,9 @@ Place: The school’s art studio.</string>
         <image name="ic_children" width="40" height="40"/>
         <image name="ic_inroll" width="100" height="100"/>
         <image name="ic_noti_doc" width="15" height="18"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

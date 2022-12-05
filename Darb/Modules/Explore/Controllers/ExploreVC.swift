@@ -7,16 +7,19 @@
 
 import UIKit
 import SwiftyJSON
+import AAExtensions
 
-class ExploreVC: BaseVC, SchoolFilterDelegate {
+class ExploreVC: BaseVC, SchoolFilterDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var mapsBtn: UIButton!
     @IBOutlet weak var filterBtn: UIButton!
     @IBOutlet weak var colV: UICollectionView!
-    @IBOutlet weak var search: UIImageView!
+    @IBOutlet weak var search: UITextField!
     
-    
+     
     var schoolListModel = [SchoolListModel]()
+    var filterSchoolList = [SchoolListModel]()
+    var isfilter = false
     var params = [String: AnyObject]()
     
     override func viewDidLoad() {
@@ -25,6 +28,9 @@ class ExploreVC: BaseVC, SchoolFilterDelegate {
         filterBtn.setTitle("", for: .normal)
         self.navigationItem.leftBarButtonItem = btnLogo(image: UIImage(named: "homeNavLogo")!)
         self.navigationItem.rightBarButtonItem = btnRight(image: "ic_noti", isOrignal: true)
+        
+        search.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        
         getSchoolList()
     }
     
@@ -38,11 +44,34 @@ class ExploreVC: BaseVC, SchoolFilterDelegate {
         self.show(vc, sender: self)
     }
     
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if !textField.aa_isEmpty {
+            isfilter = true
+            filterSchoolList = schoolListModel.filter({$0.name.contains(textField.text!)})
+        } else {
+            isfilter = false
+        }
+        colV.reloadData()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if !textField.aa_isEmpty {
+            isfilter = true
+            filterSchoolList = schoolListModel.filter({$0.name.contains(textField.text!)})
+        } else {
+            isfilter = false
+        }
+        colV.reloadData()
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func getSchoolList() {
+        isfilter = false
         self.schoolListModel.removeAll()
-        if let lat = SceneDelegate.shared?.location?.coordinate.latitude {
-            params["lat"] = lat as AnyObject
-            params["lang"] = SceneDelegate.shared?.location?.coordinate.longitude as AnyObject
+        if let loc = AppLocation.loc {
+            params["lat"] = loc.latitude as AnyObject
+            params["lang"] = loc.longitude as AnyObject
         }
         Util.shared.showSpinner()
         ALF.shared.doGetData(parameters: params, method: "schools") { response in
@@ -78,7 +107,14 @@ class ExploreVC: BaseVC, SchoolFilterDelegate {
         self.getSchoolList()
     }
     
+    @IBAction func mapTap(_ sender: Any) {
+        let vc = UIStoryboard.storyBoard(withName: .explore).loadViewController(withIdentifier: .exploreMapVC) as! ExploreMapVC
+        
+        vc.schoolListModel = schoolListModel
+        self.show(vc, sender: self)
+    }
     @IBAction func filterTap(_ sender: Any) {
+        
         let vc = UIStoryboard.storyBoard(withName: .explore).loadViewController(withIdentifier: .schoolFilterVC) as! SchoolFilterVC
         vc.delegate = self
         self.show(vc, sender: self)
@@ -87,7 +123,7 @@ class ExploreVC: BaseVC, SchoolFilterDelegate {
 
 extension ExploreVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return schoolListModel.count
+        return isfilter ? filterSchoolList.count : schoolListModel.count
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 238)
@@ -97,13 +133,16 @@ extension ExploreVC: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         DispatchQueue.main.async {
             cell.shadV.addShadow(12)
         }
-        cell.configCell(model: schoolListModel[indexPath.item])
+        cell.configCell(model: isfilter ? filterSchoolList[indexPath.item] : schoolListModel[indexPath.item])
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = UIStoryboard.storyBoard(withName: .explore).loadViewController(withIdentifier: .exploreMapVC) as! ExploreMapVC
-        vc.school = schoolListModel[indexPath.item]
+        
+        let vc = UIStoryboard.storyBoard(withName: .explore).loadViewController(withIdentifier: .schoolDetailVC) as! SchoolDetailVC
+        vc.school = isfilter ? filterSchoolList[indexPath.item] : schoolListModel[indexPath.item]
         self.show(vc, sender: self)
     }
+    
+    
 }
 
