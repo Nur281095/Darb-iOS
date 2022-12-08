@@ -21,11 +21,17 @@ class LoginVC: BaseVC {
     @IBOutlet weak var forgotPassBtn: UIButton!
     
     var isRemeber = false
+    var frmSignup = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         backBtn.setTitle("", for: .normal)
+        if frmSignup {
+            backBtn.isHidden = true
+        } else {
+            backBtn.isHidden = false
+        }
+        
         let forgotPassTitle = StyledString("Forgot your password?").with(foregroundColor: UIColor(hexString: "#386AFF")).with(font: UIFont(name: AppFonts.roboto, size: 12)).with(underlineStyle: .single, color: UIColor(hexString: "#386AFF"))
         forgotPassBtn.setAttributedTitle(forgotPassTitle.nsAttributedString, for: .normal)
     }

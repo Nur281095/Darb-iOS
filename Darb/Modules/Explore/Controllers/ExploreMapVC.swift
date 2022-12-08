@@ -20,6 +20,7 @@ class ExploreMapVC: BaseVC, MKMapViewDelegate, UITextFieldDelegate {
     @IBOutlet weak var seacrh: UITextField!
     @IBOutlet weak var shadV: UIView!
     
+    @IBOutlet weak var searchV: UIView!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var address: UILabel!
@@ -33,6 +34,14 @@ class ExploreMapVC: BaseVC, MKMapViewDelegate, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if schoolListModel.isEmpty {
+            shadV.isHidden = true
+            searchV.isHidden = true
+        } else {
+            shadV.isHidden = false
+            searchV.isHidden = false
+        }
+        configureMap()
         backBtn.setTitle("", for: .normal)
         listBtn.setTitle("", for: .normal)
         filterBtn.setTitle("", for: .normal)
@@ -99,7 +108,7 @@ class ExploreMapVC: BaseVC, MKMapViewDelegate, UITextFieldDelegate {
         rateV.rating = Double(schl.totalReviews ?? "0") ?? 0.0
         ratingLbl.text = schl.totalReviews ?? "0.0"
     }
-    private func configureMap(school: SchoolListModel) {
+    private func configureMap(school: SchoolListModel? = nil) {
         mapV.showsUserLocation = true
         mapV.showsCompass = true
         mapV.isZoomEnabled = true
@@ -109,18 +118,20 @@ class ExploreMapVC: BaseVC, MKMapViewDelegate, UITextFieldDelegate {
         if let loc = AppLocation.loc {
             coordinate = loc
         } else {
-            coordinate = CLLocationCoordinate2D(latitude: Double(school.lat ?? "0") ?? 0.0, longitude: Double(school.lang ?? "0") ?? 0.0)
+            coordinate = CLLocationCoordinate2D(latitude: Double(school!.lat ?? "0") ?? 0.0, longitude: Double(school!.lang ?? "0") ?? 0.0)
         }
 //        let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
         let span = MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
         let region = MKCoordinateRegion(center: coordinate, span: span)
         mapV.setRegion(region, animated: true)
+        if let school {
+            let pin = MKPointAnnotation()
+            pin.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+            pin.title = school.name
+            pin.subtitle = "\(school.id!)"
+            mapV.addAnnotation(pin)
+        }
         
-        let pin = MKPointAnnotation()
-        pin.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-        pin.title = school.name
-        pin.subtitle = "\(school.id!)"
-        mapV.addAnnotation(pin)
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {

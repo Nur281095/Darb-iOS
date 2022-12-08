@@ -155,7 +155,7 @@ class Util: NSObject
                 layer.removeFromSuperlayer()
             }
         }
-        gradientLayer.colors = [UIColor(hexString: "#386AFF").cgColor, UIColor(hexString: "#386AFF").cgColor]
+        gradientLayer.colors = [UIColor(hexString: "#FE8569").cgColor, UIColor(hexString: "#FE8569").cgColor]
         gradientLayer.startPoint = CGPoint(x: 0.5, y: 1.0)
         gradientLayer.endPoint = CGPoint(x: 0.5, y: 0.0)
         gradientLayer.locations = [0, 1]

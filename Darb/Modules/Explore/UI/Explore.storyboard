@@ -252,7 +252,7 @@
         <!--School DetailVC-->
         <scene sceneID="my8-u6-QVe">
             <objects>
-                <viewController storyboardIdentifier="SchoolDetailVC" id="Jwd-bg-xps" customClass="SchoolDetailVC" customModule="Darb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SchoolDetailVC" hidesBottomBarWhenPushed="YES" id="Jwd-bg-xps" customClass="SchoolDetailVC" customModule="Darb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IAB-xz-q4h">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="1450"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1374,6 +1374,7 @@
                         <outlet property="rateV" destination="xdA-43-Tq8" id="4YZ-uX-2gV"/>
                         <outlet property="ratingLbl" destination="X48-Hg-riI" id="HFn-bn-ccb"/>
                         <outlet property="seacrh" destination="Mhf-pG-Zt8" id="2oI-yr-cvZ"/>
+                        <outlet property="searchV" destination="e4U-fK-Iv7" id="Zn3-Jd-erW"/>
                         <outlet property="shadV" destination="CC3-og-HT8" id="Ffp-Yp-QmP"/>
                     </connections>
                 </viewController>

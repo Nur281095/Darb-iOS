@@ -103,13 +103,16 @@ class SignupVC: BaseVC {
                 if let status = json["status"].int {
                     if statusRange.contains(status) {
                         
-                        if let user = json["data"].dictionaryObject {
-                            if let usrStr = user.aa_json {
-                                UserDefaults.standard.set(usrStr, forKey: "user")    
-                                SceneDelegate.shared?.checkUserLoggedIn()
-                            }
-                        }
+//                        if let user = json["data"].dictionaryObject {
+//                            if let usrStr = user.aa_json {
+//                                UserDefaults.standard.set(usrStr, forKey: "user")
+//                                SceneDelegate.shared?.checkUserLoggedIn()
+//                            }
+//                        }
                         
+                        let vc = UIStoryboard.storyBoard(withName: .auth).loadViewController(withIdentifier: .loginVC) as! LoginVC
+                        vc.frmSignup = true
+                        self.show(vc, sender: self)
                     } else {
                         self.showTool(msg: json["message"].string ?? "", state: .error)
                     }

@@ -45,24 +45,7 @@ class EnrollDetailVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSour
                 sec1.append(dic)
             }
         }
-        
-        if enroll.school != nil {
-            if enroll.school.name != nil {
-                dic["name"] = enroll.school.name
-                dic["title"] = "School Name"
-                sec1.append(dic)
-            }
-            if enroll.school.offeredCurriculum != nil {
-                dic["name"] = enroll.school.offeredCurriculum
-                dic["title"] = "School Curriculum"
-                sec1.append(dic)
-            }
-            if enroll.school.levelOfEducation != nil {
-                dic["name"] = enroll.school.levelOfEducation
-                dic["title"] = "School Education Level"
-                sec1.append(dic)
-            }
-        }
+       
         
         if enroll.firstName != nil {
             dic["name"] = enroll.firstName

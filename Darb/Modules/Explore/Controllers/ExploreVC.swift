@@ -31,12 +31,13 @@ class ExploreVC: BaseVC, SchoolFilterDelegate, UITextFieldDelegate {
         
         search.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
-        getSchoolList()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = false
+        getSchoolList()
     }
     
     override func btnRightAction(_ sender: Any) {

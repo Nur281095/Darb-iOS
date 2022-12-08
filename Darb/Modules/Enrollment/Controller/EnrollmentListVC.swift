@@ -8,6 +8,7 @@
 import UIKit
 import StyledString
 import SwiftyJSON
+import AAExtensions
 
 class EnrollmentListVC: BaseVC {
     
@@ -21,6 +22,11 @@ class EnrollmentListVC: BaseVC {
 
         self.navigationItem.leftBarButtonItem = btnBack(isOrignal: false)
         self.navigationItem.title = "Enrollment Application"
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         getEnrollList()
     }
     
@@ -38,8 +44,11 @@ class EnrollmentListVC: BaseVC {
                             for d in data {
                                 self.enrolls.append(Child(fromDictionary: d))
                             }
+                            self.enrolls = self.enrolls.filter({$0.enrollementStatus != "unapplied"})
                             if !self.enrolls.isEmpty {
 //                                self.enrolls = self.enrolls.filter({$0.enrollementStatus != "unapplied"})
+                                self.showTool(msg: "No enrollment found", state: .warning)
+                                self.goBackWithDelay()
                             }
                         }
                         self.colV.reloadData()
@@ -71,8 +80,21 @@ extension EnrollmentListVC: UICollectionViewDelegate, UICollectionViewDataSource
         DispatchQueue.main.async {
             cell.shadV.addShadow(12)
         }
+        let model = self.enrolls[indexPath.item]
         let str = StyledString("Processing").with(foregroundColor: UIColor(hexString: "#DF9401")).with(font: UIFont(name: AppFonts.roboto, size: 13)).with(backgroundColor: UIColor(hexString: "#FFC33E").withAlphaComponent(0.20))
         cell.statusBtn.setAttributedTitle(str.nsAttributedString, for: .normal)
+
+        let name = "\(model.firstName ?? "") \(model.lastName ?? "")"
+        cell.name.text = name
+        cell.nameLbls.text = name.getAcronyms().uppercased()
+        cell.grade.text = model.grade.gradeName
+        cell.schlName.text = model.school.name
+        if !model.school.gallery.isEmpty {
+            cell.image.sd_setImage(with: URL(string: model.school.gallery[0].name)!)
+        } else {
+            cell.image.image = nil
+        }
+        cell.address.text = model.school.location
         return cell
     }
     
