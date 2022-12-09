@@ -37,7 +37,7 @@ class SchoolListModel: NSObject, NSCoding{
      * Instantiate the instance using the passed dictionary values to set the properties values
      */
     init(fromDictionary dictionary: [String:Any]){
-        adminId = dictionary["admin_id"] as? String
+        adminId = dictionary["admin_id"] as? String ?? ""
         buildings = dictionary["buildings"] as? String
         city = dictionary["city"] as? String
         classrooms = dictionary["classrooms"] as? String

@@ -21,6 +21,7 @@ class ALF: NSObject {
     private func urlString(subUrl: String) -> String {
     
         return "https://darb.nicelylogic.com/api/\(subUrl)"
+//        return "http://127.0.0.1:8000/api/\(subUrl)"
         
     }
     

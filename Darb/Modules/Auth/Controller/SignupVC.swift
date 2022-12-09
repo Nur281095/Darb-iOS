@@ -100,7 +100,7 @@ class SignupVC: BaseVC {
             print(response)
             DispatchQueue.main.async {
                 let json = JSON(response)
-                if let status = json["status"].int {
+                if let status = json["status_code"].int {
                     if statusRange.contains(status) {
                         
 //                        if let user = json["data"].dictionaryObject {

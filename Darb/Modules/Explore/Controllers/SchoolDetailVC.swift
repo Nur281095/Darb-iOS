@@ -122,14 +122,11 @@ class SchoolDetailVC: BaseVC, ImageSlideshowDelegate {
     
     @IBAction func contactTap(_ sender: Any) {
         
-        let usr = Util.getUser()!
-        var name = ""
         let vc = UIStoryboard.storyBoard(withName: .chat).loadViewController(withIdentifier: .chatVC) as! ChatVC
         
         vc.schoolID = school.adminId.aa_toInt
-//        name = "\(model.receiver.firstName ?? "") \(model.receiver.lastName ?? "")"
-        
-        vc.otherName = name
+        vc.otherName = school.name
+
         self.show(vc, sender: self)
     }
     
