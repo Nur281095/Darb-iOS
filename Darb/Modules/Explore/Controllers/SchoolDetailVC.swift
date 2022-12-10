@@ -124,9 +124,9 @@ class SchoolDetailVC: BaseVC, ImageSlideshowDelegate {
         
         let vc = UIStoryboard.storyBoard(withName: .chat).loadViewController(withIdentifier: .chatVC) as! ChatVC
         
-        vc.schoolID = school.adminId.aa_toInt
+        vc.schoolID = school.adminId
         vc.otherName = school.name
-
+        
         self.show(vc, sender: self)
     }
     

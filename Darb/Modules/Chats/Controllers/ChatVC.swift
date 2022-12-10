@@ -156,6 +156,7 @@ class ChatVC: BaseVC {
         tempDic["message"] = self.growingTextView.text as AnyObject
         tempDic["type"] = "sender" as AnyObject
         tempDic["admin_id"] = self.schoolID as AnyObject
+        print(tempDic)
         self.chats.append(ChatModel(fromDictionary: tempDic))
         self.tblView.reloadData()
         self.scrollToBottom(height: 0)
@@ -206,6 +207,9 @@ extension ChatVC: UITableViewDelegate, UITableViewDataSource {
             cell.msgView.aa_roundCorners(topLeft: false, topRight: true, bottomLeft: true, bottomRight: true, strokeColor: nil, lineWidth: 0, radius: 12)
             if otherName.count > 2 {
                 let newName = String(otherName.getAcronyms().prefix(2))
+                cell.nameLbls.text = newName.uppercased()
+            } else if otherName.count == 1 {
+                let newName = String(otherName.getAcronyms().prefix(1))
                 cell.nameLbls.text = newName.uppercased()
             } else {
                 cell.nameLbls.text = otherName.getAcronyms().uppercased()

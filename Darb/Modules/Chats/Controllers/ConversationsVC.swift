@@ -74,14 +74,27 @@ extension ConversationsVC: UITableViewDelegate, UITableViewDataSource {
         
         let usr = Util.getUser()!
         if model.sender.id != usr.id {
-            let name = "\(model.sender.firstName ?? "") \(model.sender.lastName ?? "")"
+            var name = ""
+            if model.sender.lastName == "" {
+                name = model.sender.firstName
+            } else {
+                name = "\(model.sender.firstName ?? "") \(model.sender.lastName ?? "")"
+            }
             cell.name.text = name
             cell.naameLbls.text = name.getAcronyms().uppercased()
         } else if model.receiver.id != usr.id {
-            let name = "\(model.receiver.firstName ?? "") \(model.receiver.lastName ?? "")"
+            var name = ""
+            if model.receiver.lastName == "" {
+                name = model.receiver.firstName
+            } else {
+                name = "\(model.receiver.firstName ?? "") \(model.receiver.lastName ?? "")"
+            }
             cell.name.text = name
             if name.count > 2 {
                 let newName = String(name.getAcronyms().prefix(2))
+                cell.naameLbls.text = newName.uppercased()
+            } else if name.count == 1 {
+                let newName = String(name.getAcronyms().prefix(1))
                 cell.naameLbls.text = newName.uppercased()
             } else {
                 cell.naameLbls.text = name.getAcronyms().uppercased()

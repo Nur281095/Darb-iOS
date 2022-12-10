@@ -9,7 +9,7 @@ import UIKit
 
 class SchoolListModel: NSObject, NSCoding{
     
-    var adminId : String!
+    var adminId : Int!
     var buildings : String!
     var city : String!
     var classrooms : String!
@@ -37,7 +37,7 @@ class SchoolListModel: NSObject, NSCoding{
      * Instantiate the instance using the passed dictionary values to set the properties values
      */
     init(fromDictionary dictionary: [String:Any]){
-        adminId = dictionary["admin_id"] as? String ?? ""
+        adminId = dictionary["admin_id"] as? Int
         buildings = dictionary["buildings"] as? String
         city = dictionary["city"] as? String
         classrooms = dictionary["classrooms"] as? String
@@ -152,7 +152,7 @@ class SchoolListModel: NSObject, NSCoding{
     */
     @objc required init(coder aDecoder: NSCoder)
     {
-         adminId = aDecoder.decodeObject(forKey: "admin_id") as? String
+         adminId = aDecoder.decodeObject(forKey: "admin_id") as? Int
          buildings = aDecoder.decodeObject(forKey: "buildings") as? String
          city = aDecoder.decodeObject(forKey: "city") as? String
          classrooms = aDecoder.decodeObject(forKey: "classrooms") as? String

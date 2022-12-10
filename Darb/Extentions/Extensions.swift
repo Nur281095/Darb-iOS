@@ -829,7 +829,7 @@ extension UILabel {
 
 extension String {
     public func getAcronyms() -> String {
-        let acronyms = self.components(separatedBy: " ").map({ String($0.first!) }).joined(separator: "")
+        let acronyms = self.components(separatedBy: " ").map({ String($0.first ?? "T") }).joined(separator: "")
         return acronyms;
     }
 }
