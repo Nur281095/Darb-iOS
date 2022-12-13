@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AAExtensions
 
 class SchoolListModel: NSObject, NSCoding{
     
@@ -31,13 +32,19 @@ class SchoolListModel: NSObject, NSCoding{
     var transportation : String!
     var updatedAt : String!
     var website : String!
+    var educationLevels : [EduLevels]!
 
 
     /**
      * Instantiate the instance using the passed dictionary values to set the properties values
      */
     init(fromDictionary dictionary: [String:Any]){
-        adminId = dictionary["admin_id"] as? Int
+        if let adminIdID = dictionary["admin_id"] as? String {
+            adminId = adminIdID.aa_toInt
+        } else if let adminIdID = dictionary["admin_id"] as? Int {
+            adminId = adminIdID
+        }
+        
         buildings = dictionary["buildings"] as? String
         city = dictionary["city"] as? String
         classrooms = dictionary["classrooms"] as? String
@@ -61,10 +68,23 @@ class SchoolListModel: NSObject, NSCoding{
         offeredCurriculum = dictionary["offered_curriculum"] as? String
         phone = dictionary["phone"] as? String
         studentType = dictionary["student_type"] as? String
-        totalReviews = dictionary["total_reviews"] as? String
+        if let reviwes = dictionary["total_reviews"] as? String {
+            totalReviews = reviwes
+        } else if let reviwes = dictionary["total_reviews"] as? Int {
+            totalReviews = "\(reviwes)"
+        }
+        
         transportation = dictionary["transportation"] as? String
         updatedAt = dictionary["updated_at"] as? String
         website = dictionary["website"] as? String
+        educationLevels = [EduLevels]()
+        if let educationLevelsArray = dictionary["education_levels"] as? [[String:Any]]{
+            for dic in educationLevelsArray{
+                let value = EduLevels(fromDictionary: dic)
+                educationLevels.append(value)
+            }
+        }
+        
     }
 
     /**

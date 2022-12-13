@@ -11,6 +11,7 @@ import SwiftyJSON
 class ResetPassVC: BaseVC {
 
     @IBOutlet weak var newPassTxt: UITextField!
+    @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var conPassTxt: UITextField!
     
     var resetToken = ""
@@ -18,7 +19,7 @@ class ResetPassVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        backBtn.setTitle("", for: .normal)
     }
     
     @IBAction func backTap(_ sender: Any) {

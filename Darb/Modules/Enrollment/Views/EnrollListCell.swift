@@ -19,5 +19,4 @@ class EnrollListCell: UICollectionViewCell {
     @IBOutlet weak var schlName: UILabel!
     @IBOutlet weak var address: UILabel!
     
-    @IBOutlet weak var statusTap: UIButton!
 }

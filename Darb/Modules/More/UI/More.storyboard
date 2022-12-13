@@ -1137,6 +1137,40 @@
             </objects>
             <point key="canvasLocation" x="2732" y="1"/>
         </scene>
+        <!--WebVC-->
+        <scene sceneID="z9C-j2-lVc">
+            <objects>
+                <viewController storyboardIdentifier="WebVC" hidesBottomBarWhenPushed="YES" id="vHq-BX-axW" customClass="WebVC" customModule="Darb" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sda-gA-Vnd">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIf-ma-jH8">
+                                <rect key="frame" x="0.0" y="47" width="390" height="763"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FxV-9t-EHZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FxV-9t-EHZ" firstAttribute="bottom" secondItem="zIf-ma-jH8" secondAttribute="bottom" id="8h8-dx-SwJ"/>
+                            <constraint firstItem="FxV-9t-EHZ" firstAttribute="trailing" secondItem="zIf-ma-jH8" secondAttribute="trailing" id="daG-S8-P0Q"/>
+                            <constraint firstItem="zIf-ma-jH8" firstAttribute="leading" secondItem="FxV-9t-EHZ" secondAttribute="leading" id="kfH-oM-vK2"/>
+                            <constraint firstItem="zIf-ma-jH8" firstAttribute="top" secondItem="FxV-9t-EHZ" secondAttribute="top" id="x0f-Od-jvD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="zIf-ma-jH8" id="dhZ-x2-71M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Txn-6r-K0i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3438" y="-1"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_arrow_right" width="11" height="19"/>

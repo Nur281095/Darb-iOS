@@ -13,11 +13,13 @@ class OtpVC: BaseVC, SwiftyCodeViewDelegate {
 
     @IBOutlet weak var codeview: SwiftyCodeView!
     
+    @IBOutlet weak var backBtn: UIButton!
     var email = ""
-    var code = ""
+    var code = "" 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        backBtn.setTitle("", for: .normal)
         codeview.length = 6
         codeview.delegate = self
         codeview.becomeFirstResponder()

@@ -79,7 +79,7 @@ extension TransportListVC: UICollectionViewDelegate, UICollectionViewDataSource,
         }
         let model = transports[indexPath.item]
         cell.fromToDescrip.attributedText = cell.setDescrip(model: model)
-        cell.statusBtn.setTitle("", for: .normal)
+        cell.statusBtn.setTitle(model.status.capitalized, for: .normal)
         cell.schoolName.text = model.schoolName
         return cell
     }

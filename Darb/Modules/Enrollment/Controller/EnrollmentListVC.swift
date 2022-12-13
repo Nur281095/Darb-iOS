@@ -27,6 +27,8 @@ class EnrollmentListVC: BaseVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        enrolls.removeAll()
+        colV.reloadData()
         getEnrollList()
     }
     
@@ -45,13 +47,15 @@ class EnrollmentListVC: BaseVC {
                                 self.enrolls.append(Child(fromDictionary: d))
                             }
                             self.enrolls = self.enrolls.filter({$0.enrollementStatus != "unapplied"})
-                            if !self.enrolls.isEmpty {
+                            if self.enrolls.isEmpty {
 //                                self.enrolls = self.enrolls.filter({$0.enrollementStatus != "unapplied"})
                                 self.showTool(msg: "No enrollment found", state: .warning)
                                 self.goBackWithDelay()
+                            } else {
+                                self.colV.reloadData()
                             }
                         }
-                        self.colV.reloadData()
+                        
 
                     } else {
                         self.showTool(msg: json["message"].string ?? "", state: .error)
@@ -95,6 +99,7 @@ extension EnrollmentListVC: UICollectionViewDelegate, UICollectionViewDataSource
             cell.image.image = nil
         }
         cell.address.text = model.school.location
+        cell.statusBtn.setTitle(model.enrollementStatus.capitalized, for: .normal)
         return cell
     }
     

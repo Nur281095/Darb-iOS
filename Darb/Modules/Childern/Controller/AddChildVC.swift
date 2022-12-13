@@ -79,7 +79,7 @@ class AddChildVC: BaseVC {
         self.resignAll()
         docTyp = .birh
         imagePicker.delegate = self
-        let alertVC = UIAlertController(title: "UON",
+        let alertVC = UIAlertController(title: "Darb",
                                         message: "Please select source",
                                         preferredStyle: .actionSheet)
         alertVC.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
@@ -100,7 +100,7 @@ class AddChildVC: BaseVC {
         self.resignAll()
         docTyp = .photo
         imagePicker.delegate = self
-        let alertVC = UIAlertController(title: "UON",
+        let alertVC = UIAlertController(title: "Darb",
                                         message: "Please select source",
                                         preferredStyle: .actionSheet)
         alertVC.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
@@ -121,7 +121,7 @@ class AddChildVC: BaseVC {
         self.resignAll()
         docTyp = .health
         imagePicker.delegate = self
-        let alertVC = UIAlertController(title: "UON",
+        let alertVC = UIAlertController(title: "Darb",
                                         message: "Please select source",
                                         preferredStyle: .actionSheet)
         alertVC.addAction(UIAlertAction(title: "Camera", style: .default, handler: { action in
@@ -147,7 +147,7 @@ class AddChildVC: BaseVC {
             return
         }
         
-        let lNameValid = Validator.validateString(text: fNameTxt.text, type: "Last name")
+        let lNameValid = Validator.validateString(text: lNameTxt.text, type: "Last name")
         if !lNameValid.0 {
             print(lNameValid.1)
             self.showTool(msg: lNameValid.1, state: .error)
@@ -170,35 +170,33 @@ class AddChildVC: BaseVC {
         
         if isAdd {
             if bCertID == -1 {
-                self.showTool(msg: "Birth Certificate", state: .error)
+                self.showTool(msg: "Birth Certificate is required", state: .error)
                 return
             }
             
             if healthDocID == -1 {
-                self.showTool(msg: "Health Report", state: .error)
+                self.showTool(msg: "Health Report is required", state: .error)
                 return
             }
             if portPhotoID == -1 {
-                self.showTool(msg: "Portrait Photo", state: .error)
+                self.showTool(msg: "Portrait Photo is required", state: .error)
                 return
             }
         } else {
             if bCertTxt.aa_isEmpty {
-                self.showTool(msg: "Birth Certificate", state: .error)
+                self.showTool(msg: "Birth Certificate is required", state: .error)
                 return
             }
             
             if heathRepTxt.aa_isEmpty {
-                self.showTool(msg: "Health Report", state: .error)
+                self.showTool(msg: "Health Report is required", state: .error)
                 return
             }
             if portPhotoTxt.aa_isEmpty {
-                self.showTool(msg: "Portrait Photo", state: .error)
+                self.showTool(msg: "Portrait Photo is required", state: .error)
                 return
             }
         }
-        
-        
         
         var dic = Dictionary<String, AnyObject>()
         dic["first_name"] = fNameTxt.text as AnyObject

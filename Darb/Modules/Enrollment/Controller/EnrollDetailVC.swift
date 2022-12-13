@@ -39,8 +39,8 @@ class EnrollDetailVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSour
                 dic["title"] = "School Curriculum"
                 sec1.append(dic)
             }
-            if enroll.school.levelOfEducation != nil {
-                dic["name"] = enroll.school.levelOfEducation
+            if !enroll.school.educationLevels.isEmpty {
+                dic["name"] = (enroll.school.educationLevels.map({$0.name})).map{String($0)}.joined(separator: ", ")
                 dic["title"] = "School Education Level"
                 sec1.append(dic)
             }
@@ -161,29 +161,39 @@ class EnrollDetailVC: BaseVC, UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     @IBAction func cancelEnrollTap(_ sender: Any) {
-        
-        Util.shared.showSpinner()
-        ALF.shared.doDeleteData(parameters: [:], method: "child_schools/\(enroll.id!)") { response in
-            Util.shared.hideSpinner()
-            print(response)
-            DispatchQueue.main.async {
-                let json = JSON(response)
-                if let status = json["status_code"].int {
-                    if statusRange.contains(status) {
-                        self.showTool(msg: json["message"].string ?? "", state: .success)
-                        self.goBackWithDelay()
-                    } else {
-                        self.showTool(msg: json["message"].string ?? "", state: .error)
+        let alertVC = UIAlertController(title: "Darb",
+                                        message: "Are you sure to cancel this enrollment?",
+                                        preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { action in
+            Util.shared.showSpinner()
+            ALF.shared.doDeleteData(parameters: [:], method: "child_schools/\(self.enroll.id!)") { response in
+                Util.shared.hideSpinner()
+                print(response)
+                DispatchQueue.main.async {
+                    let json = JSON(response)
+                    if let status = json["status_code"].int {
+                        if statusRange.contains(status) {
+                            self.showTool(msg: json["message"].string ?? "", state: .success)
+                            self.goBackWithDelay()
+                        } else {
+                            self.showTool(msg: json["message"].string ?? "", state: .error)
+                        }
                     }
+                }
+                
+            } fail: { response in
+                Util.shared.hideSpinner()
+                DispatchQueue.main.async {
+                    self.showTool(msg: response as? String ?? "Error", state: .error)
                 }
             }
             
-        } fail: { response in
-            Util.shared.hideSpinner()
-            DispatchQueue.main.async {
-                self.showTool(msg: response as? String ?? "Error", state: .error)
-            }
-        }
+        }))
+        alertVC.addAction(UIAlertAction(title: "No", style: .default, handler: { action in
+            
+        }))
+        
+        self.present(alertVC, animated: true, completion: nil)
         
     }
 }

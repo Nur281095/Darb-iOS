@@ -150,9 +150,9 @@ class Sender : NSObject, NSCoding{
         createdAt = dictionary["created_at"] as? String
         email = dictionary["email"] as? String
         emailVerifiedAt = dictionary["email_verified_at"] as? String
-        firstName = dictionary["first_name"] as? String
+        firstName = dictionary["first_name"] as? String ?? ""
         id = dictionary["id"] as? Int
-        lastName = dictionary["last_name"] as? String
+        lastName = dictionary["last_name"] as? String ?? ""
         phoneNo = dictionary["phone_no"] as? String
         roleId = dictionary["role_id"] as? String
         updatedAt = dictionary["updated_at"] as? String

@@ -79,11 +79,16 @@
 		0195AC492926017D00766171 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0195AC412926017D00766171 /* Roboto-Thin.ttf */; };
 		0195AC4A2926017D00766171 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0195AC422926017D00766171 /* Roboto-Black.ttf */; };
 		0195AC4D2926039400766171 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0195AC4C2926039400766171 /* BaseVC.swift */; };
+		019E8F242946292E00F1C64B /* about.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 019E8F212946292E00F1C64B /* about.pdf */; };
+		019E8F252946292E00F1C64B /* terms.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 019E8F222946292E00F1C64B /* terms.pdf */; };
+		019E8F262946292E00F1C64B /* Privacy.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 019E8F232946292E00F1C64B /* Privacy.pdf */; };
+		019E8F282946297000F1C64B /* WebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E8F272946297000F1C64B /* WebVC.swift */; };
 		01A18100292E193D006D75A8 /* SchoolFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A180FF292E193D006D75A8 /* SchoolFilterVC.swift */; };
 		01A76E2E293614E400298778 /* ConversationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A76E2D293614E400298778 /* ConversationsModel.swift */; };
 		01A76E3029361A2000298778 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A76E2F29361A2000298778 /* ChatVC.swift */; };
 		01A76E3229361AFC00298778 /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A76E3129361AFC00298778 /* ChatModel.swift */; };
 		01A76E3429361C1500298778 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A76E3329361C1500298778 /* ChatCell.swift */; };
+		01B167552947894300723570 /* EduLevels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B167542947894300723570 /* EduLevels.swift */; };
 		01B1B69429348C9F00874EDA /* SchoolDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B1B69329348C9F00874EDA /* SchoolDetailVC.swift */; };
 		01B1B696293491E500874EDA /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01B1B695293491E500874EDA /* Roboto-Light.ttf */; };
 		01C35841292B3B3F00EA9D11 /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C35840292B3B3F00EA9D11 /* TabbarVC.swift */; };
@@ -172,11 +177,16 @@
 		0195AC412926017D00766171 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		0195AC422926017D00766171 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		0195AC4C2926039400766171 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
+		019E8F212946292E00F1C64B /* about.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = about.pdf; sourceTree = "<group>"; };
+		019E8F222946292E00F1C64B /* terms.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = terms.pdf; sourceTree = "<group>"; };
+		019E8F232946292E00F1C64B /* Privacy.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Privacy.pdf; sourceTree = "<group>"; };
+		019E8F272946297000F1C64B /* WebVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebVC.swift; sourceTree = "<group>"; };
 		01A180FF292E193D006D75A8 /* SchoolFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolFilterVC.swift; sourceTree = "<group>"; };
 		01A76E2D293614E400298778 /* ConversationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsModel.swift; sourceTree = "<group>"; };
 		01A76E2F29361A2000298778 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		01A76E3129361AFC00298778 /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		01A76E3329361C1500298778 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		01B167542947894300723570 /* EduLevels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EduLevels.swift; sourceTree = "<group>"; };
 		01B1B69329348C9F00874EDA /* SchoolDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailVC.swift; sourceTree = "<group>"; };
 		01B1B695293491E500874EDA /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		01C35840292B3B3F00EA9D11 /* TabbarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
@@ -347,6 +357,9 @@
 		01487A8829235442007E8910 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				019E8F212946292E00F1C64B /* about.pdf */,
+				019E8F232946292E00F1C64B /* Privacy.pdf */,
+				019E8F222946292E00F1C64B /* terms.pdf */,
 				0195AC3A2926017D00766171 /* Fonts */,
 				01487A7C29235374007E8910 /* Assets.xcassets */,
 				01487A7E29235374007E8910 /* LaunchScreen.storyboard */,
@@ -431,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				01487A9C29235466007E8910 /* User.swift */,
+				01B167542947894300723570 /* EduLevels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -449,6 +463,7 @@
 				0167487D292620C800FAE87E /* Home */,
 				0195AC4B2926039400766171 /* BaseVC */,
 				0195AC2B2925FFCA00766171 /* Auth */,
+				019E8F272946297000F1C64B /* WebVC.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -890,13 +905,16 @@
 				016748942926214000FAE87E /* Explore.storyboard in Resources */,
 				016748922926212F00FAE87E /* Home.storyboard in Resources */,
 				0195AC312926001400766171 /* Auth.storyboard in Resources */,
+				019E8F252946292E00F1C64B /* terms.pdf in Resources */,
 				013F45A9292DFE1700B8AF12 /* Enrollment.storyboard in Resources */,
 				01487A8029235374007E8910 /* LaunchScreen.storyboard in Resources */,
 				01B1B696293491E500874EDA /* Roboto-Light.ttf in Resources */,
 				013F0D8029306C6400B729C3 /* Transport.storyboard in Resources */,
+				019E8F242946292E00F1C64B /* about.pdf in Resources */,
 				0195AC4A2926017D00766171 /* Roboto-Black.ttf in Resources */,
 				0195AC482926017D00766171 /* Roboto-Bold.ttf in Resources */,
 				018F7C4E292C8B20005B02DC /* Child.storyboard in Resources */,
+				019E8F262946292E00F1C64B /* Privacy.pdf in Resources */,
 				0195AC452926017D00766171 /* RobotoCondensed-Light.ttf in Resources */,
 				0195AC472926017D00766171 /* RobotoCondensed-Regular.ttf in Resources */,
 				0195AC492926017D00766171 /* Roboto-Thin.ttf in Resources */,
@@ -964,6 +982,7 @@
 				01487ADB29235466007E8910 /* AppStoryboards.swift in Sources */,
 				01EAC4A829371B8700FB5384 /* AnnouncementModel.swift in Sources */,
 				0177B9F62928B513005747AF /* OtpVC.swift in Sources */,
+				01B167552947894300723570 /* EduLevels.swift in Sources */,
 				01487ADE29235466007E8910 /* Reach.swift in Sources */,
 				018F7C49292C8AB4005B02DC /* SchoolSubjectsVC.swift in Sources */,
 				014899A1293078FA003FBF1C /* TransportListCell.swift in Sources */,
@@ -986,6 +1005,7 @@
 				01EAC4AA29371CAC00FB5384 /* EnrollDetailVC.swift in Sources */,
 				013FCCBC292CA78600455BC4 /* Child.swift in Sources */,
 				01E437C92931D8E400E43B45 /* ChangePassVC.swift in Sources */,
+				019E8F282946297000F1C64B /* WebVC.swift in Sources */,
 				0180652C29308958000112AD /* ConversationCell.swift in Sources */,
 				01487ADC29235466007E8910 /* SKToast.swift in Sources */,
 				01EAC4A62937195600FB5384 /* SchoolGrade.swift in Sources */,
@@ -1160,10 +1180,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J898DPF329;
+				DEVELOPMENT_TEAM = 473HN48RD9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Darb/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow to find school near you";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow to find school near you";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow to find school near you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
@@ -1175,7 +1198,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mine.Darb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mine.Darb1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1194,10 +1217,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = J898DPF329;
+				DEVELOPMENT_TEAM = 473HN48RD9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Darb/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Allow to find school near you";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Allow to find school near you";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow to find school near you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
@@ -1209,7 +1235,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mine.Darb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mine.Darb1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

@@ -118,6 +118,9 @@ class SchoolEnrollVC: BaseVC {
         }
     }
     @IBAction func eduLvlTap(_ sender: UIButton) {
+        if progTyp == .full {
+            return
+        }
         let curiculums = grades.map({$0.gradeName.capitalized})
         let dropDown = DropDown()
         dropDown.dataSource = curiculums
@@ -137,7 +140,7 @@ class SchoolEnrollVC: BaseVC {
             self.eduLevelIndex = index
         }
         if eduLevelIndex != -1 {
-            dropDown.selectRow(eduLevelIndex, scrollPosition: .middle)
+            dropDown.selectRow(eduLevelIndex, scrollPosition: .none)
         }
         dropDown.width = sender.frame.width
         dropDown.direction = .any
@@ -145,6 +148,9 @@ class SchoolEnrollVC: BaseVC {
     }
     
     @IBAction func childTap(_ sender: UIButton) {
+        if progTyp == .full {
+            return
+        }
         let dropDown = DropDown()
         dropDown.dataSource = childs.map({$0.firstName + $0.lastName})
         
@@ -163,7 +169,7 @@ class SchoolEnrollVC: BaseVC {
             self.childIndex = index
         }
         if eduLevelIndex != -1 {
-            dropDown.selectRow(eduLevelIndex, scrollPosition: .middle)
+            dropDown.selectRow(eduLevelIndex, scrollPosition: .none)
         }
         dropDown.width = sender.frame.width
         dropDown.direction = .any

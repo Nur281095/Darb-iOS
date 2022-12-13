@@ -77,7 +77,8 @@ extension ChildProfileVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         return arrayOfDic.count
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.frame.width/2) - 10, height: 45)
+//        return CGSize(width: (collectionView.frame.width/2) - 10, height: 45)
+        return CGSize(width: collectionView.frame.width, height: 45)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ChildDetailCell", for: indexPath) as! ChildDetailCell

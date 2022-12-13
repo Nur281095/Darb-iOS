@@ -114,24 +114,28 @@ class ExploreMapVC: BaseVC, MKMapViewDelegate, UITextFieldDelegate {
         mapV.isZoomEnabled = true
         mapV.showsBuildings = true
         mapV.showsTraffic = true
-        var coordinate: CLLocationCoordinate2D!
+        var coordinate: CLLocationCoordinate2D?
         if let loc = AppLocation.loc {
             coordinate = loc
         } else {
-            coordinate = CLLocationCoordinate2D(latitude: Double(school!.lat ?? "0") ?? 0.0, longitude: Double(school!.lang ?? "0") ?? 0.0)
+            if let school {
+                coordinate = CLLocationCoordinate2D(latitude: Double(school.lat ?? "0") ?? 0.0, longitude: Double(school.lang ?? "0") ?? 0.0)
+            }
         }
 //        let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
         let span = MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10)
-        let region = MKCoordinateRegion(center: coordinate, span: span)
-        mapV.setRegion(region, animated: true)
-        if let school {
-            let pin = MKPointAnnotation()
-            pin.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
-            pin.title = school.name
-            pin.subtitle = "\(school.id!)"
-            mapV.addAnnotation(pin)
+        if let coordinate {
+            let region = MKCoordinateRegion(center: coordinate, span: span)
+            mapV.setRegion(region, animated: true)
+            if let school {
+                let pin = MKPointAnnotation()
+                pin.coordinate = CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude)
+                pin.title = school.name
+                pin.subtitle = "\(school.id!)"
+                mapV.addAnnotation(pin)
+            }
         }
-        
+       
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {

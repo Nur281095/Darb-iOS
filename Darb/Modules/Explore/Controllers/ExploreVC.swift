@@ -22,6 +22,10 @@ class ExploreVC: BaseVC, SchoolFilterDelegate, UITextFieldDelegate {
     var isfilter = false
     var params = [String: AnyObject]()
     
+    var acadmicLevelIndex = [Int]()
+    var acadmicLevelIDs = [Int]()
+    var eduLvls = [EduLevels]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapsBtn.setTitle("", for: .normal)
@@ -48,7 +52,7 @@ class ExploreVC: BaseVC, SchoolFilterDelegate, UITextFieldDelegate {
     @objc func textFieldDidChange(_ textField: UITextField) {
         if !textField.aa_isEmpty {
             isfilter = true
-            filterSchoolList = schoolListModel.filter({$0.name.contains(textField.text!)})
+            filterSchoolList = schoolListModel.filter({$0.name.lowercased().contains(textField.text!.lowercased())})
         } else {
             isfilter = false
         }
@@ -58,7 +62,7 @@ class ExploreVC: BaseVC, SchoolFilterDelegate, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if !textField.aa_isEmpty {
             isfilter = true
-            filterSchoolList = schoolListModel.filter({$0.name.contains(textField.text!)})
+            filterSchoolList = schoolListModel.filter({$0.name.lowercased().contains(textField.text!.lowercased())})
         } else {
             isfilter = false
         }
@@ -74,6 +78,11 @@ class ExploreVC: BaseVC, SchoolFilterDelegate, UITextFieldDelegate {
             params["lat"] = loc.latitude as AnyObject
             params["lang"] = loc.longitude as AnyObject
         }
+        if !acadmicLevelIDs.isEmpty {
+            params["level_of_education"] = acadmicLevelIDs.map{String($0)}.joined(separator: ",") as AnyObject
+        }
+        
+        
         Util.shared.showSpinner()
         ALF.shared.doGetData(parameters: params, method: "schools") { response in
             Util.shared.hideSpinner()
@@ -83,6 +92,7 @@ class ExploreVC: BaseVC, SchoolFilterDelegate, UITextFieldDelegate {
                 if let status = json["status_code"].int {
                     if statusRange.contains(status) {
                         if let data = response["data"] as? [[String: Any]] {
+                            self.schoolListModel.removeAll()
                             for d in data {
                                 self.schoolListModel.append(SchoolListModel(fromDictionary: d))
                             }
@@ -104,6 +114,7 @@ class ExploreVC: BaseVC, SchoolFilterDelegate, UITextFieldDelegate {
     }
     
     func didTapApply(params: [String : AnyObject]) {
+        
         self.params = params
         self.getSchoolList()
     }
@@ -118,6 +129,9 @@ class ExploreVC: BaseVC, SchoolFilterDelegate, UITextFieldDelegate {
         
         let vc = UIStoryboard.storyBoard(withName: .explore).loadViewController(withIdentifier: .schoolFilterVC) as! SchoolFilterVC
         vc.delegate = self
+        vc.eduLvls = self.eduLvls
+        vc.acadmicLevelIDs = self.acadmicLevelIDs
+        vc.acadmicLevelIndex = self.acadmicLevelIndex
         self.show(vc, sender: self)
     }
 }

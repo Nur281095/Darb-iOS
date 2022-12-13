@@ -821,6 +821,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtn" destination="aUT-ge-W7r" id="UdN-gT-xJj"/>
                         <outlet property="conPassTxt" destination="Ap9-n4-cOv" id="Tl3-fK-YAa"/>
                         <outlet property="newPassTxt" destination="rFL-Rm-5Vo" id="s08-w7-KCy"/>
                     </connections>
@@ -848,7 +849,6 @@
                                 <buttonConfiguration key="configuration" style="plain" image="ic_back_white"/>
                                 <connections>
                                     <action selector="backTap:" destination="vMd-br-iSw" eventType="touchUpInside" id="qj0-2z-Ufb"/>
-                                    <action selector="backtap:" destination="vMd-br-iSw" eventType="touchUpInside" id="4Wc-zl-WEz"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OTP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTb-8L-jeX">
@@ -943,6 +943,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backBtn" destination="Qco-qH-ImW" id="Ecm-tc-DJy"/>
                         <outlet property="codeview" destination="5yU-Xz-xLj" id="XVO-8i-YL3"/>
                     </connections>
                 </viewController>

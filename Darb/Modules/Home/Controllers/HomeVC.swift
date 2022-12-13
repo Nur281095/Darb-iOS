@@ -140,6 +140,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
         if announcements[indexPath.item].file != nil {
             announcements[indexPath.item].file.name.aa_openURL()
+        } else if announcements[indexPath.item].link != nil {
+            announcements[indexPath.item].link.aa_openURL()
         }
     }
     func didTapAnnouncemnt(index: Int) {
@@ -149,6 +151,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
         if announcements[index].file != nil {
             announcements[index].file.name.aa_openURL()
+        } else if announcements[index].link != nil {
+            announcements[index].link.aa_openURL()
         }
     }
 }

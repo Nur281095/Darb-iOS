@@ -23,6 +23,7 @@ class ChildernListVC: BaseVC {
     
     var tabTyp = TapType.child
     var childs = [Child]()
+    var schools = [Child]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,7 @@ class ChildernListVC: BaseVC {
                             for d in data {
                                 self.childs.append(Child(fromDictionary: d))
                             }
+                            self.schools = self.childs.filter({$0.enrollementStatus != "unapplied"})
                         }
                         self.tblV.reloadData()
 
@@ -72,6 +74,7 @@ class ChildernListVC: BaseVC {
         UIView.animate(withDuration: 0.5, delay: 0) {
             self.selecVLead.constant = 0
         }
+        tblV.reloadData()
         if self.childs.isEmpty {
             self.getChilds()
         }
@@ -79,6 +82,9 @@ class ChildernListVC: BaseVC {
     
     @IBAction func schoolTap(_ sender: Any) {
         tabTyp = .school
+        if schools.isEmpty {
+            self.showTool(msg: "No child enrolled", state: .warning)
+        }
         addBtn.isHidden = true
         tblV.reloadData()
         UIView.animate(withDuration: 0.5, delay: 0) {
@@ -99,7 +105,7 @@ class ChildernListVC: BaseVC {
 
 extension ChildernListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return childs.count
+        return tabTyp == .school ? schools.count : childs.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -107,7 +113,7 @@ extension ChildernListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = childs[indexPath.row]
+        let model = tabTyp == .child ? childs[indexPath.row] : schools[indexPath.row]
         if tabTyp == .child {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChildCell") as! ChildCell
             DispatchQueue.main.async {
@@ -137,7 +143,7 @@ extension ChildernListVC: UITableViewDelegate, UITableViewDataSource {
             self.show(vc, sender: self)
         } else {
             let vc = UIStoryboard.storyBoard(withName: .child).loadViewController(withIdentifier: .schoolSubjectsVC) as! SchoolSubjectsVC
-            vc.child = childs[indexPath.row]
+            vc.child = schools[indexPath.row]
             self.show(vc, sender: self)
         }
     }

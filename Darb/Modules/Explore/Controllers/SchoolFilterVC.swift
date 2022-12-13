@@ -8,6 +8,7 @@
 import UIKit
 import MultiSlider
 import DropDown
+import SwiftyJSON
 
 protocol SchoolFilterDelegate {
     func didTapApply(params: [String: AnyObject])
@@ -26,12 +27,14 @@ class SchoolFilterVC: BaseVC {
     
     var isMaleChk = false
     var isFemaleChk = false
-    var acadmicLevelIndex = -1
+    var acadmicLevelIndex = [Int]()
+    var acadmicLevelIDs = [Int]()
     var curiculmIndex = -1
     var locIndex = -1
     var ratingIndex = -1
     var delegate: SchoolFilterDelegate?
     var params = [String: AnyObject]()
+    var eduLvls = [EduLevels]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +42,12 @@ class SchoolFilterVC: BaseVC {
         self.navigationItem.leftBarButtonItem = btnBack(isOrignal: false)
         self.navigationItem.rightBarButtonItem = btnRight(text: "Reset", isOrignal: false)
         self.navigationItem.title = "Filter"
-        
+        getEduLvls()
         setupSlider()
         setupData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     override func btnRightAction(_ sender: Any) {
         params.removeAll()
@@ -55,10 +61,40 @@ class SchoolFilterVC: BaseVC {
         locTxt.text = ""
         ratingTxt.text = ""
         
-        acadmicLevelIndex = -1
+        acadmicLevelIndex.removeAll()
         curiculmIndex = -1
         locIndex = -1
         ratingIndex = -1
+        
+    }
+    
+    func getEduLvls() {
+        self.eduLvls.removeAll()
+        Util.shared.showSpinner()
+        ALF.shared.doGetData(parameters: [:], method: "education_levels") { response in
+            Util.shared.hideSpinner()
+            print(response)
+            DispatchQueue.main.async {
+                let json = JSON(response)
+                if let status = json["status_code"].int {
+                    if statusRange.contains(status) {
+                        if let data = response["data"] as? [[String: Any]] {
+                            for d in data {
+                                self.eduLvls.append(EduLevels(fromDictionary: d))
+                            }
+                        }
+                    } else {
+                        self.showTool(msg: json["message"].string ?? "", state: .error)
+                    }
+                }
+            }
+            
+        } fail: { response in
+            Util.shared.hideSpinner()
+            DispatchQueue.main.async {
+                self.showTool(msg: response as? String ?? "Error", state: .error)
+            }
+        }
     }
     
     func setupData() {
@@ -78,7 +114,11 @@ class SchoolFilterVC: BaseVC {
         
         if let levelOFEdu = params["level_of_education"] as? String {
             academicGradeTxt.text = levelOFEdu.capitalized
-            self.acadmicLevelIndex = ["Kindergarten", "Primary", "Lower Secondary", "Upper Secondary"].firstIndex(where: {$0 == levelOFEdu.capitalized}) ?? -1
+            var names = [String]()
+            for i in acadmicLevelIndex {
+                names.append(eduLvls[i].name)
+            }
+            self.academicGradeTxt.text = (names.map{String($0)}.joined(separator: ", "))
         }
         
         if let name = params["name"] as? String {
@@ -115,32 +155,32 @@ class SchoolFilterVC: BaseVC {
     }
     
     @objc func sliderChanged(_ slider: MultiSlider) {
-        
         print("now thumbs are at \(slider.value)") // e.g., [1.0, 4.5, 5.0]
-        
     }
     
     @IBAction func femaleTap(_ sender: Any) {
-
-        femaleChk.image = UIImage(named: "ic_checked_checkbox")
-        maleChk.image = UIImage(named: "ic_unchecked_checkbox")
-        isFemaleChk = true
-        isMaleChk = false
-        
-        params["student_type"] = "girl" as AnyObject
+        if isFemaleChk {
+            femaleChk.image = UIImage(named: "ic_unchecked_checkbox")
+            isFemaleChk = false
+        } else {
+            femaleChk.image = UIImage(named: "ic_checked_checkbox")
+            isFemaleChk = true
+        }
     }
     @IBAction func maleTap(_ sender: Any) {
-
-        maleChk.image = UIImage(named: "ic_checked_checkbox")
-        femaleChk.image = UIImage(named: "ic_unchecked_checkbox")
-        isFemaleChk = false
-        isMaleChk = true
-        params["student_type"] = "boy" as AnyObject
+        if isMaleChk {
+            maleChk.image = UIImage(named: "ic_unchecked_checkbox")
+            isMaleChk = false
+        } else {
+            maleChk.image = UIImage(named: "ic_checked_checkbox")
+            isMaleChk = true
+        }
     }
     @IBAction func acdemicGradeTap(_ sender: UIButton) {
-        let levels = ["Kindergarten", "Primary", "Lower Secondary", "Upper Secondary"]
+//        let levels = ["Kindergarten", "Primary", "Lower Secondary", "Upper Secondary"]
+        
         let dropDown = DropDown()
-        dropDown.dataSource = levels
+        dropDown.dataSource = eduLvls.map({$0.name})
         
         dropDown.anchorView = sender
         dropDown.cellHeight = 51
@@ -150,15 +190,30 @@ class SchoolFilterVC: BaseVC {
         
         dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)! + 10)
         dropDown.topOffset = CGPoint(x: 0, y: -(dropDown.anchorView?.plainView.bounds.height)! - 10)
-        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-            print("Selected item: \(item) at index: \(index)")
-            params["level_of_education"] = item.lowercased() as AnyObject
-            self.academicGradeTxt.text = item
-            self.acadmicLevelIndex = index
+//        dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+//            print("Selected item: \(item) at index: \(index)")
+//            params["level_of_education"] = item.lowercased() as AnyObject
+//            self.academicGradeTxt.text = item
+//            self.acadmicLevelIndex = index
+//        }
+//        if acadmicLevelIndex != -1 {
+//            dropDown.selectRow(acadmicLevelIndex, scrollPosition: .middle)
+//        }
+        
+        dropDown.multiSelectionAction = { [unowned self] (indexs :[Int], items: [String]) in
+            self.acadmicLevelIndex = indexs
+            self.academicGradeTxt.text = (items.map{String($0)}.joined(separator: ", "))
+
+            let objectSet = Set(acadmicLevelIndex.map { $0 })
+            dropDown.selectRows(at: objectSet)
+            self.acadmicLevelIDs.removeAll()
+            for i in acadmicLevelIndex {
+                self.acadmicLevelIDs.append(eduLvls[i].id)
+            }
         }
-        if acadmicLevelIndex != -1 {
-            dropDown.selectRow(acadmicLevelIndex, scrollPosition: .middle)
-        }
+        
+        let objectSet = Set(acadmicLevelIndex.map { $0 })
+        dropDown.selectRows(at: objectSet)
        
         dropDown.width = sender.frame.width
         dropDown.direction = .any
@@ -252,6 +307,18 @@ class SchoolFilterVC: BaseVC {
     }
    
     @IBAction func applyTap(_ sender: Any) {
+        if isMaleChk && !isFemaleChk {
+            params["student_type"] = "boy" as AnyObject
+        } else if isFemaleChk && !isMaleChk {
+            params["student_type"] = "girl" as AnyObject
+        } else if isFemaleChk && isMaleChk {
+            params["student_type"] = "all" as AnyObject
+        }
+        if let vc = self.navigationController!.viewControllers[self.navigationController!.viewControllers.count - 2] as? ExploreVC {
+            vc.eduLvls = self.eduLvls
+            vc.acadmicLevelIDs = self.acadmicLevelIDs
+            vc.acadmicLevelIndex = self.acadmicLevelIndex
+        }
         delegate?.didTapApply(params: params)
         self.goBack()
     }

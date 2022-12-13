@@ -113,7 +113,7 @@ class TransportVC: BaseVC {
 
         locationPicker.completion = { location in
             // do some awesome stuff with location
-            self.locTxt.text = location?.address    
+            self.locTxt.text = location?.name
         }
 
         navigationController?.pushViewController(locationPicker, animated: true)

@@ -228,13 +228,27 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gmY-Oh-QVo">
+                                                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gmY-Oh-QVo">
                                                             <rect key="frame" x="20" y="112" width="309" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="30" id="1jz-w8-eQU"/>
                                                             </constraints>
                                                             <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" image="processingBtn"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="ic_timer" title="Pending" imagePadding="10">
+                                                                <fontDescription key="titleFontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                                                <color key="baseForegroundColor" red="0.2470588235" green="0.25098039220000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </buttonConfiguration>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="AACornerRadius">
+                                                                    <real key="value" value="12"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="AABorderWidth">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="AABorderColor">
+                                                                    <color key="value" red="0.24705882352941178" green="0.25098039215686274" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <action selector="statusTap:" destination="SBv-JA-mzc" eventType="touchUpInside" id="OKJ-Zw-z4x"/>
                                                             </connections>
@@ -328,8 +342,8 @@
     </scenes>
     <resources>
         <image name="ic_downarrow" width="24" height="31"/>
+        <image name="ic_timer" width="16" height="16"/>
         <image name="mapsBtnn" width="64" height="20"/>
-        <image name="processingBtn" width="312" height="30"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

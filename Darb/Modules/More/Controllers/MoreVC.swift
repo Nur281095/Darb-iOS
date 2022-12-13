@@ -32,19 +32,27 @@ class MoreVC: BaseVC {
             //setting
             let vc = UIStoryboard.storyBoard(withName: .more).loadViewController(withIdentifier: .settingsVC) as! SettingsVC
             self.show(vc, sender: self)
-            break
         case 2:
             //About App
-            break
+            let vc = UIStoryboard.storyBoard(withName: .more).loadViewController(withIdentifier: .webVC) as! WebVC
+            vc.navTitle = "About App"
+            vc.file = "about"
+            self.show(vc, sender: self)
         case 3:
             let vc = UIStoryboard.storyBoard(withName: .more).loadViewController(withIdentifier: .supoortVC) as! SupoortVC
             self.show(vc, sender: self)
         case 4:
             //Privacy Policy
-            break
+            let vc = UIStoryboard.storyBoard(withName: .more).loadViewController(withIdentifier: .webVC) as! WebVC
+            vc.navTitle = "Privacy Policy"
+            vc.file = "Privacy"
+            self.show(vc, sender: self)
         case 5:
             //Terms and Conditions
-            break
+            let vc = UIStoryboard.storyBoard(withName: .more).loadViewController(withIdentifier: .webVC) as! WebVC
+            vc.navTitle = "Terms and Conditions"
+            vc.file = "terms"
+            self.show(vc, sender: self)
         case 6:
             //Logout
             self.aa_showAlertCustom(Appname, text: "Are you sure to logout from the application?", onDismiss: {

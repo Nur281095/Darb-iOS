@@ -9,6 +9,8 @@ import UIKit
 import ImageSlideshow
 import MapKit
 import StyledString
+import Cosmos
+import SwiftyJSON
 
 class SchoolDetailVC: BaseVC, ImageSlideshowDelegate {
 
@@ -31,6 +33,7 @@ class SchoolDetailVC: BaseVC, ImageSlideshowDelegate {
     @IBOutlet weak var mail: UILabel!
     @IBOutlet weak var phone: UILabel!
     
+    @IBOutlet weak var ratV: CosmosView!
     
     var school: SchoolListModel!
     
@@ -39,6 +42,43 @@ class SchoolDetailVC: BaseVC, ImageSlideshowDelegate {
         self.navigationItem.leftBarButtonItem = btnBack(isOrignal: false)
         contactBtn.setTitle("", for: .normal)
         setData()
+        
+        ratV.didFinishTouchingCosmos = { rating in
+            
+            self.rateSchool(rating: rating)
+        }
+    }
+    
+    func rateSchool(rating: Double) {
+        var dic = Dictionary<String, AnyObject>()
+        dic["user_id"] = Util.getUser()!.id as AnyObject
+        dic["school_id"] = self.school.id as AnyObject
+        dic["rating"] = rating as AnyObject
+        dic["description"] = "Loerm" as AnyObject
+       
+        print(dic)
+        Util.shared.showSpinner()
+        ALF.shared.doPostData(parameters: dic, method: "school_reviews") { response in
+            Util.shared.hideSpinner()
+            print(response)
+            DispatchQueue.main.async {
+                let json = JSON(response)
+                if let status = json["status_code"].int {
+                    if statusRange.contains(status) {
+                        self.ratingLbl.set(image: UIImage(named: "ic_star")!, with: " \(rating)")
+                        self.showTool(msg: json["message"].string ?? "", state: .success)
+                    } else {
+                        self.showTool(msg: json["message"].string ?? "", state: .error)
+                    }
+                }
+            }
+            
+        } fail: { response in
+            Util.shared.hideSpinner()
+            DispatchQueue.main.async {
+                self.showTool(msg: response as? String ?? "Error", state: .error)
+            }
+        }
     }
     
     func setData() {
@@ -48,6 +88,7 @@ class SchoolDetailVC: BaseVC, ImageSlideshowDelegate {
             }
             schoolName.text = school.name
             ratingLbl.set(image: UIImage(named: "ic_star")!, with: " \(school.totalReviews ?? "0.0")")
+            ratV.rating = Double(school.totalReviews)!
             if school.descriptionField == "" {
                 
                 let str = StyledString("INSTITUTION STRUCTURE AND CURRICULUM").with(foregroundColor: .black).with(font: UIFont(name: AppFonts.roboto_bold, size: 14))
@@ -58,7 +99,13 @@ class SchoolDetailVC: BaseVC, ImageSlideshowDelegate {
             }
             
             stdType.text = school.studentType
-            lvlOfEdu.text = school.levelOfEducation
+            if !school.educationLevels.isEmpty {
+                lvlOfEdu.text = (school.educationLevels.map({$0.name})).map{String($0)}.joined(separator: ", ")
+            } else {
+                lvlOfEdu.text = ""
+            }
+            
+            
             curriculum.text = school.offeredCurriculum
             building.text = school.buildings
             classRoom.text = school.classrooms

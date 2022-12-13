@@ -39,7 +39,7 @@ class Child: NSObject, NSCoding{
         createdAt = dictionary["created_at"] as? String
         dob = dictionary["dob"] as? String
         enrollementStatus = dictionary["enrollement_status"] as? String
-        firstName = dictionary["first_name"] as? String
+        firstName = dictionary["first_name"] as? String ?? ""
         if let gradeData = dictionary["grade"] as? [String:Any]{
             grade = Grade(fromDictionary: gradeData)
         }
@@ -48,7 +48,7 @@ class Child: NSObject, NSCoding{
             healthReport = BirthCertificate(fromDictionary: healthReportData)
         }
         id = dictionary["id"] as? Int
-        lastName = dictionary["last_name"] as? String
+        lastName = dictionary["last_name"] as? String ?? ""
         nationalId = dictionary["national_id"] as? String
         if let portraitPhotoData = dictionary["portrait_photo"] as? [String:Any]{
             portraitPhoto = BirthCertificate(fromDictionary: portraitPhotoData)

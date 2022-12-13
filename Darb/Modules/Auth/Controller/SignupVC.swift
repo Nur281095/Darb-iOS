@@ -85,6 +85,10 @@ class SignupVC: BaseVC {
             self.showTool(msg: passValid.1, state: .error)
             return
         }
+        if !isTemchk {
+            self.showTool(msg: "Please accept our terms & conditions to continue", state: .error)
+            return
+        }
         
         var dic = Dictionary<String, AnyObject>()
         dic["first_name"] = fNameTxt.text as AnyObject
