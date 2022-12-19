@@ -28,6 +28,11 @@ class HomeVC: BaseVC {
         shadV3.addShadow(10)
         self.navigationItem.leftBarButtonItem = btnLogo(image: UIImage(named: "homeNavLogo")!)
         self.navigationItem.rightBarButtonItem = btnRight(image: "ic_noti", isOrignal: true)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if Util.getUser() != nil {
             getProfile()
             getAnnouncments()

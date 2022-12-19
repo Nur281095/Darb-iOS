@@ -22,7 +22,7 @@ class ExploreVC: BaseVC, SchoolFilterDelegate, UITextFieldDelegate {
     var isfilter = false
     var params = [String: AnyObject]()
     
-    var acadmicLevelIndex = [Int]()
+    var acadmicLevelIndex = [Int]() 
     var acadmicLevelIDs = [Int]()
     var eduLvls = [EduLevels]()
     
@@ -75,9 +75,11 @@ class ExploreVC: BaseVC, SchoolFilterDelegate, UITextFieldDelegate {
         isfilter = false
         self.schoolListModel.removeAll()
         if let loc = AppLocation.loc {
-            params["lat"] = loc.latitude as AnyObject
-            params["lang"] = loc.longitude as AnyObject
+//            params["lat"] = loc.latitude as AnyObject
+//            params["lang"] = loc.longitude as AnyObject
         }
+        
+        params["filter"] = true as AnyObject
         if !acadmicLevelIDs.isEmpty {
             params["level_of_education"] = acadmicLevelIDs.map{String($0)}.joined(separator: ",") as AnyObject
         }

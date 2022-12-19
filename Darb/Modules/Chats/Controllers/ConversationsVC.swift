@@ -7,20 +7,24 @@
 
 import UIKit
 import SwiftyJSON
+import AAExtensions
 
-class ConversationsVC: BaseVC {
+class ConversationsVC: BaseVC, UISearchBarDelegate {
     
     @IBOutlet weak var tblV: UITableView!
+    @IBOutlet weak var search: UISearchBar!
     
     
     var conversations = [ConversationsModel]()
+    var filterCons = [ConversationsModel]()
+    var isfilter = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.leftBarButtonItem = btnLogo(image: UIImage(named: "homeNavLogo")!)
         self.navigationItem.rightBarButtonItem = btnRight(image: "ic_noti", isOrignal: true)
-        
+        search.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -61,16 +65,39 @@ class ConversationsVC: BaseVC {
             }
         }
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text != "" {
+            isfilter = true
+            filterCons = conversations.filter({($0.receiver.firstName.lowercased() + $0.receiver.lastName.lowercased()).contains(searchBar.text!.lowercased())})
+        } else {
+            filterCons.removeAll()
+            isfilter = false
+        }
+        self.tblV.reloadData()
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        filterCons.removeAll()
+        isfilter = false
+        self.tblV.reloadData()
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        isfilter = true
+        filterCons = conversations.filter({($0.receiver.firstName.lowercased() + $0.receiver.lastName.lowercased()).contains(searchBar.text!.lowercased())})
+        self.tblV.reloadData()
+    }
 
 }
 
 extension ConversationsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return conversations.count
+        return isfilter ? filterCons.count : conversations.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ConversationCell
-        let model = conversations[indexPath.row]
+        let model = isfilter ? filterCons[indexPath.row] : conversations[indexPath.row]
         
         let usr = Util.getUser()!
         if model.sender.id != usr.id {
@@ -114,7 +141,7 @@ extension ConversationsVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let model = conversations[indexPath.row]
+        let model = isfilter ? filterCons[indexPath.row] : conversations[indexPath.row]
         let usr = Util.getUser()!
         var name = ""
         let vc = UIStoryboard.storyBoard(withName: .chat).loadViewController(withIdentifier: .chatVC) as! ChatVC

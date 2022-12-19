@@ -234,7 +234,7 @@ class SchoolFilterVC: BaseVC {
         dropDown.topOffset = CGPoint(x: 0, y: -(dropDown.anchorView?.plainView.bounds.height)! - 10)
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             print("Selected item: \(item) at index: \(index)")
-            params["name"] = item.lowercased() as AnyObject
+            params["offered_curriculum"] = item.lowercased() as AnyObject
             self.curiculmTxt.text = item
             self.curiculmIndex = index
         }
@@ -287,13 +287,13 @@ class SchoolFilterVC: BaseVC {
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             print("Selected item: \(item) at index: \(index)")
             if index == 0 {
-                params["reviews"] = "1" as AnyObject
-            } else if index == 1 {
-                params["reviews"] = "2" as AnyObject
-            } else if index == 2 {
-                params["reviews"] = "3" as AnyObject
-            } else if index == 3 {
                 params["reviews"] = "4" as AnyObject
+            } else if index == 1 {
+                params["reviews"] = "3" as AnyObject
+            } else if index == 2 {
+                params["reviews"] = "2" as AnyObject
+            } else if index == 3 {
+                params["reviews"] = "1" as AnyObject
             }
             self.ratingTxt.text = item
             self.ratingIndex = index

@@ -36,7 +36,7 @@
                             </label>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Ja-KO-u6O">
                                 <rect key="frame" x="15" y="111" width="360" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="Dha-7P-GLT"/>
                                 </connections>
@@ -129,6 +129,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="search" destination="8Ja-KO-u6O" id="8vx-8n-Tst"/>
                         <outlet property="tblV" destination="Bfc-K9-xAy" id="oWm-Xq-hjE"/>
                     </connections>
                 </viewController>
@@ -139,7 +140,7 @@
         <!--ChatVC-->
         <scene sceneID="h3H-Zo-r6R">
             <objects>
-                <viewController storyboardIdentifier="ChatVC" hidesBottomBarWhenPushed="YES" id="VES-XC-T6k" customClass="ChatVC" customModule="Muzproposal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatVC" hidesBottomBarWhenPushed="YES" id="VES-XC-T6k" customClass="ChatVC" customModule="Darb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tpk-0w-Hg6">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
